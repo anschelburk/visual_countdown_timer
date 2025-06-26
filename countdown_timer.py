@@ -2,6 +2,20 @@ from datetime import datetime, timedelta
 import math
 import os
 import time
+
+def beginning_of_next_hour_from(current_datetime):
+
+    """
+    Calculates the start time of the next hour based on a given datetime.
+
+    Args: current_datetime (datetime): A datetime object representing the current time.
+    Returns: beginning_of_next_hour_formatted (str): A string representing the start time of the next hour.
+    """
+
+    beginning_of_current_hour = current_datetime.replace(minute=0, second=0, microsecond=0)
+    beginning_of_next_hour_unformatted = beginning_of_current_hour + timedelta(hours=1)
+    beginning_of_next_hour_formatted = beginning_of_next_hour_unformatted.strftime('%H:%M %Z')
+    return beginning_of_next_hour_formatted
     
 def progress_bar(remaining_time_in_seconds):
 
@@ -47,11 +61,7 @@ def main():
         current_date = now.strftime('%B %d, %Y')
         current_time = now.strftime('%H:%M %Z')
 
-        beginning_of_current_hour = now.replace(minute=0, second=0, microsecond=0)
-        beginning_of_next_hour = beginning_of_current_hour + timedelta(hours=1)
-        beginning_of_next_hour_formatted = beginning_of_next_hour.strftime('%H:%M %Z')
-
-        remaining_time = beginning_of_next_hour - now
+        remaining_time = beginning_of_next_hour_from(now) - now
         total_remaining_time_in_seconds = int(remaining_time.total_seconds())
         remaining_minutes, remaining_seconds = divmod(total_remaining_time_in_seconds, 60)        
 
@@ -69,7 +79,7 @@ def main():
         
         print('')
         print(thin_horizontal_line)
-        print(f'Countdown until {beginning_of_next_hour_formatted}:')
+        print(f'Countdown until {beginning_of_next_hour_from(now)}:')
         print(thin_horizontal_line)
         print(f'{indent}{remaining_minutes:02} {minutes_label}')
         print(f'{indent}{remaining_seconds:02} {seconds_label}')
