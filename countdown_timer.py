@@ -53,7 +53,7 @@ def main():
             return progress_bar_text
 
         print(thick_horizontal_line)
-        print('Hourly Countdown Timer')
+        print('Visual Countdown Timer')
         print('Press Ctrl + C to exit.')
         print(thick_horizontal_line)
 
