@@ -11,9 +11,8 @@ def beginning_of_next_hour_from(current_datetime):
     Returns: beginning_of_next_hour_formatted (str): A string representing the start time of the next hour.
     """
     beginning_of_current_hour = current_datetime.replace(minute=0, second=0, microsecond=0)
-    beginning_of_next_hour_unformatted = beginning_of_current_hour + timedelta(hours=1)
-    beginning_of_next_hour_formatted = beginning_of_next_hour_unformatted.strftime('%H:%M %Z')
-    return beginning_of_next_hour_formatted
+    next_hour = beginning_of_current_hour + timedelta(hours=1)
+    return next_hour
     
 def progress_bar(remaining_time_in_seconds):
     """
@@ -63,10 +62,12 @@ def main():
 
         current_date = now.strftime('%B %d, %Y')
         current_time = now.strftime('%H:%M %Z')
+        
+        beginning_of_next_hour = beginning_of_next_hour_from(now).strftime('%H:%M %Z')      
 
         remaining_time = beginning_of_next_hour_from(now) - now
         total_remaining_time_in_seconds = int(remaining_time.total_seconds())
-        remaining_minutes, remaining_seconds = divmod(total_remaining_time_in_seconds, 60)        
+        remaining_minutes, remaining_seconds = divmod(total_remaining_time_in_seconds, 60)
 
         minutes_label = "minute" if remaining_minutes == 1 else "minutes"
         seconds_label = "second" if remaining_seconds == 1 else "seconds"
@@ -82,7 +83,7 @@ def main():
         
         print('')
         print(thin_horizontal_line)
-        print(f'Countdown until {beginning_of_next_hour_from(now)}:')
+        print(f'Countdown until {beginning_of_next_hour}:')
         print(thin_horizontal_line)
         print(f'{indent}{remaining_minutes:02} {minutes_label}')
         print(f'{indent}{remaining_seconds:02} {seconds_label}')
