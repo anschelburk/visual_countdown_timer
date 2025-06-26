@@ -32,8 +32,8 @@ def main():
             """
             Generates a visual progress bar representing the remaining time until the next hour.
 
-            Each '#' represents 2 minutes of remaining time. Each '.' represents elapsed time. The
-            number of minutes is rounded up if any seconds are left beyond a full minute to ensure a
+            Each '#' represents about 2 minutes of remaining time. The '.' characters represent elapsed time.
+            The number of minutes is rounded up if any seconds are left beyond a full minute to ensure a
             more intuitive countdown.
 
             The bar is 32 characters wide: 30 '#' and '.' characters, enclosed in a left and right bracket.
