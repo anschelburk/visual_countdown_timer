@@ -49,11 +49,9 @@ def main():
 
         beginning_of_current_hour = now.replace(minute=0, second=0, microsecond=0)
         beginning_of_next_hour = beginning_of_current_hour + timedelta(hours=1)
+        beginning_of_next_hour_formatted = beginning_of_next_hour.strftime('%H:%M %Z')
 
-        next_loop_begins = beginning_of_next_hour
-        next_loop_begins_formatted = next_loop_begins.strftime('%H:%M %Z')
-
-        remaining_time = next_loop_begins - now
+        remaining_time = beginning_of_next_hour - now
         total_remaining_time_in_seconds = int(remaining_time.total_seconds())
         remaining_minutes, remaining_seconds = divmod(total_remaining_time_in_seconds, 60)        
 
@@ -71,7 +69,7 @@ def main():
         
         print('')
         print(thin_horizontal_line)
-        print(f'Countdown until {next_loop_begins_formatted}:')
+        print(f'Countdown until {beginning_of_next_hour_formatted}:')
         print(thin_horizontal_line)
         print(f'{indent}{remaining_minutes:02} {minutes_label}')
         print(f'{indent}{remaining_seconds:02} {seconds_label}')
