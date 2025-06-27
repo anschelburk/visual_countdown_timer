@@ -16,12 +16,21 @@ def beginning_of_next_hour_from(current_datetime):
     
 def countdown_end_times(countdown_time):
     """
-    
+    Returns a sorted list of countdown end times in minutes.
+
+    Given a single countdown time in minutes, this function adds it to 
+    a base set containing the value 60, then returns a sorted list of 
+    the combined values.
+
+    Parameters:
+        countdown_time (int): A time value in minutes to be added to the base set.
+
+    Returns:
+        list: A sorted list of integers representing countdown end times.
     """
     minutes_from_start = {60}
-    minutes_from_start = minutes_from_start.add(countdown_time)
-    minutes_from_start = sorted(minutes_from_start)
-    return minutes_from_start
+    minutes_from_start.add(countdown_time)
+    return sorted(minutes_from_start)
 
 def progress_bar(remaining_time_in_seconds):
     """
