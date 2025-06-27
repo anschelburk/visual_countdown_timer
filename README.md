@@ -1,6 +1,7 @@
 # countdown_timer
 
 A personal learning project: a continuous visual hourly countdown timer, meant to run within the terminal.
+
 **This is a preliminary project, under active development. More features to come soon!**
 
 Steps to install:
