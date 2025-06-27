@@ -14,6 +14,15 @@ def beginning_of_next_hour_from(current_datetime):
     next_hour = beginning_of_current_hour + timedelta(hours=1)
     return next_hour
     
+def countdown_end_times(countdown_time):
+    """
+    
+    """
+    minutes_from_start = {60}
+    minutes_from_start = minutes_from_start.add(countdown_time)
+    minutes_from_start = sorted(minutes_from_start)
+    return minutes_from_start
+
 def progress_bar(remaining_time_in_seconds):
     """
     Generates a visual progress bar representing the remaining time until the next hour.
