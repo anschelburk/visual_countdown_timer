@@ -32,6 +32,14 @@ def countdown_end_times(countdown_time):
     minutes_from_start.add(countdown_time)
     return sorted(minutes_from_start)
 
+
+def current_countdown_loop(beginning_of_hour, set_of_target_time_minutes):
+    """
+    
+    """
+    for target_time_minutes in set_of_target_time_minutes:
+        pass
+
 def progress_bar(remaining_time_in_seconds):
     """
     Generates a visual progress bar representing the remaining time until the next hour.
