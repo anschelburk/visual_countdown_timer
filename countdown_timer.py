@@ -22,7 +22,7 @@ def countdown_end_times(countdown_time):
     a base set containing the value 60, then returns a sorted list of 
     the combined values.
 
-    Parameters:
+    Args:
         countdown_time (int): A time value in minutes to be added to the base set.
 
     Returns:
