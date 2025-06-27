@@ -12,10 +12,10 @@ Steps to install:
 
 Windows:
 ```
-python run countdown_timer.py
+python countdown_timer.py
 ```
 
 Linux/MacOS:
 ```
-python3 run countdown_timer.py
+python3 countdown_timer.py
 ```
