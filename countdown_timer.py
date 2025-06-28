@@ -30,11 +30,17 @@ def countdown_end_times():
     Returns:
         countdown_times (list): A sorted list of integers representing countdown end times.
     """
-    print('This timer counts down to a user-specified number of minutes')
-    print('past the hour. For example, if you type "25," it will count down')
-    print('to 01:25, 02:25, 03:25, and so on.')
-    countdown_times = input("How many minutes past the hour would you like to count down to? ")
-    countdown_times = sorted(set(countdown_times))
+    while True:
+        user_input = input("How many minutes past the hour would you like to count down to? ")
+        try:
+            user_minutes = int(user_input)    
+            if 0 <= user_minutes < 60:
+                break
+            else:
+                print("Error: Please enter a number of minutes between 0 and 59.")
+        except ValueError:
+            print("Error: Please enter a valid number (e.g., 25).")
+    countdown_times = sorted(set(user_minutes))
     return countdown_times
 
 def progress_bar(remaining_time_in_seconds):
