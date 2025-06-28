@@ -3,17 +3,54 @@ import math
 import os
 import time
 
-def beginning_of_next_hour_from(current_datetime):
-    """
-    Calculates the start time of the next hour based on a given datetime.
-
-    Args: current_datetime (datetime): A datetime object representing the current time.
-    Returns: beginning_of_next_hour_formatted (str): A string representing the start time of the next hour.
-    """
-    beginning_of_current_hour = current_datetime.replace(minute=0, second=0, microsecond=0)
-    next_hour = beginning_of_current_hour + timedelta(hours=1)
-    return next_hour
+def ask_user_for_end_of_loop():
     
+    """
+    Please note: this function currently supports a user entering only a single countdown number of minutes.
+
+    Returns a sorted list of countdown end times in minutes.
+
+    Given a single countdown time in minutes, this function adds it to 
+    a base set containing the value 60, then returns a sorted list of 
+    the combined values.
+
+    Args: None.
+
+    Returns:
+        countdown_times (list): A sorted list of integers representing countdown end times.
+    """
+    while True:
+        user_input = input("How many minutes past the hour would you like to count down to? ")
+        try:
+            user_minutes = int(user_input)    
+            if 0 <= user_minutes < 60:
+                break
+            else:
+                print("Error: Please enter a number of minutes between 0 and 59.")
+                print('')
+        except ValueError:
+            print("Error: Please enter a valid number (e.g., 25).")
+            print("This number must be written as an integer. \"3\" works; \"three\" doesn't.")
+            print('')
+    return user_minutes
+
+def next_occurrence(current_datetime, target_minute):
+    """
+    Returns the next datetime where the minute equals target_minute.
+
+    Args:
+        current_datetime (datetime): The current datetime.
+        target_minute (int): The target minute after the hour that the timer should count down to.
+
+    Returns:
+        next_occurrence (datetime): The next datetime where the minute equals target_minute.
+    """
+    if current_datetime.minute < target_minute:
+        return current_datetime.replace(minute=target_minute, second=0, microsecond=0)
+    else:
+        next_hour = current_datetime + timedelta(hours=1)
+        return next_hour.replace(minute=target_minute, second=0, microsecond=0)
+
 def progress_bar(remaining_time_in_seconds):
     """
     Generates a visual progress bar representing the remaining time until the next hour.
@@ -50,9 +87,19 @@ def progress_bar(remaining_time_in_seconds):
 
 def main():
 
+    os.system('cls' if os.name == 'nt' else 'clear')
+
     indent = '  '
     thick_horizontal_line = '=' * 32
     thin_horizontal_line = '-' * 32
+
+    print(thick_horizontal_line)
+    print('Visual Countdown Timer')
+    print('Press Ctrl + C to exit.')
+    print(thick_horizontal_line)
+
+    print('')
+    countdown_end_times = ask_user_for_end_of_loop()
 
     while True:
 
@@ -63,9 +110,10 @@ def main():
         current_date = now.strftime('%B %d, %Y')
         current_time = now.strftime('%H:%M %Z')
         
-        beginning_of_next_hour = beginning_of_next_hour_from(now).strftime('%H:%M %Z')      
+        end_of_current_loop = next_occurrence(now, countdown_end_times)
+        end_of_current_loop_formatted = end_of_current_loop.strftime('%H:%M %Z')
 
-        remaining_time = beginning_of_next_hour_from(now) - now
+        remaining_time = end_of_current_loop - now
         total_remaining_time_in_seconds = int(remaining_time.total_seconds())
         remaining_minutes, remaining_seconds = divmod(total_remaining_time_in_seconds, 60)
 
@@ -83,7 +131,7 @@ def main():
         
         print('')
         print(thin_horizontal_line)
-        print(f'Countdown until {beginning_of_next_hour}:')
+        print(f'Countdown until {end_of_current_loop_formatted}:')
         print(thin_horizontal_line)
         print(f'{indent}{remaining_minutes:02} {minutes_label}')
         print(f'{indent}{remaining_seconds:02} {seconds_label}')
