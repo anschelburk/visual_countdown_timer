@@ -84,10 +84,18 @@ def progress_bar(remaining_time_in_seconds):
 
 def main():
 
+    os.system('cls' if os.name == 'nt' else 'clear')
+
     indent = '  '
     thick_horizontal_line = '=' * 32
     thin_horizontal_line = '-' * 32
 
+    print(thick_horizontal_line)
+    print('Visual Countdown Timer')
+    print('Press Ctrl + C to exit.')
+    print(thick_horizontal_line)
+
+    print('')
     countdown_end_times = ask_user_for_end_of_loop()
 
     while True:
