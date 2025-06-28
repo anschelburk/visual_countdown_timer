@@ -3,18 +3,18 @@ import math
 import os
 import time
 
-def beginning_of_next_hour_from(current_datetime):
-    """
-    Calculates the start time of the next hour based on a given datetime.
+# def beginning_of_next_hour_from(current_datetime):
+#     """
+#     Calculates the start time of the next hour based on a given datetime.
 
-    Args: current_datetime (datetime): A datetime object representing the current time.
-    Returns: beginning_of_next_hour_formatted (str): A string representing the start time of the next hour.
-    """
-    beginning_of_current_hour = current_datetime.replace(minute=0, second=0, microsecond=0)
-    next_hour = beginning_of_current_hour + timedelta(hours=1)
-    return next_hour
+#     Args: current_datetime (datetime): A datetime object representing the current time.
+#     Returns: beginning_of_next_hour_formatted (str): A string representing the start time of the next hour.
+#     """
+#     beginning_of_current_hour = current_datetime.replace(minute=0, second=0, microsecond=0)
+#     next_hour = beginning_of_current_hour + timedelta(hours=1)
+#     return next_hour
     
-def countdown_end_times():
+def ask_user_for_end_of_loop():
     
     """
     Please note: this function currently supports a user entering only a single countdown number of minutes.
@@ -42,6 +42,23 @@ def countdown_end_times():
             print("Error: Please enter a valid number (e.g., 25).")
     countdown_times = sorted(set(user_minutes))
     return countdown_times
+
+def next_occurrence(current_datetime, target_minute):
+    """
+    Returns the next datetime where the minute equals target_minute.
+
+    Args:
+        current_datetime (datetime): The current datetime.
+        target_minute (int): The target minute after the hour that the timer should count down to.
+
+    Returns:
+        next_occurrence (datetime): The next datetime where the minute equals target_minute.
+    """
+    if current_datetime.minute < target_minute:
+        return current_datetime.replace(minute=target_minute, second=0, microsecond=0)
+    else:
+        next_hour = current_datetime + timedelta(hours=1)
+        return next_hour.replace(minute=target_minute, second=0, microsecond=0)
 
 def progress_bar(remaining_time_in_seconds):
     """
@@ -83,6 +100,8 @@ def main():
     thick_horizontal_line = '=' * 32
     thin_horizontal_line = '-' * 32
 
+    countdown_end_times = ask_user_for_end_of_loop()
+
     while True:
 
         os.system('cls' if os.name == 'nt' else 'clear')
@@ -92,9 +111,10 @@ def main():
         current_date = now.strftime('%B %d, %Y')
         current_time = now.strftime('%H:%M %Z')
         
-        beginning_of_next_hour = beginning_of_next_hour_from(now).strftime('%H:%M %Z')      
+        end_of_current_loop = next_occurrence(now, countdown_end_times)
+        end_of_current_loop_formatted = end_of_current_loop.strftime('%H:%M %Z')
 
-        remaining_time = beginning_of_next_hour_from(now) - now
+        remaining_time = end_of_current_loop - now
         total_remaining_time_in_seconds = int(remaining_time.total_seconds())
         remaining_minutes, remaining_seconds = divmod(total_remaining_time_in_seconds, 60)
 
@@ -112,7 +132,7 @@ def main():
         
         print('')
         print(thin_horizontal_line)
-        print(f'Countdown until {beginning_of_next_hour}:')
+        print(f'Countdown until {end_of_current_loop_formatted}:')
         print(thin_horizontal_line)
         print(f'{indent}{remaining_minutes:02} {minutes_label}')
         print(f'{indent}{remaining_seconds:02} {seconds_label}')
