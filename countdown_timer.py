@@ -40,8 +40,8 @@ def ask_user_for_end_of_loop():
                 print("Error: Please enter a number of minutes between 0 and 59.")
         except ValueError:
             print("Error: Please enter a valid number (e.g., 25).")
-    countdown_times = sorted(set(user_minutes))
-    return countdown_times
+    # countdown_times = sorted(set(user_minutes))
+    return user_minutes
 
 def next_occurrence(current_datetime, target_minute):
     """
