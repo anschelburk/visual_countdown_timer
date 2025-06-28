@@ -14,23 +14,28 @@ def beginning_of_next_hour_from(current_datetime):
     next_hour = beginning_of_current_hour + timedelta(hours=1)
     return next_hour
     
-def countdown_end_times(countdown_time):
+def countdown_end_times():
+    
     """
+    Please note: this function currently supports a user entering only a single countdown number of minutes.
+
     Returns a sorted list of countdown end times in minutes.
 
     Given a single countdown time in minutes, this function adds it to 
     a base set containing the value 60, then returns a sorted list of 
     the combined values.
 
-    Args:
-        countdown_time (int): A time value in minutes to be added to the base set.
+    Args: None.
 
     Returns:
-        list: A sorted list of integers representing countdown end times.
+        countdown_times (list): A sorted list of integers representing countdown end times.
     """
-    minutes_from_start = {60}
-    minutes_from_start.add(countdown_time)
-    return sorted(minutes_from_start)
+    print('This timer counts down to a user-specified number of minutes')
+    print('past the hour. For example, if you type "25," it will count down')
+    print('to 01:25, 02:25, 03:25, and so on.')
+    countdown_times = input("How many minutes past the hour would you like to count down to? ")
+    countdown_times = sorted(set(countdown_times))
+    return countdown_times
 
 def progress_bar(remaining_time_in_seconds):
     """
