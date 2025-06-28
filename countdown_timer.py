@@ -30,7 +30,7 @@ def ask_user_for_end_of_loop():
                 print('')
         except ValueError:
             print("Error: Please enter a valid number (e.g., 25).")
-            print("This number must be written as an integer. 3 works; three doesn't.")
+            print("This number must be written as an integer. \"3\" works; \"three\" doesn't.")
             print('')
     return user_minutes
 
