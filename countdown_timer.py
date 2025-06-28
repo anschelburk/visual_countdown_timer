@@ -3,17 +3,6 @@ import math
 import os
 import time
 
-# def beginning_of_next_hour_from(current_datetime):
-#     """
-#     Calculates the start time of the next hour based on a given datetime.
-
-#     Args: current_datetime (datetime): A datetime object representing the current time.
-#     Returns: beginning_of_next_hour_formatted (str): A string representing the start time of the next hour.
-#     """
-#     beginning_of_current_hour = current_datetime.replace(minute=0, second=0, microsecond=0)
-#     next_hour = beginning_of_current_hour + timedelta(hours=1)
-#     return next_hour
-    
 def ask_user_for_end_of_loop():
     
     """
@@ -40,7 +29,6 @@ def ask_user_for_end_of_loop():
                 print("Error: Please enter a number of minutes between 0 and 59.")
         except ValueError:
             print("Error: Please enter a valid number (e.g., 25).")
-    # countdown_times = sorted(set(user_minutes))
     return user_minutes
 
 def next_occurrence(current_datetime, target_minute):
