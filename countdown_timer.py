@@ -3,37 +3,6 @@ import math
 import os
 import time
 
-def ask_user_for_end_of_loop():
-    
-    """
-    Please note: this function currently supports a user entering only a single countdown number of minutes.
-
-    Returns a sorted list of countdown end times in minutes.
-
-    Given a single countdown time in minutes, this function adds it to 
-    a base set containing the value 60, then returns a sorted list of 
-    the combined values.
-
-    Args: None.
-
-    Returns:
-        countdown_times (list): A sorted list of integers representing countdown end times.
-    """
-    while True:
-        user_input = input("How many minutes past the hour would you like to count down to? ")
-        try:
-            user_minutes = int(user_input)    
-            if 0 <= user_minutes < 60:
-                break
-            else:
-                print("Error: Please enter a number of minutes between 0 and 59.")
-                print('')
-        except ValueError:
-            print("Error: Please enter a valid number (e.g., 25).")
-            print("This number must be written as an integer. \"3\" works; \"three\" doesn't.")
-            print('')
-    return user_minutes
-
 def next_occurrence(current_datetime, target_minute):
     """
     Returns the next datetime where the minute equals target_minute.
@@ -79,19 +48,56 @@ def progress_bar(remaining_time_in_seconds):
             - 16 minutes, 01 second  → 17 minutes → 9 filled ('#') characters and 21 empty ('.') characters, shown below.
                 [#########.....................]
     """
+
     remaining_minutes_rounded = math.ceil(remaining_time_in_seconds / 60)
     progress_bar_full = '#' * round(remaining_minutes_rounded / 2)
     progress_bar_empty = '.' * (30 - round(remaining_minutes_rounded / 2))
     progress_bar_text = f'[{progress_bar_full}{progress_bar_empty}]'
     return progress_bar_text
 
-def update_end_of_loop():
-    print('Would you like to update the countdown time?')
-    print('This timer counts down to a set number of minutes past each hour.')
-    print('For example, if you enter \"25\", it will count down to 1:25, 2:25, etc.')
-    print('')
-    print('Would you like to update the countdown time?')
-    user_minutes = input('Please enter the new number of minutes you\'d like to count down to: ')
+def set_countdown_time(runtime_status):
+    
+    """
+    Please note: this function currently supports a user entering only a single countdown number of minutes.
+
+    Returns a sorted list of countdown end times in minutes.
+
+    Given a single countdown time in minutes, this function adds it to 
+    a base set containing the value 60, then returns a sorted list of 
+    the combined values.
+
+    Args:
+        runtime_status (str): A string set to one of two values: 'initial' or 'update'.
+            This arg determines which text is shown to the user.
+
+    Returns:
+        countdown_times (list): A sorted list of integers representing countdown end times.
+    """
+    
+    while True:
+
+        if runtime_status == 'initial':
+            print('Welcome to Visual Countdown Timer!')
+        elif runtime_status == 'update':
+            print('Would you like to update the countdown time?')
+
+        print('This timer counts down to a set number of minutes past each hour.')
+        print('For example, if you enter \"25\", it will count down to 1:25, 2:25, etc.')
+        user_input = input('Please enter the number of minutes you\'d like to count down to: ')
+        
+        try:
+            user_minutes = int(user_input)    
+            if 0 <= user_minutes < 60:
+                break
+            else:
+                print("Error: Please enter a number of minutes between 0 and 59.")
+                print('')
+
+        except ValueError:
+            print("Error: Please enter a valid number (e.g., 25).")
+            print("This number must be written as an integer. \"3\" works; \"three\" doesn't.")
+            print('')
+
     return user_minutes
 
 def main():
@@ -108,7 +114,7 @@ def main():
     print(thick_horizontal_line)
 
     print('')
-    countdown_end_times = ask_user_for_end_of_loop()
+    countdown_end_times = set_countdown_time('initial')
 
     while True:
 
