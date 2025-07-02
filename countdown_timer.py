@@ -83,7 +83,7 @@ def set_countdown_time(runtime_status):
 
         print('This timer counts down to a set number of minutes past each hour.')
         print('For example, if you enter \"25\", it will count down to 1:25, 2:25, etc.')
-        user_input = input('Please enter the number of minutes you\'d like to count down to: ')
+        user_input = input('\nPlease enter the number of minutes you\'d like to count down to: ')
         
         try:
             user_minutes = int(user_input)    
