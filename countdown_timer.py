@@ -85,6 +85,15 @@ def progress_bar(remaining_time_in_seconds):
     progress_bar_text = f'[{progress_bar_full}{progress_bar_empty}]'
     return progress_bar_text
 
+def update_end_of_loop():
+    print('Would you like to update the countdown time?')
+    print('This timer counts down to a set number of minutes past each hour.')
+    print('For example, if you enter \"25\", it will count down to 1:25, 2:25, etc.')
+    print('')
+    print('Would you like to update the countdown time?')
+    user_minutes = input('Please enter the new number of minutes you\'d like to count down to: ')
+    return user_minutes
+
 def main():
 
     os.system('cls' if os.name == 'nt' else 'clear')
