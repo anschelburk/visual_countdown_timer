@@ -154,6 +154,8 @@ def main():
         print(f'{indent}{remaining_minutes:02} {minutes_label}')
         print(f'{indent}{remaining_seconds:02} {seconds_label}')
         print(progress_bar(total_remaining_time_in_seconds))
+
+        set_countdown_time('update')
         
         remaining_time_until_next_loop = 1 - (datetime.now().microsecond / 1_000_000)
         time.sleep(remaining_time_until_next_loop)
