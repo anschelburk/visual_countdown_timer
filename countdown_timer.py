@@ -78,12 +78,12 @@ def set_countdown_time(runtime_status):
 
         if runtime_status == 'initial':
             print('Welcome to Visual Countdown Timer!')
+            print('This timer counts down to a set number of minutes past each hour.')
+            print('For example, if you enter \"25\", it will count down to 1:25, 2:25, etc.\n')
         elif runtime_status == 'update':
             print('\nWould you like to update the countdown time?')
 
-        print('This timer counts down to a set number of minutes past each hour.')
-        print('For example, if you enter \"25\", it will count down to 1:25, 2:25, etc.')
-        user_input = input('\nPlease enter the number of minutes you\'d like to count down to: ')
+        user_input = input('Please enter the number of minutes you\'d like to count down to: ')
         
         try:
             user_minutes = int(user_input)    
