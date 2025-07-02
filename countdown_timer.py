@@ -81,6 +81,7 @@ def set_countdown_time(runtime_status):
             print('This timer counts down to a set number of minutes past each hour.')
             print('For example, if you enter \"25\", it will count down to 1:25, 2:25, etc.\n')
             _new = ''
+    
         elif runtime_status == 'update':
             print('\nWould you like to update the countdown time?')
             _new = ' new'
