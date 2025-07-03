@@ -93,7 +93,14 @@ def set_countdown_time(runtime_status):
             if 0 <= user_minutes < 60:
                 print(f'You entered {user_minutes} minutes. The timer will count down to:')
                 print(f'\n1:{user_minutes} | 2:{user_minutes} | 3:{user_minutes} | etc.')
-                break
+                confirmation = input('Please confirm your selection (y/n): ')
+                if confirmation.lower() == 'y':
+                    print('')
+                    break
+                elif confirmation.lower() == 'n':
+                    print('')
+                else:
+                    print('\nPlease enter \"y\" for yes, or \"n\" for no.\n')
             else:
                 print("Error: Please enter a number of minutes between 0 and 59.")
                 print('')
