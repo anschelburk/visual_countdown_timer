@@ -4,6 +4,15 @@ import os
 import time
 
 def confirm_user_input(input_to_confirm):
+    """
+    Displays the user's input and prompts for confirmation.
+
+    Args:
+        input_to_confirm (int): The number of minutes past the hour entered by the user.
+
+    Returns:
+        str: The user's confirmation input, converted to lowercase ('y' or 'n').
+    """
     print(f'\nYou entered {input_to_confirm} minutes. The timer will count down to:')
     print(f'1:{input_to_confirm} | 2:{input_to_confirm} | 3:{input_to_confirm} | etc.\n')
     user_confirmation = input('Is this correct? Please enter \'y\' or \'n\': ')
