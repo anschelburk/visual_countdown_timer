@@ -91,6 +91,8 @@ def set_countdown_time(runtime_status):
         try:
             user_minutes = int(user_input)    
             if 0 <= user_minutes < 60:
+                print(f'You entered {user_minutes} minutes. The timer will count down to:')
+                print(f'\n1:{user_minutes} | 2:{user_minutes} | 3:{user_minutes} | etc.')
                 break
             else:
                 print("Error: Please enter a number of minutes between 0 and 59.")
@@ -101,6 +103,8 @@ def set_countdown_time(runtime_status):
             print("This number must be written as an integer. \"3\" works; \"three\" doesn't.")
             print('')
 
+
+    
     return user_minutes
 
 def main():
@@ -154,8 +158,6 @@ def main():
         print(f'{indent}{remaining_minutes:02} {minutes_label}')
         print(f'{indent}{remaining_seconds:02} {seconds_label}')
         print(progress_bar(total_remaining_time_in_seconds))
-
-        set_countdown_time('update')
         
         remaining_time_until_next_loop = 1 - (datetime.now().microsecond / 1_000_000)
         time.sleep(remaining_time_until_next_loop)
