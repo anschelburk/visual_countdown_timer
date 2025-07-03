@@ -73,18 +73,18 @@ def set_countdown_time(runtime_status):
     Returns:
         countdown_times (list): A sorted list of integers representing countdown end times.
     """
+
+    if runtime_status == 'initial':
+        print('Welcome to Visual Countdown Timer!')
+        print('This timer counts down to a set number of minutes past each hour.')
+        print('For example, if you enter \"25\", it will count down to 1:25, 2:25, etc.\n')
+        _new = ''
+
+    elif runtime_status == 'update':
+        print('\nWould you like to update the countdown time?')
+        _new = ' new'
     
     while True:
-
-        if runtime_status == 'initial':
-            print('Welcome to Visual Countdown Timer!')
-            print('This timer counts down to a set number of minutes past each hour.')
-            print('For example, if you enter \"25\", it will count down to 1:25, 2:25, etc.\n')
-            _new = ''
-    
-        elif runtime_status == 'update':
-            print('\nWould you like to update the countdown time?')
-            _new = ' new'
 
         user_input = input(f'Please enter the{_new} number of minutes you\'d like to count down to: ')
         
