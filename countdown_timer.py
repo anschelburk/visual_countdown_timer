@@ -3,6 +3,12 @@ import math
 import os
 import time
 
+def confirm_user_input(input_to_confirm):
+    print(f'\nYou entered {input_to_confirm} minutes. The timer will count down to:')
+    print(f'1:{input_to_confirm} | 2:{input_to_confirm} | 3:{input_to_confirm} | etc.\n')
+    user_confirmation = input('Is this correct? Please enter \'y\' or \'n\': ')
+    return user_confirmation.lower()
+
 def next_occurrence(current_datetime, target_minute):
     """
     Returns the next datetime where the minute equals target_minute.
@@ -91,17 +97,15 @@ def set_countdown_time(runtime_status):
         try:
             user_minutes = int(user_input)    
             if 0 <= user_minutes < 60:
-                print(f'\nYou entered {user_minutes} minutes. The timer will count down to:')
-                print(f'1:{user_minutes} | 2:{user_minutes} | 3:{user_minutes} | etc.\n')
-                confirmation = input('Please confirm your selection (y/n): ').lower()
-                while confirmation != 'y':
-                    if confirmation == 'n':
+                user_confirmation = ''
+                while user_confirmation != 'y':
+                    user_confirmation = confirm_user_input(user_minutes)
+                    if user_confirmation == 'n':
                         print('')
                         break
                     else:
-                        print('\nPlease enter \"y\" for yes, or \"n\" for no.\n')
-                        confirmation = input('Is this correct? Please enter \'y\' or \'n\': ').lower()
-                if confirmation == 'y':
+                        print('\nInvalid answer: Please enter \'y\' for yes, or \'n\' for no.')
+                if user_confirmation == 'y':
                     break
             else:
                 print("\nError: Please enter a number of minutes between 0 and 59.")
