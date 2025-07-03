@@ -11,7 +11,7 @@ def clean_text(unformatted_text):
         unformatted_text (str): The string to be cleaned.
 
     Returns:
-        str: The cleaned string with specified characters removed from both ends.
+        clean_text (str): The cleaned string with specified characters removed from both ends.
     """
     clean_text = unformatted_text.strip(" .,\"\'")
     return clean_text
