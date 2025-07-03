@@ -3,6 +3,10 @@ import math
 import os
 import time
 
+def clean_text(unformatted_text):
+    clean_text = unformatted_text.strip(" .,\"\'")
+    return clean_text
+
 def confirm_user_input(input_to_confirm):
     """
     Displays the user's input and prompts for confirmation.
@@ -101,14 +105,14 @@ def set_countdown_time(runtime_status):
     
     while True:
 
-        user_input = input(f'Please enter the{_new} number of minutes you\'d like to count down to: ')
+        user_input = clean_text(input(f'Please enter the{_new} number of minutes you\'d like to count down to: '))
         
         try:
             user_minutes = int(user_input)    
             if 0 <= user_minutes < 60:
                 user_confirmation = ''
                 while user_confirmation != 'y':
-                    user_confirmation = confirm_user_input(user_minutes)
+                    user_confirmation = clean_text(confirm_user_input(user_minutes))
                     if user_confirmation == 'n':
                         print('')
                         break
