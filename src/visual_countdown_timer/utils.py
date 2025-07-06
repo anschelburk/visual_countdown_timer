@@ -16,6 +16,11 @@ def clean_text(unformatted_text):
     return clean_text
 
 def  clear_terminal():
+    """
+    Clears the terminal screen.
+    Args: None.
+    Returns: None.    
+    """
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def confirm_user_input(input_to_confirm):
