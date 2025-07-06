@@ -6,11 +6,7 @@ import time
 def main():
 
     utils.clear_terminal()
-    print(constants.THICK_HORIZONTAL_LINE)
-    print('Visual Countdown Timer')
-    print('Press Ctrl + C to exit.')
-    print(constants.THICK_HORIZONTAL_LINE)
-
+    utils.print_title_block(constants.THICK_HORIZONTAL_LINE)
     print('')
     countdown_end_times = utils.set_countdown_time('initial')
 

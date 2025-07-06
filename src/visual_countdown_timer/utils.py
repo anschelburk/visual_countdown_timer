@@ -66,7 +66,7 @@ def print_title_block(thick_dividing_line):
     print(thick_dividing_line)
     print('Visual Countdown Timer')
     print('Press Ctrl + C to exit.')
-    print(thick_dividing_line)    
+    print(f'{thick_dividing_line}\n')    
 
 def progress_bar(remaining_time_in_seconds):
     """
