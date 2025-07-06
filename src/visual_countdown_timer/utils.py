@@ -1,7 +1,5 @@
-from datetime import datetime, timedelta
+from datetime import timedelta
 import math
-import os
-import time
 
 def clean_text(unformatted_text):
     """
