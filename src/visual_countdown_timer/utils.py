@@ -1,5 +1,6 @@
 from datetime import timedelta
 import math
+import os
 
 def clean_text(unformatted_text):
     """
@@ -13,6 +14,9 @@ def clean_text(unformatted_text):
     """
     clean_text = unformatted_text.strip(" .,\"\'")
     return clean_text
+
+def  clear_terminal():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 def confirm_user_input(input_to_confirm):
     """

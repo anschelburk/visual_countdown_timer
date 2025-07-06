@@ -5,8 +5,7 @@ import time
 
 def main():
 
-    os.system('cls' if os.name == 'nt' else 'clear')
-
+    utils.clear_terminal()
     print(constants.THICK_HORIZONTAL_LINE)
     print('Visual Countdown Timer')
     print('Press Ctrl + C to exit.')
@@ -17,7 +16,7 @@ def main():
 
     while True:
 
-        os.system('cls' if os.name == 'nt' else 'clear')
+        utils.clear_terminal()
 
         now = datetime.now().astimezone()
 
