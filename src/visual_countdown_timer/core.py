@@ -40,5 +40,4 @@ def main():
         print(f'{constants.INDENT}{remaining_seconds:02} {seconds_label}')
         print(utils.progress_bar(total_remaining_time_in_seconds))
         
-        remaining_time_until_next_loop = 1 - (datetime.now().microsecond / 1_000_000)
-        time.sleep(remaining_time_until_next_loop)
+        utils.sleep_until_next_loop()
