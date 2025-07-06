@@ -1,7 +1,7 @@
 from datetime import datetime
 import os
 import time
-import utils
+import . import utils
 
 def main():
 
