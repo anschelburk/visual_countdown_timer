@@ -1,4 +1,4 @@
-from . import utils
+from . import utils, constants
 from datetime import datetime
 import os
 import time
@@ -7,14 +7,10 @@ def main():
 
     os.system('cls' if os.name == 'nt' else 'clear')
 
-    indent = '  '
-    thick_horizontal_line = '=' * 32
-    thin_horizontal_line = '-' * 32
-
-    print(thick_horizontal_line)
+    print(constants.THICK_HORIZONTAL_LINE)
     print('Visual Countdown Timer')
     print('Press Ctrl + C to exit.')
-    print(thick_horizontal_line)
+    print(constants.THICK_HORIZONTAL_LINE)
 
     print('')
     countdown_end_times = utils.set_countdown_time('initial')
@@ -38,21 +34,21 @@ def main():
         minutes_label = "minute" if remaining_minutes == 1 else "minutes"
         seconds_label = "second" if remaining_seconds == 1 else "seconds"
   
-        print(thick_horizontal_line)
+        print(constants.THICK_HORIZONTAL_LINE)
         print('Visual Countdown Timer')
         print('Press Ctrl + C to exit.')
-        print(thick_horizontal_line)
+        print(constants.THICK_HORIZONTAL_LINE)
 
         print('')
         print(current_date)
         print(f'Current Time: {current_time}')
         
         print('')
-        print(thin_horizontal_line)
+        print(constants.THIN_HORIZONTAL_LINE)
         print(f'Countdown until {end_of_current_loop_formatted}:')
-        print(thin_horizontal_line)
-        print(f'{indent}{remaining_minutes:02} {minutes_label}')
-        print(f'{indent}{remaining_seconds:02} {seconds_label}')
+        print(constants.THIN_HORIZONTAL_LINE)
+        print(f'{constants.INDENT}{remaining_minutes:02} {minutes_label}')
+        print(f'{constants.INDENT}{remaining_seconds:02} {seconds_label}')
         print(utils.progress_bar(total_remaining_time_in_seconds))
         
         remaining_time_until_next_loop = 1 - (datetime.now().microsecond / 1_000_000)
