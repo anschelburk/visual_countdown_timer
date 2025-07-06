@@ -1,6 +1,5 @@
 from . import utils, constants
 from datetime import datetime
-import time
 
 def main():
 
