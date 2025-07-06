@@ -27,7 +27,7 @@ def confirm_user_input(input_to_confirm):
         str: The user's confirmation input, converted to lowercase ('y' or 'n').
     """
     print(f'\nYou entered {input_to_confirm} minutes. The timer will count down to:')
-    print(f'1:{input_to_confirm:02} | 2:{input_to_confirm:02} | 3:{input_to_confirm:02} | etc.\n')
+    print(' | '.join(f'{hour:02}:{input_to_confirm:02}' for hour in range(1, 4)) + ' | etc.\n')
     user_confirmation = input('Is this correct? Please enter \'y\' or \'n\': ')
     return user_confirmation.lower()
 
