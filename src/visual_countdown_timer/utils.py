@@ -42,10 +42,25 @@ def confirm_user_input(input_to_confirm):
 def get_current_date():
     """
     Calculates the current date, formatted as follows: [Month] [Day], [Year].
-    Args: None.
-    Returns: a datetime object, formatted as described above.
+    Args:
+        None.
+    Returns:
+        current_date (datetime): a datetime object, formatted as described above.
     """
-    return datetime.now().strftime('%B %d, %Y')
+    current_date = datetime.now().strftime('%B %d, %Y')
+    return current_date
+
+def get_current_time():
+    """
+    Calculates the current time, formatted as follows: [Hour]:[Minute] [Timezone]
+    Args:
+        None.
+    Returns:
+        current_time (datetime): a datetime object, formatted as described above.
+    """
+    current_time = datetime.now().astimezone().strftime('%H:%M %Z')
+    return current_time
+
 
 def next_occurrence(current_datetime, target_minute):
     """

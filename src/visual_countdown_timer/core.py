@@ -12,9 +12,6 @@ def main():
         utils.clear_terminal()
 
         now = datetime.now().astimezone()
-
-        current_date = now.strftime('%B %d, %Y')
-        current_time = now.strftime('%H:%M %Z')
         
         end_of_current_loop = utils.next_occurrence(now, countdown_end_times)
         end_of_current_loop_formatted = end_of_current_loop.strftime('%H:%M %Z')
@@ -29,7 +26,7 @@ def main():
         utils.print_title_block(constants.THICK_HORIZONTAL_LINE)
 
         print(utils.get_current_date())
-        print(f'Current Time: {current_time}')
+        print(f'Current Time: {utils.get_current_time()}')
         
         print('')
         print(constants.THIN_HORIZONTAL_LINE)
