@@ -55,6 +55,19 @@ def next_occurrence(current_datetime, target_minute):
         next_hour = current_datetime + timedelta(hours=1)
         return next_hour.replace(minute=target_minute, second=0, microsecond=0)
 
+def print_title_block(thick_dividing_line):
+    """
+    Prints the title block for the Visual Countdown Timer interface.
+    Args:
+        thick_dividing_line (str): A string of characters (e.g., "=" * 32) used as a visual divider.
+    Returns:
+        None.
+    """
+    print(thick_dividing_line)
+    print('Visual Countdown Timer')
+    print('Press Ctrl + C to exit.')
+    print(thick_dividing_line)    
+
 def progress_bar(remaining_time_in_seconds):
     """
     Generates a visual progress bar representing the remaining time until the next hour.
