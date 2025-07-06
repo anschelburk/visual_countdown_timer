@@ -1,13 +1,11 @@
 from . import utils, constants
 from datetime import datetime
-import os
 import time
 
 def main():
 
     utils.clear_terminal()
     utils.print_title_block(constants.THICK_HORIZONTAL_LINE)
-    print('')
     countdown_end_times = utils.set_countdown_time('initial')
 
     while True:
@@ -29,12 +27,8 @@ def main():
         minutes_label = "minute" if remaining_minutes == 1 else "minutes"
         seconds_label = "second" if remaining_seconds == 1 else "seconds"
   
-        print(constants.THICK_HORIZONTAL_LINE)
-        print('Visual Countdown Timer')
-        print('Press Ctrl + C to exit.')
-        print(constants.THICK_HORIZONTAL_LINE)
+        utils.print_title_block(constants.THICK_HORIZONTAL_LINE)
 
-        print('')
         print(current_date)
         print(f'Current Time: {current_time}')
         
