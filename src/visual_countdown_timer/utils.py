@@ -39,6 +39,14 @@ def confirm_user_input(input_to_confirm):
     user_confirmation = input('Is this correct? Please enter \'y\' or \'n\': ')
     return user_confirmation.lower()
 
+def get_current_date():
+    """
+    Calculates the current date, formatted as follows: [Month] [Day], [Year].
+    Args: None.
+    Returns: a datetime object, formatted as described above.
+    """
+    return datetime.now().strftime('%B %d, %Y')
+
 def next_occurrence(current_datetime, target_minute):
     """
     Returns the next datetime where the minute equals target_minute.

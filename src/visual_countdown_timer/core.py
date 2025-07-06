@@ -28,7 +28,7 @@ def main():
   
         utils.print_title_block(constants.THICK_HORIZONTAL_LINE)
 
-        print(current_date)
+        print(utils.get_current_date())
         print(f'Current Time: {current_time}')
         
         print('')
