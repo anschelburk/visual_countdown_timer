@@ -1,5 +1,4 @@
 from . import utils, constants
-from datetime import datetime
 
 def main():
     utils.clear_terminal()
