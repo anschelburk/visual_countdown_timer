@@ -1,3 +1,4 @@
+from . import utils
 from datetime import datetime, timedelta
 import math
 import os
@@ -126,6 +127,38 @@ def progress_bar(remaining_time_in_seconds):
     progress_bar_empty = '.' * (30 - round(remaining_minutes_rounded / 2))
     progress_bar_text = f'[{progress_bar_full}{progress_bar_empty}]'
     return progress_bar_text
+
+def run_timer():
+        while True:
+
+            utils.clear_terminal()
+
+            now = datetime.now().astimezone()
+            
+            end_of_current_loop = utils.next_occurrence(now, countdown_end_times)
+            end_of_current_loop_formatted = end_of_current_loop.strftime('%H:%M %Z')
+
+            remaining_time = end_of_current_loop - now
+            total_remaining_time_in_seconds = int(remaining_time.total_seconds())
+            remaining_minutes, remaining_seconds = divmod(total_remaining_time_in_seconds, 60)
+
+            minutes_label = "minute" if remaining_minutes == 1 else "minutes"
+            seconds_label = "second" if remaining_seconds == 1 else "seconds"
+    
+            utils.print_title_block(constants.THICK_HORIZONTAL_LINE)
+
+            print(utils.get_current_date())
+            print(f'Current Time: {utils.get_current_time()}')
+            
+            print('')
+            print(constants.THIN_HORIZONTAL_LINE)
+            print(f'Countdown until {end_of_current_loop_formatted}:')
+            print(constants.THIN_HORIZONTAL_LINE)
+            print(f'{constants.INDENT}{remaining_minutes:02} {minutes_label}')
+            print(f'{constants.INDENT}{remaining_seconds:02} {seconds_label}')
+            print(utils.progress_bar(total_remaining_time_in_seconds))
+            
+            utils.sleep_until_next_loop()
 
 def set_countdown_time(runtime_status):
     
