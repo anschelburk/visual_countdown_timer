@@ -128,7 +128,7 @@ def progress_bar(remaining_time_in_seconds):
     progress_bar_text = f'[{progress_bar_full}{progress_bar_empty}]'
     return progress_bar_text
 
-def run_timer(thick_line, thin_line):
+def run_timer(thick_line, thin_line, indent):
         
         while True:
 
@@ -155,8 +155,8 @@ def run_timer(thick_line, thin_line):
             print(thin_line)
             print(f'Countdown until {end_of_current_loop_formatted}:')
             print(thin_line)
-            print(f'{constants.INDENT}{remaining_minutes:02} {minutes_label}')
-            print(f'{constants.INDENT}{remaining_seconds:02} {seconds_label}')
+            print(f'{indent}{remaining_minutes:02} {minutes_label}')
+            print(f'{indent}{remaining_seconds:02} {seconds_label}')
             print(utils.progress_bar(total_remaining_time_in_seconds))
             
             utils.sleep_until_next_loop()
