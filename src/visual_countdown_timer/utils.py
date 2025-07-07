@@ -128,7 +128,7 @@ def progress_bar(remaining_time_in_seconds):
     progress_bar_text = f'[{progress_bar_full}{progress_bar_empty}]'
     return progress_bar_text
 
-def run_timer(thick_line, thin_line, indent):
+def run_timer(countdown_times, thick_line, thin_line, indent):
         
         while True:
 
@@ -136,7 +136,7 @@ def run_timer(thick_line, thin_line, indent):
 
             now = datetime.now().astimezone()
             
-            end_of_current_loop = utils.next_occurrence(now, countdown_end_times)
+            end_of_current_loop = utils.next_occurrence(now, countdown_times)
             end_of_current_loop_formatted = end_of_current_loop.strftime('%H:%M %Z')
 
             remaining_time = end_of_current_loop - now
