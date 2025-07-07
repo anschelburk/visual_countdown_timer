@@ -129,14 +129,35 @@ def progress_bar(remaining_time_in_seconds):
     return progress_bar_text
 
 def run_timer(countdown_times, thick_line, thin_line, indent):
-        
+        """
+        Continuously displays a live countdown timer to a specified minute past each hour.
+
+        This function runs an infinite loop that:
+        - Clears the terminal screen
+        - Calculates the next occurrence of the specified countdown time
+        - Displays the current date and time
+        - Shows how much time remains until the next target time
+        - Renders a visual progress bar
+        - Waits just enough to sync with the next full second
+
+        It uses various functions from this module, utils.py, to do these things.
+
+        Args:
+            countdown_times (int): The number of minutes past each hour to count down to (e.g., 25 for 1:25, 2:25, etc.).
+            thick_line (str): A visual divider string used to frame the header block.
+            thin_line (str): A lighter divider string used to separate sections within the display.
+            indent (str): A string used for indenting time values for consistent formatting.
+
+        Returns:
+            None: This function runs indefinitely and does not return.
+        """
         while True:
 
-            utils.clear_terminal()
+            clear_terminal()
 
             now = datetime.now().astimezone()
             
-            end_of_current_loop = utils.next_occurrence(now, countdown_times)
+            end_of_current_loop = next_occurrence(now, countdown_times)
             end_of_current_loop_formatted = end_of_current_loop.strftime('%H:%M %Z')
 
             remaining_time = end_of_current_loop - now
@@ -146,10 +167,10 @@ def run_timer(countdown_times, thick_line, thin_line, indent):
             minutes_label = "minute" if remaining_minutes == 1 else "minutes"
             seconds_label = "second" if remaining_seconds == 1 else "seconds"
     
-            utils.print_title_block(thick_line)
+            print_title_block(thick_line)
 
-            print(utils.get_current_date())
-            print(f'Current Time: {utils.get_current_time()}')
+            print(get_current_date())
+            print(f'Current Time: {get_current_time()}')
             
             print('')
             print(thin_line)
@@ -157,9 +178,9 @@ def run_timer(countdown_times, thick_line, thin_line, indent):
             print(thin_line)
             print(f'{indent}{remaining_minutes:02} {minutes_label}')
             print(f'{indent}{remaining_seconds:02} {seconds_label}')
-            print(utils.progress_bar(total_remaining_time_in_seconds))
+            print(progress_bar(total_remaining_time_in_seconds))
             
-            utils.sleep_until_next_loop()
+            sleep_until_next_loop()
 
 def set_countdown_time(runtime_status):
     
