@@ -8,14 +8,15 @@ Steps to install:
 
 1. Clone repo.
 2. `cd` into project directory.
+3. `cd` into `src` subdirectory.
 3. Run `countdown_timer.py`:
 
 Windows:
 ```
-python countdown_timer.py
+python -m visual_countdown_timer
 ```
 
 Linux/MacOS:
 ```
-python3 countdown_timer.py
+python3 -m visual_countdown_timer
 ```
