@@ -128,7 +128,8 @@ def progress_bar(remaining_time_in_seconds):
     progress_bar_text = f'[{progress_bar_full}{progress_bar_empty}]'
     return progress_bar_text
 
-def run_timer():
+def run_timer(thick_line, thin_line):
+        
         while True:
 
             utils.clear_terminal()
@@ -145,15 +146,15 @@ def run_timer():
             minutes_label = "minute" if remaining_minutes == 1 else "minutes"
             seconds_label = "second" if remaining_seconds == 1 else "seconds"
     
-            utils.print_title_block(constants.THICK_HORIZONTAL_LINE)
+            utils.print_title_block(thick_line)
 
             print(utils.get_current_date())
             print(f'Current Time: {utils.get_current_time()}')
             
             print('')
-            print(constants.THIN_HORIZONTAL_LINE)
+            print(thin_line)
             print(f'Countdown until {end_of_current_loop_formatted}:')
-            print(constants.THIN_HORIZONTAL_LINE)
+            print(thin_line)
             print(f'{constants.INDENT}{remaining_minutes:02} {minutes_label}')
             print(f'{constants.INDENT}{remaining_seconds:02} {seconds_label}')
             print(utils.progress_bar(total_remaining_time_in_seconds))
