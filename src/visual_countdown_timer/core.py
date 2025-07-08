@@ -1,4 +1,4 @@
-from . import utils, constants
+from . import utils
 
 def main():
     utils.clear_terminal()
