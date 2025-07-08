@@ -143,10 +143,7 @@ def run_timer():
         It uses various functions from this module, utils.py, to do these things.
 
         Args:
-            countdown_times (int): The number of minutes past each hour to count down to (e.g., 25 for 1:25, 2:25, etc.).
-            thick_line (str): A visual divider string used to frame the header block.
-            thin_line (str): A lighter divider string used to separate sections within the display.
-            indent (str): A string used for indenting time values for consistent formatting.
+            None.
 
         Returns:
             None: This function runs indefinitely and does not return.
