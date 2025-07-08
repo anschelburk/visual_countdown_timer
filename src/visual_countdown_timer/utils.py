@@ -1,3 +1,4 @@
+from . import constants
 from datetime import datetime, timedelta
 import math
 import os
@@ -79,7 +80,7 @@ def next_occurrence(current_datetime, target_minute):
         next_hour = current_datetime + timedelta(hours=1)
         return next_hour.replace(minute=target_minute, second=0, microsecond=0)
 
-def print_title_block(thick_dividing_line):
+def print_title_block():
     """
     Prints the title block for the Visual Countdown Timer interface.
     Args:
@@ -87,10 +88,10 @@ def print_title_block(thick_dividing_line):
     Returns:
         None.
     """
-    print(thick_dividing_line)
+    print(constants.THICK_HORIZONTAL_LINE)
     print('Visual Countdown Timer')
     print('Press Ctrl + C to exit.')
-    print(f'{thick_dividing_line}\n')    
+    print(f'{constants.THICK_HORIZONTAL_LINE}\n')    
 
 def progress_bar(remaining_time_in_seconds):
     """
