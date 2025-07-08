@@ -128,7 +128,7 @@ def progress_bar(remaining_time_in_seconds):
     progress_bar_text = f'[{progress_bar_full}{progress_bar_empty}]'
     return progress_bar_text
 
-def run_timer(countdown_times):
+def run_timer():
         """
         Continuously displays a live countdown timer to a specified minute past each hour.
 
@@ -151,6 +151,9 @@ def run_timer(countdown_times):
         Returns:
             None: This function runs indefinitely and does not return.
         """
+        
+        countdown_times = set_countdown_time('initial')
+        
         while True:
 
             clear_terminal()
