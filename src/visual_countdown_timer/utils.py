@@ -167,7 +167,7 @@ def run_timer(countdown_times, thick_line, thin_line, indent):
             minutes_label = "minute" if remaining_minutes == 1 else "minutes"
             seconds_label = "second" if remaining_seconds == 1 else "seconds"
     
-            print_title_block(thick_line)
+            print_title_block()
 
             print(get_current_date())
             print(f'Current Time: {get_current_time()}')
