@@ -6,5 +6,4 @@ def main():
     countdown_end_times = utils.set_countdown_time('initial')
     utils.run_timer(
         countdown_times = countdown_end_times,
-        indent = constants.INDENT
         )

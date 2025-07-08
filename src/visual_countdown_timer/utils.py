@@ -128,7 +128,7 @@ def progress_bar(remaining_time_in_seconds):
     progress_bar_text = f'[{progress_bar_full}{progress_bar_empty}]'
     return progress_bar_text
 
-def run_timer(countdown_times, indent):
+def run_timer(countdown_times):
         """
         Continuously displays a live countdown timer to a specified minute past each hour.
 
@@ -176,8 +176,8 @@ def run_timer(countdown_times, indent):
             print(constants.THIN_HORIZONTAL_LINE)
             print(f'Countdown until {end_of_current_loop_formatted}:')
             print(constants.THIN_HORIZONTAL_LINE)
-            print(f'{indent}{remaining_minutes:02} {minutes_label}')
-            print(f'{indent}{remaining_seconds:02} {seconds_label}')
+            print(f'{constants.INDENT}{remaining_minutes:02} {minutes_label}')
+            print(f'{constants.INDENT}{remaining_seconds:02} {seconds_label}')
             print(progress_bar(total_remaining_time_in_seconds))
             
             sleep_until_next_loop()
