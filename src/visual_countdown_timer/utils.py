@@ -35,8 +35,11 @@ def confirm_user_input(input_to_confirm):
     Returns:
         str: The user's confirmation input, converted to lowercase ('y' or 'n').
     """
+    FIRST_HOUR_IN_RANGE = 1
+    LAST_HOUR_IN_RANGE = 4
+
     print(f'\nYou entered {input_to_confirm} minutes. The timer will count down to:')
-    print(' | '.join(f'{hour:02}:{input_to_confirm:02}' for hour in range(1, 4)) + ' | etc.\n')
+    print(' | '.join(f'{hour:02}:{input_to_confirm:02}' for hour in range(FIRST_HOUR_IN_RANGE, LAST_HOUR_IN_RANGE)) + ' | etc.\n')
     user_confirmation = input('Is this correct? Please enter \'y\' or \'n\': ')
     return user_confirmation.lower()
 
