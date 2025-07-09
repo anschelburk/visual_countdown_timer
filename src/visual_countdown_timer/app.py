@@ -1,6 +1,6 @@
-from . import utils
+from . import core
 
 def main():
-    utils.clear_terminal()
-    utils.print_title_block()
-    utils.run_timer()
+    core.clear_terminal()
+    core.print_title_block()
+    core.run_timer()
