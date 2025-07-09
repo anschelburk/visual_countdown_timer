@@ -1,6 +1,6 @@
-from . import core
+from . import core_logic
 
 def main():
-    core.clear_terminal()
-    core.print_title_block()
-    core.run_timer()
+    core_logic.clear_terminal()
+    core_logic.print_title_block()
+    core_logic.run_timer()
