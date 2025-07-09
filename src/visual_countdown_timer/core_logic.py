@@ -1,7 +1,7 @@
 from .constants import (
     INDENT,
-    THIN_HORIZONTAL_LINE,
-    THICK_HORIZONTAL_LINE
+    THICK_HORIZONTAL_LINE,
+    THIN_HORIZONTAL_LINE
     )
 from datetime import datetime, timedelta
 import math
