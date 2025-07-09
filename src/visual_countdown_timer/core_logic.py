@@ -1,4 +1,8 @@
-from . import constants
+from .constants import (
+    INDENT,
+    THIN_HORIZONTAL_LINE,
+    THICK_HORIZONTAL_LINE
+    )
 from datetime import datetime, timedelta
 import math
 import os
@@ -91,10 +95,10 @@ def print_title_block():
     Returns:
         None.
     """
-    print(constants.THICK_HORIZONTAL_LINE)
+    print(THICK_HORIZONTAL_LINE)
     print('Visual Countdown Timer')
     print('Press Ctrl + C to exit.')
-    print(f'{constants.THICK_HORIZONTAL_LINE}\n')    
+    print(f'{THICK_HORIZONTAL_LINE}\n')    
 
 def progress_bar(remaining_time_in_seconds):
     """
@@ -176,11 +180,11 @@ def run_timer():
             print(f'Current Time: {get_current_time()}')
             
             print('')
-            print(constants.THIN_HORIZONTAL_LINE)
+            print(THIN_HORIZONTAL_LINE)
             print(f'Countdown until {end_of_current_loop_formatted}:')
-            print(constants.THIN_HORIZONTAL_LINE)
-            print(f'{constants.INDENT}{remaining_minutes:02} {minutes_label}')
-            print(f'{constants.INDENT}{remaining_seconds:02} {seconds_label}')
+            print(THIN_HORIZONTAL_LINE)
+            print(f'{INDENT}{remaining_minutes:02} {minutes_label}')
+            print(f'{INDENT}{remaining_seconds:02} {seconds_label}')
             print(progress_bar(total_remaining_time_in_seconds))
             
             sleep_until_next_loop()
