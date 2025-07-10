@@ -1,4 +1,4 @@
-from .core_logic import (
+from .timer.actions import (
     clear_terminal,
     print_title_block,
     run_timer
