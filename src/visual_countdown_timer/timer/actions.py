@@ -6,13 +6,14 @@ from .constants import (
 from .variables import (
     current_date,
     current_time,
+    next_occurrence,
     progress_bar
     )
 from .support import (
     clean_text,
     clear_terminal
     )
-from datetime import datetime, timedelta
+from datetime import datetime
 import time
 
 def confirm_user_input(input_to_confirm):
@@ -32,24 +33,6 @@ def confirm_user_input(input_to_confirm):
     print(' | '.join(f'{hour:02}:{input_to_confirm:02}' for hour in range(FIRST_HOUR_IN_RANGE, LAST_HOUR_IN_RANGE)) + ' | etc.\n')
     user_confirmation = input('Is this correct? Please enter \'y\' or \'n\': ')
     return user_confirmation.lower()
-
-
-def next_occurrence(current_datetime, target_minute):
-    """
-    Returns the next datetime where the minute equals target_minute.
-
-    Args:
-        current_datetime (datetime): The current datetime.
-        target_minute (int): The target minute after the hour that the timer should count down to.
-
-    Returns:
-        next_occurrence (datetime): The next datetime where the minute equals target_minute.
-    """
-    if current_datetime.minute < target_minute:
-        return current_datetime.replace(minute=target_minute, second=0, microsecond=0)
-    else:
-        next_hour = current_datetime + timedelta(hours=1)
-        return next_hour.replace(minute=target_minute, second=0, microsecond=0)
 
 def print_title_block():
     """

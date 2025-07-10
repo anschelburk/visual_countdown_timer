@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 import math
 
 def current_date():
@@ -22,6 +22,23 @@ def current_time():
     """
     current_time = datetime.now().astimezone().strftime('%H:%M %Z')
     return current_time
+
+def next_occurrence(current_datetime, target_minute):
+    """
+    Returns the next datetime where the minute equals target_minute.
+
+    Args:
+        current_datetime (datetime): The current datetime.
+        target_minute (int): The target minute after the hour that the timer should count down to.
+
+    Returns:
+        next_occurrence (datetime): The next datetime where the minute equals target_minute.
+    """
+    if current_datetime.minute < target_minute:
+        return current_datetime.replace(minute=target_minute, second=0, microsecond=0)
+    else:
+        next_hour = current_datetime + timedelta(hours=1)
+        return next_hour.replace(minute=target_minute, second=0, microsecond=0)
 
 def progress_bar(remaining_time_in_seconds):
     """
