@@ -3,6 +3,9 @@ from .constants import (
     THICK_HORIZONTAL_LINE,
     THIN_HORIZONTAL_LINE
     )
+from .variables import (
+    current_date
+    )
 from datetime import datetime, timedelta
 import math
 import os
@@ -46,17 +49,6 @@ def confirm_user_input(input_to_confirm):
     print(' | '.join(f'{hour:02}:{input_to_confirm:02}' for hour in range(FIRST_HOUR_IN_RANGE, LAST_HOUR_IN_RANGE)) + ' | etc.\n')
     user_confirmation = input('Is this correct? Please enter \'y\' or \'n\': ')
     return user_confirmation.lower()
-
-def get_current_date():
-    """
-    Calculates the current date, formatted as follows: [Month] [Day], [Year].
-    Args:
-        None.
-    Returns:
-        current_date (datetime): a datetime object, formatted as described above.
-    """
-    current_date = datetime.now().strftime('%B %d, %Y')
-    return current_date
 
 def get_current_time():
     """
@@ -176,7 +168,7 @@ def run_timer():
     
             print_title_block()
 
-            print(get_current_date())
+            print(current_date())
             print(f'Current Time: {get_current_time()}')
             
             print('')
