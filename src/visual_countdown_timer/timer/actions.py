@@ -8,20 +8,15 @@ from .variables import (
     current_time
     )
 from .support import (
-    clean_text
+    clean_text,
+    clear_terminal
     )
-from datetime import datetime, timedelta
+from datetime import (
+    datetime,
+    timedelta
+    )
 import math
-import os
 import time
-
-def  clear_terminal():
-    """
-    Clears the terminal screen.
-    Args: None.
-    Returns: None.    
-    """
-    os.system('cls' if os.name == 'nt' else 'clear')
 
 def confirm_user_input(input_to_confirm):
     """

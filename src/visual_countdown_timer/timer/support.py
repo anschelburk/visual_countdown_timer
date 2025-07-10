@@ -1,3 +1,5 @@
+import os
+
 def clean_text(unformatted_text):
     """
     Removes leading and trailing spaces and common punctuation from a string.
@@ -10,3 +12,11 @@ def clean_text(unformatted_text):
     """
     clean_text = unformatted_text.strip(" .,\"\'")
     return clean_text
+
+def  clear_terminal():
+    """
+    Clears the terminal screen.
+    Args: None.
+    Returns: None.    
+    """
+    os.system('cls' if os.name == 'nt' else 'clear')
