@@ -1,4 +1,4 @@
-from .timer.constants import (
+from .constants import (
     INDENT,
     THICK_HORIZONTAL_LINE,
     THIN_HORIZONTAL_LINE
