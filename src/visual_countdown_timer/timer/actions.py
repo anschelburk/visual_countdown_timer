@@ -4,7 +4,8 @@ from .constants import (
     THIN_HORIZONTAL_LINE
     )
 from .variables import (
-    current_date
+    current_date,
+    current_time
     )
 from datetime import datetime, timedelta
 import math
@@ -49,17 +50,6 @@ def confirm_user_input(input_to_confirm):
     print(' | '.join(f'{hour:02}:{input_to_confirm:02}' for hour in range(FIRST_HOUR_IN_RANGE, LAST_HOUR_IN_RANGE)) + ' | etc.\n')
     user_confirmation = input('Is this correct? Please enter \'y\' or \'n\': ')
     return user_confirmation.lower()
-
-def get_current_time():
-    """
-    Calculates the current time, formatted as follows: [Hour]:[Minute] [Timezone]
-    Args:
-        None.
-    Returns:
-        current_time (datetime): a datetime object, formatted as described above.
-    """
-    current_time = datetime.now().astimezone().strftime('%H:%M %Z')
-    return current_time
 
 
 def next_occurrence(current_datetime, target_minute):
@@ -169,7 +159,7 @@ def run_timer():
             print_title_block()
 
             print(current_date())
-            print(f'Current Time: {get_current_time()}')
+            print(f'Current Time: {current_time()}')
             
             print('')
             print(THIN_HORIZONTAL_LINE)
