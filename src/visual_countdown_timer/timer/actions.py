@@ -76,6 +76,7 @@ def run_timer():
             None: This function runs indefinitely and does not return.
         """
         
+        hour_display_format = confirm_hour_format()
         countdown_times = set_countdown_time('initial')
         
         while True:
@@ -85,7 +86,10 @@ def run_timer():
             now = datetime.now().astimezone()
             
             end_of_current_loop = next_occurrence(now, countdown_times)
-            end_of_current_loop_formatted = end_of_current_loop.strftime('%H:%M %Z')
+            if hour_display_format == 12:
+                end_of_current_loop_formatted = end_of_current_loop.strftime('%I:%M %p %Z')
+            else:
+                end_of_current_loop_formatted = end_of_current_loop.strftime('%H:%M %Z')
 
             remaining_time = end_of_current_loop - now
             total_remaining_time_in_seconds = int(remaining_time.total_seconds())
