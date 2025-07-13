@@ -17,13 +17,12 @@ from datetime import datetime
 import time
 
 def confirm_hour_format():
-    print("Would you like the time to display as 12 hours or 24 hours?")
+    print("\nWould you like the time to display as 12 hours or 24 hours?")
     print(f'{INDENT}{THIN_HORIZONTAL_LINE}')
     print(f"{INDENT}12 hours looks like this: 3:52pm")
     print(f"{INDENT}24 hours looks like this: 15:52")
     print(f'{INDENT}{THIN_HORIZONTAL_LINE}')
     user_input = input("Type \"12\" to format as 12 hours, or \"24\" to format as 24 hours: ")
-    print('\n')
     user_hours = int(clean_text(user_input))
     return user_hours
 
@@ -79,8 +78,8 @@ def run_timer():
             None: This function runs indefinitely and does not return.
         """
         
-        hour_display_format = confirm_hour_format()
         countdown_times = set_countdown_time('initial')
+        hour_display_format = confirm_hour_format()
         
         while True:
 
