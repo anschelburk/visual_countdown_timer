@@ -146,7 +146,7 @@ def set_countdown_time(runtime_status):
     
     while True:
 
-        user_input = clean_text(input(f'Please enter the{_new} number of minutes you\'d like to count down to: '))
+        user_input = int(clean_text(input(f'Please enter the{_new} number of minutes you\'d like to count down to: ')))
         
         try:
             user_minutes = int(user_input)    
@@ -154,7 +154,7 @@ def set_countdown_time(runtime_status):
                 user_confirmation = ''
                 while user_confirmation != 'y':
                     user_confirmation = clean_text(confirm_user_input(user_minutes))
-                    if user_confirmation == 'n':
+                    if user_confirmation in ('y', 'n'):
                         print('')
                         break
                     else:
