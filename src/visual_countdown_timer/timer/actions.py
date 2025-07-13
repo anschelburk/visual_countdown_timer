@@ -146,7 +146,7 @@ def set_countdown_time(runtime_status):
     
     while True:
 
-        user_input = int(clean_text(input(f'Please enter the{_new} number of minutes you\'d like to count down to: ')))
+        user_input = clean_text(input(f'Please enter the{_new} number of minutes you\'d like to count down to: '))
         
         try:
             user_minutes = int(user_input)    
