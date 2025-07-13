@@ -23,6 +23,7 @@ def confirm_hour_format():
     print(f"{INDENT}24 hours looks like this: 15:52")
     print(f'{INDENT}{THIN_HORIZONTAL_LINE}')
     user_input = input("Type \"12\" to format as 12 hours, or \"24\" to format as 24 hours: ")
+    print('\n')
     user_hours = int(clean_text(user_input))
     return user_hours
 
