@@ -17,6 +17,11 @@ from datetime import datetime
 import time
 
 def confirm_hour_format():
+    """
+        Prompts the user to choose between 12-hour and 24-hour time display formats.
+        Args: None.
+        Returns: user_hours (int): The user's preferred time format, either 12 or 24.
+    """
     print("\nWould you like the time to display as 12 hours or 24 hours?")
     print(f'{INDENT}{THIN_HORIZONTAL_LINE}')
     print(f"{INDENT}12 hours looks like this: 3:52pm")
