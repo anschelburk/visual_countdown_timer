@@ -49,6 +49,18 @@ def confirm_user_input(input_to_confirm):
     user_confirmation = input('Is this correct? Please enter \'y\' or \'n\': ')
     return user_confirmation.lower()
 
+def format_time(unformatted_time, hours_format):
+    timezone = unformatted_time.astimezone().strftime('%Z')
+    if hours_format == 12:
+        formatted_hours = unformatted_time.strftime('%I:%M')
+        formatted_ampm = unformatted_time.strftime('%p').lower()
+        return f'{formatted_hours}{formatted_ampm} {timezone}'
+    elif hours_format == 24:
+        formatted_hours = unformatted_time.strftime('%H:%M')
+        return f'{formatted_hours} {timezone}'
+    else:
+        return 'Error (format_time()): Invalid time format.'
+
 def print_title_block():
     """
     Prints the title block for the Visual Countdown Timer interface.
