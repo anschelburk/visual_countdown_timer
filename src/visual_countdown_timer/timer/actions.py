@@ -105,10 +105,7 @@ def run_timer():
             now = datetime.now().astimezone()
             
             end_of_current_loop = next_occurrence(now, countdown_times)
-            if hour_display_format == 12:
-                end_of_current_loop_formatted = end_of_current_loop.strftime('%I:%M %p %Z')
-            else:
-                end_of_current_loop_formatted = end_of_current_loop.strftime('%H:%M %Z')
+            end_of_current_loop_formatted = format_time(end_of_current_loop, hour_display_format)
 
             remaining_time = end_of_current_loop - now
             total_remaining_time_in_seconds = int(remaining_time.total_seconds())
