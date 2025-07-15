@@ -60,18 +60,18 @@ def format_time(unformatted_time, hours_format):
     Returns:
         formatted_time (str): The formatted time string.
     """
-    timezone = unformatted_time.astimezone().strftime('%Z')
-    if hours_format == 12:
-        formatted_hours = unformatted_time.strftime('%I:%M')
-        formatted_ampm = unformatted_time.strftime('%p').lower()
-        formatted_time = f'{formatted_hours}{formatted_ampm} {timezone}'
-        return formatted_time
-    elif hours_format == 24:
-        formatted_hours = unformatted_time.strftime('%H:%M')
-        formatted_time = f'{formatted_hours} {timezone}'
-        return formatted_time
-    else:
+    if formatted_hours not in (12, 24):
         return 'Error (format_time()): Invalid time format.'
+    else:
+        timezone = unformatted_time.astimezone().strftime('%Z')
+        if hours_format == 12:
+            formatted_hours = unformatted_time.strftime('%I:%M')
+            formatted_ampm = unformatted_time.strftime('%p').lower()
+            formatted_time = f'{formatted_hours}{formatted_ampm} {timezone}'
+        elif hours_format == 24:
+            formatted_hours = unformatted_time.strftime('%H:%M')
+            formatted_time = f'{formatted_hours} {timezone}'
+        return formatted_time
 
 def print_title_block():
     """
