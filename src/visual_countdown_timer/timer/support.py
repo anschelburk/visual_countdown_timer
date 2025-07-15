@@ -20,4 +20,10 @@ def  clear_terminal():
     Args: None.
     Returns: None.    
     """
-    os.system('cls' if os.name == 'nt' else 'clear')
+    # Clear terminal on Windows:
+    if os.name == 'nt':
+        os.system('cls')
+    
+    # Clear terminal on MacOS or Linux:
+    else:
+        os.system('clear')
