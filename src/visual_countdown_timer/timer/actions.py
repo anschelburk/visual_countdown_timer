@@ -58,16 +58,18 @@ def format_time(unformatted_time, hours_format):
         hours_format (int): The preferred time format, either 12 or 24.
 
     Returns:
-        str: The formatted time string.
+        formatted_time (str): The formatted time string.
     """
     timezone = unformatted_time.astimezone().strftime('%Z')
     if hours_format == 12:
         formatted_hours = unformatted_time.strftime('%I:%M')
         formatted_ampm = unformatted_time.strftime('%p').lower()
-        return f'{formatted_hours}{formatted_ampm} {timezone}'
+        formatted_time = f'{formatted_hours}{formatted_ampm} {timezone}'
+        return formatted_time
     elif hours_format == 24:
         formatted_hours = unformatted_time.strftime('%H:%M')
-        return f'{formatted_hours} {timezone}'
+        formatted_time = f'{formatted_hours} {timezone}'
+        return formatted_time
     else:
         return 'Error (format_time()): Invalid time format.'
 
