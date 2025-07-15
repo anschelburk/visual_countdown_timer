@@ -1,16 +1,18 @@
 from datetime import datetime, timedelta
 import math
 
-def current_date():
-    """
-    Calculates the current date, formatted as follows: [Month] [Day], [Year].
-    Args:
-        None.
-    Returns:
-        current_date (datetime): a datetime object, formatted as described above.
-    """
-    current_date = datetime.now().strftime('%B %d, %Y')
-    return current_date
+current_date = datetime.now().strftime('%B %d, %Y')
+
+# def current_date():
+#     """
+#     Calculates the current date, formatted as follows: [Month] [Day], [Year].
+#     Args:
+#         None.
+#     Returns:
+#         current_date (datetime): a datetime object, formatted as described above.
+#     """
+#     current_date = datetime.now().strftime('%B %d, %Y')
+#     return current_date
 
 def next_occurrence(current_datetime, target_minute):
     """
