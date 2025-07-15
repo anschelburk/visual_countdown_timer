@@ -12,17 +12,6 @@ def current_date():
     current_date = datetime.now().strftime('%B %d, %Y')
     return current_date
 
-# def current_time():
-#     """
-#     Calculates the current time, formatted as follows: [Hour]:[Minute] [Timezone]
-#     Args:
-#         None.
-#     Returns:
-#         current_time (datetime): a datetime object, formatted as described above.
-#     """
-#     current_time = datetime.now().astimezone().strftime('%H:%M %Z')
-#     return current_time
-
 def next_occurrence(current_datetime, target_minute):
     """
     Returns the next datetime where the minute equals target_minute.
