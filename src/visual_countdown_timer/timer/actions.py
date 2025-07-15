@@ -60,7 +60,7 @@ def format_time(unformatted_time, hours_format):
     Returns:
         formatted_time (str): The formatted time string.
     """
-    if formatted_hours not in (12, 24):
+    if hours_format not in (12, 24):
         return 'Error (format_time()): Invalid time format.'
     else:
         timezone = unformatted_time.astimezone().strftime('%Z')
