@@ -128,7 +128,7 @@ def run_timer():
     
             print_title_block()
 
-            print(current_date())
+            print(current_date)
             print(f'Current Time: {current_time}')
             
             print('')
