@@ -10,7 +10,8 @@ def clean_text(unformatted_text):
     Returns:
         clean_text (str): The cleaned string with specified characters removed from both ends.
     """
-    clean_text = unformatted_text.strip(" .,\"\'")
+    characters_to_remove = " .,\"\'"
+    clean_text = unformatted_text.strip(characters_to_remove)
     return clean_text
 
 def  clear_terminal():
