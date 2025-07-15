@@ -5,7 +5,6 @@ from .constants import (
     )
 from .variables import (
     current_date,
-    current_time,
     next_occurrence,
     progress_bar
     )
@@ -115,6 +114,7 @@ def run_timer():
             clear_terminal()
 
             now = datetime.now().astimezone()
+            current_time = format_time(now, hour_display_format)
             
             end_of_current_loop = next_occurrence(now, countdown_times)
             end_of_current_loop_formatted = format_time(end_of_current_loop, hour_display_format)
@@ -129,7 +129,7 @@ def run_timer():
             print_title_block()
 
             print(current_date())
-            print(f'Current Time: {current_time()}')
+            print(f'Current Time: {current_time}')
             
             print('')
             print(THIN_HORIZONTAL_LINE)
