@@ -50,6 +50,16 @@ def confirm_user_input(input_to_confirm):
     return user_confirmation.lower()
 
 def format_time(unformatted_time, hours_format):
+    """
+    Formats a datetime object into a 12-hour or 24-hour time string with timezone.
+
+    Args:
+        unformatted_time (datetime): The datetime object to be formatted.
+        hours_format (int): The preferred time format, either 12 or 24.
+
+    Returns:
+        str: The formatted time string.
+    """
     timezone = unformatted_time.astimezone().strftime('%Z')
     if hours_format == 12:
         formatted_hours = unformatted_time.strftime('%I:%M')
