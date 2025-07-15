@@ -14,11 +14,16 @@ def next_occurrence(current_datetime, target_minute):
     Returns:
         next_occurrence (datetime): The next datetime where the minute equals target_minute.
     """
+    # If the target minute has not yet passed for the current hour:
     if current_datetime.minute < target_minute:
-        return current_datetime.replace(minute=target_minute, second=0, microsecond=0)
+        next_occurrence = current_datetime.replace(minute=target_minute, second=0, microsecond=0)
+    
+    # If the target minute has already passed for the current hour:
     else:
         next_hour = current_datetime + timedelta(hours=1)
-        return next_hour.replace(minute=target_minute, second=0, microsecond=0)
+        next_occurrence = next_hour.replace(minute=target_minute, second=0, microsecond=0)
+    
+    return next_occurrence
 
 def progress_bar(remaining_time_in_seconds):
     """
