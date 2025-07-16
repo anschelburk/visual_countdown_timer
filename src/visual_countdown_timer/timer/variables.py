@@ -60,3 +60,12 @@ def progress_bar(remaining_time_in_seconds):
     progress_bar_empty = '.' * (30 - round(remaining_minutes_rounded / 2))
     progress_bar_text = f'[{progress_bar_full}{progress_bar_empty}]'
     return progress_bar_text
+
+def time_label(remaining_time, minutes_or_seconds):
+    if minutes_or_seconds == 'minutes':
+        time_label = 'minute' if remaining_time == 1 else 'minutes'
+    elif minutes_or_seconds == 'seconds':
+        time_label = 'second' if remaining_time == 1 else 'seconds'
+    else:
+        time_label = 'Error: invalid input for time_label() function.'
+    return time_label
