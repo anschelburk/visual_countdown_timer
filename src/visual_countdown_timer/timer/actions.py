@@ -116,15 +116,15 @@ def run_timer():
 
             current_time = format_time(datetime_now, hour_display_format)
             
-            end_of_current_loop = next_occurrence(countdown_times)
-            end_of_current_loop_formatted = format_time(end_of_current_loop, hour_display_format)
+            end_of_current_loop = next_occurrence(countdown_times) #Internal
+            end_of_current_loop_formatted = format_time(end_of_current_loop, hour_display_format) #External
 
-            remaining_time = end_of_current_loop - datetime_now
-            total_remaining_time_in_seconds = int(remaining_time.total_seconds())
-            remaining_minutes, remaining_seconds = divmod(total_remaining_time_in_seconds, 60)
+            remaining_time = end_of_current_loop - datetime_now #Internal
+            total_remaining_time_in_seconds = int(remaining_time.total_seconds()) #External
+            remaining_minutes, remaining_seconds = divmod(total_remaining_time_in_seconds, 60) #External w/ magic number input.
 
-            minutes_label = "minute" if remaining_minutes == 1 else "minutes"
-            seconds_label = "second" if remaining_seconds == 1 else "seconds"
+            minutes_label = "minute" if remaining_minutes == 1 else "minutes" # External
+            seconds_label = "second" if remaining_seconds == 1 else "seconds" # EXternal
     
             print_title_block()
 

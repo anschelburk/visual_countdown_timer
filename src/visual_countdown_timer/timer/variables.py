@@ -60,6 +60,7 @@ def progress_bar(remaining_time_in_seconds):
     progress_bar_text = f'[{progress_bar_full}{progress_bar_empty}]'
     return progress_bar_text
 
+# Not in use yet.
 def time_label(remaining_time, minutes_or_seconds):
     if minutes_or_seconds == 'minutes':
         time_label = 'minute' if remaining_time == 1 else 'minutes'
