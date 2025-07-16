@@ -69,3 +69,8 @@ def time_label(remaining_time, minutes_or_seconds):
     else:
         time_label = 'Error: invalid input for time_label() function.'
     return time_label
+
+def total_remaining_time_in_seconds(timer_countdown_times, end_of_current_timer_loop):
+    remaining_time = end_of_current_timer_loop - datetime_now
+    total_remaining_time_in_seconds = int(remaining_time.total_seconds())
+    return total_remaining_time_in_seconds

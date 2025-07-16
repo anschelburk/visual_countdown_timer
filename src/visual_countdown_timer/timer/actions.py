@@ -116,10 +116,10 @@ def run_timer():
 
             current_time = format_time(datetime_now, hour_display_format)
             
-            end_of_current_loop = next_occurrence(countdown_times) #Internal
+            end_of_current_loop = next_occurrence(countdown_times) #Internal.
             end_of_current_loop_formatted = format_time(end_of_current_loop, hour_display_format) #External
 
-            remaining_time = end_of_current_loop - datetime_now #Internal
+            remaining_time = end_of_current_loop - datetime_now #Internal; included in variables.total_time_in_seconds(). Try deleting.
             total_remaining_time_in_seconds = int(remaining_time.total_seconds()) #External
             remaining_minutes, remaining_seconds = divmod(total_remaining_time_in_seconds, 60) #External w/ magic number input.
 
