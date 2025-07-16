@@ -61,6 +61,18 @@ def progress_bar(remaining_time_in_seconds):
     return progress_bar_text
 
 def total_remaining_time_in_seconds(end_of_current_timer_loop):
+    """
+    Calculates the total number of whole seconds remaining until the next timer event.
+
+    This function computes the time difference between the current moment and the
+    specified end time, and returns the total number of seconds as an integer.
+
+    Args:
+        end_of_current_timer_loop (datetime): The target end time of the current timer cycle.
+
+    Returns:
+        total_remaining_time_in_seconds (int): The total number of seconds remaining until the timer reaches its end.
+    """
     remaining_time = end_of_current_timer_loop - datetime_now
     total_remaining_time_in_seconds = int(remaining_time.total_seconds())
     return total_remaining_time_in_seconds
