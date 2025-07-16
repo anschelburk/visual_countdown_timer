@@ -8,7 +8,7 @@ from .variables import (
     datetime_now,
     next_occurrence,
     progress_bar,
-    total_remaining_time_in_seconds
+    total_remaining_seconds
     )
 from .support import (
     clean_text,
@@ -120,8 +120,8 @@ def run_timer():
             end_of_current_loop = next_occurrence(countdown_times)
             end_of_current_loop_formatted = format_time(end_of_current_loop, hour_display_format)
 
-            progress_bar_text = progress_bar(total_remaining_time_in_seconds(end_of_current_loop))
-            remaining_minutes, remaining_seconds = divmod(total_remaining_time_in_seconds(end_of_current_loop), 60)
+            progress_bar_text = progress_bar(total_remaining_seconds(end_of_current_loop))
+            remaining_minutes, remaining_seconds = divmod(total_remaining_seconds(end_of_current_loop), 60)
 
             minutes_label = "minute" if remaining_minutes == 1 else "minutes"
             seconds_label = "second" if remaining_seconds == 1 else "seconds"

@@ -60,7 +60,7 @@ def progress_bar(remaining_time_in_seconds):
     progress_bar_text = f'[{progress_bar_full}{progress_bar_empty}]'
     return progress_bar_text
 
-def total_remaining_time_in_seconds(end_of_current_timer_loop):
+def total_remaining_seconds(end_of_current_timer_loop):
     """
     Calculates the total number of whole seconds remaining until the next timer event.
 
