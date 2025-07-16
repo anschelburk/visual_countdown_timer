@@ -4,24 +4,23 @@ import math
 current_date = datetime.now().strftime('%B %d, %Y')
 datetime_now = datetime.now().astimezone()
 
-def next_occurrence(current_datetime, target_minute):
+def next_occurrence(target_minute):
     """
     Returns the next datetime where the minute equals target_minute.
 
     Args:
-        current_datetime (datetime): The current datetime.
         target_minute (int): The target minute after the hour that the timer should count down to.
 
     Returns:
         next_occurrence (datetime): The next datetime where the minute equals target_minute.
     """
     # If the target minute has not yet passed for the current hour:
-    if current_datetime.minute < target_minute:
-        next_occurrence = current_datetime.replace(minute=target_minute, second=0, microsecond=0)
+    if datetime_now.minute < target_minute:
+        next_occurrence = datetime_now.replace(minute=target_minute, second=0, microsecond=0)
     
     # If the target minute has already passed for the current hour:
     else:
-        next_hour = current_datetime + timedelta(hours=1)
+        next_hour = datetime_now + timedelta(hours=1)
         next_occurrence = next_hour.replace(minute=target_minute, second=0, microsecond=0)
     
     return next_occurrence
