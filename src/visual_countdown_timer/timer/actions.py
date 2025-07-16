@@ -7,7 +7,8 @@ from .variables import (
     current_date,
     datetime_now,
     next_occurrence,
-    progress_bar
+    progress_bar,
+    total_remaining_time_in_seconds
     )
 from .support import (
     clean_text,
@@ -119,8 +120,8 @@ def run_timer():
             end_of_current_loop = next_occurrence(countdown_times) #Internal.
             end_of_current_loop_formatted = format_time(end_of_current_loop, hour_display_format) #External
 
-            remaining_time = end_of_current_loop - datetime_now #Internal; included in variables.total_time_in_seconds(). Try deleting.
-            total_remaining_time_in_seconds = int(remaining_time.total_seconds()) #External
+            # remaining_time = end_of_current_loop - datetime_now #Internal; included in variables.total_time_in_seconds(). Try deleting.
+            # total_remaining_time_in_seconds = int(remaining_time.total_seconds()) #External
             remaining_minutes, remaining_seconds = divmod(total_remaining_time_in_seconds, 60) #External w/ magic number input.
 
             minutes_label = "minute" if remaining_minutes == 1 else "minutes" # External
@@ -137,7 +138,7 @@ def run_timer():
             print(THIN_HORIZONTAL_LINE)
             print(f'{INDENT}{remaining_minutes:02} {minutes_label}')
             print(f'{INDENT}{remaining_seconds:02} {seconds_label}')
-            print(progress_bar(total_remaining_time_in_seconds))
+            print(progress_bar(total_remaining_time_in_seconds(end_of_current_loop)))
             
             sleep_until_next_loop()
 
