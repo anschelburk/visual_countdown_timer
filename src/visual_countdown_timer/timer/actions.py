@@ -4,7 +4,6 @@ from .constants import (
     THIN_HORIZONTAL_LINE
     )
 from .variables import (
-    current_date,
     next_occurrence,
     progress_bar,
     total_remaining_seconds
@@ -116,6 +115,7 @@ def run_timer():
 
             datetime_now = datetime.now().astimezone()
             
+            current_date = datetime_now.strftime('%B %d, %Y')
             current_time = format_time(datetime_now, hour_display_format)
             
             end_of_current_loop = next_occurrence(countdown_times, datetime_now)

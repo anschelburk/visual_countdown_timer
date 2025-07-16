@@ -1,8 +1,6 @@
 from datetime import datetime, timedelta
 import math
 
-current_date = datetime.now().strftime('%B %d, %Y')
-
 def next_occurrence(target_minute, current_datetime):
     """
     Returns the next datetime where the minute equals target_minute.
