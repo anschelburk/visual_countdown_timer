@@ -121,7 +121,7 @@ def run_timer():
             end_of_current_loop = next_occurrence(countdown_times, datetime_now)
             end_of_current_loop_formatted = format_time(end_of_current_loop, hour_display_format)
 
-            progress_bar_text = progress_bar(total_remaining_seconds(end_of_current_loop))
+            progress_bar_text = progress_bar(total_remaining_seconds(end_of_current_loop, datetime_now))
             remaining_minutes, remaining_seconds = divmod(total_remaining_seconds(end_of_current_loop, datetime_now), 60)
 
             minutes_label = "minute" if remaining_minutes == 1 else "minutes"
