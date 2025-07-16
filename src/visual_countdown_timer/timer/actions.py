@@ -117,16 +117,14 @@ def run_timer():
 
             current_time = format_time(datetime_now, hour_display_format)
             
-            end_of_current_loop = next_occurrence(countdown_times) #Internal.
-            end_of_current_loop_formatted = format_time(end_of_current_loop, hour_display_format) #External
+            end_of_current_loop = next_occurrence(countdown_times)
+            end_of_current_loop_formatted = format_time(end_of_current_loop, hour_display_format)
 
-            # remaining_time = end_of_current_loop - datetime_now #Internal; included in variables.total_time_in_seconds(). Try deleting.
-            # total_remaining_time_in_seconds = int(remaining_time.total_seconds()) #External
             progress_bar_text = progress_bar(total_remaining_time_in_seconds(end_of_current_loop))
-            remaining_minutes, remaining_seconds = divmod(total_remaining_time_in_seconds(end_of_current_loop), 60) #External w/ magic number input.
+            remaining_minutes, remaining_seconds = divmod(total_remaining_time_in_seconds(end_of_current_loop), 60)
 
-            minutes_label = "minute" if remaining_minutes == 1 else "minutes" # External
-            seconds_label = "second" if remaining_seconds == 1 else "seconds" # EXternal
+            minutes_label = "minute" if remaining_minutes == 1 else "minutes"
+            seconds_label = "second" if remaining_seconds == 1 else "seconds"
     
             print_title_block()
 

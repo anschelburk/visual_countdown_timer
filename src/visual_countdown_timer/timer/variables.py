@@ -60,16 +60,6 @@ def progress_bar(remaining_time_in_seconds):
     progress_bar_text = f'[{progress_bar_full}{progress_bar_empty}]'
     return progress_bar_text
 
-# Not in use yet.
-def time_label(remaining_time, minutes_or_seconds):
-    if minutes_or_seconds == 'minutes':
-        time_label = 'minute' if remaining_time == 1 else 'minutes'
-    elif minutes_or_seconds == 'seconds':
-        time_label = 'second' if remaining_time == 1 else 'seconds'
-    else:
-        time_label = 'Error: invalid input for time_label() function.'
-    return time_label
-
 def total_remaining_time_in_seconds(end_of_current_timer_loop):
     remaining_time = end_of_current_timer_loop - datetime_now
     total_remaining_time_in_seconds = int(remaining_time.total_seconds())
