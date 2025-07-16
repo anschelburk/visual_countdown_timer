@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 import math
 
 current_date = datetime.now().strftime('%B %d, %Y')
+datetime_now = datetime.now().astimezone()
 
 def next_occurrence(current_datetime, target_minute):
     """

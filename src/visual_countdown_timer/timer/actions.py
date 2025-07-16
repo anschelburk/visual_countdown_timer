@@ -5,6 +5,7 @@ from .constants import (
     )
 from .variables import (
     current_date,
+    datetime_now,
     next_occurrence,
     progress_bar
     )
@@ -113,13 +114,12 @@ def run_timer():
 
             clear_terminal()
 
-            now = datetime.now().astimezone()
-            current_time = format_time(now, hour_display_format)
+            current_time = format_time(datetime_now, hour_display_format)
             
-            end_of_current_loop = next_occurrence(now, countdown_times)
+            end_of_current_loop = next_occurrence(datetime_now, countdown_times)
             end_of_current_loop_formatted = format_time(end_of_current_loop, hour_display_format)
 
-            remaining_time = end_of_current_loop - now
+            remaining_time = end_of_current_loop - datetime_now
             total_remaining_time_in_seconds = int(remaining_time.total_seconds())
             remaining_minutes, remaining_seconds = divmod(total_remaining_time_in_seconds, 60)
 
