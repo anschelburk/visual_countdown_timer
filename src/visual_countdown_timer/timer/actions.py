@@ -116,7 +116,7 @@ def run_timer():
 
             current_time = format_time(datetime_now, hour_display_format)
             
-            end_of_current_loop = next_occurrence(datetime_now, countdown_times)
+            end_of_current_loop = next_occurrence(countdown_times)
             end_of_current_loop_formatted = format_time(end_of_current_loop, hour_display_format)
 
             remaining_time = end_of_current_loop - datetime_now
