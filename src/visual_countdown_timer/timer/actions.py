@@ -122,7 +122,8 @@ def run_timer():
 
             # remaining_time = end_of_current_loop - datetime_now #Internal; included in variables.total_time_in_seconds(). Try deleting.
             # total_remaining_time_in_seconds = int(remaining_time.total_seconds()) #External
-            remaining_minutes, remaining_seconds = divmod(total_remaining_time_in_seconds, 60) #External w/ magic number input.
+            progress_bar_text = progress_bar(total_remaining_time_in_seconds(end_of_current_loop))
+            remaining_minutes, remaining_seconds = divmod(total_remaining_time_in_seconds(end_of_current_loop), 60) #External w/ magic number input.
 
             minutes_label = "minute" if remaining_minutes == 1 else "minutes" # External
             seconds_label = "second" if remaining_seconds == 1 else "seconds" # EXternal
@@ -138,7 +139,7 @@ def run_timer():
             print(THIN_HORIZONTAL_LINE)
             print(f'{INDENT}{remaining_minutes:02} {minutes_label}')
             print(f'{INDENT}{remaining_seconds:02} {seconds_label}')
-            print(progress_bar(total_remaining_time_in_seconds(end_of_current_loop)))
+            print(progress_bar_text)
             
             sleep_until_next_loop()
 
