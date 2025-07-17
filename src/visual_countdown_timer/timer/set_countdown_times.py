@@ -4,6 +4,20 @@ from .actions import (
     )
 
 def _display_intro_text(runtime_status):
+    """
+    Displays introductory text to the user based on the current runtime status.
+
+    If the status is 'initial', a welcome message and explanation of how the timer works
+    is printed. If the status is 'update', a brief prompt for updating the countdown time
+    is shown instead.
+
+    Args:
+        runtime_status (str): A string indicating the current context, expected to be
+            either 'initial' or 'update'.
+
+    Returns:
+        None
+    """
     if runtime_status == 'initial':
         print('Welcome to Visual Countdown Timer!')
         print('This timer counts down to a set number of minutes past each hour.')
