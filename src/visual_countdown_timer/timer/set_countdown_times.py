@@ -1,7 +1,5 @@
-from .actions import (
-    clean_text,
-    confirm_user_input
-    )
+from .actions import confirm_user_input
+from .support import clean_text
 
 def _display_intro_text(runtime_status):
     """
