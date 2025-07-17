@@ -45,7 +45,7 @@ def _get_valid_minute_input():
     return minute
 
 
-def _confirm_minutes_input(minutes):
+def _user_confirms_countdown_time(minutes):
     """
     Loops until the user confirms ('y') or cancels ('n') the entered minute.
     
@@ -72,12 +72,13 @@ def set_countdown_time(runtime_status):
     Returns:
         int: A valid countdown minute (0–59)
     """
+
     _display_intro_text(runtime_status)
 
     while True:
         try:
             minutes = _get_valid_minute_input()
-            if _confirm_minutes_input(minutes):
+            if _user_confirms_countdown_time(minutes):
                 return minutes
             else:
                 print('')  # restart loop
