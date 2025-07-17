@@ -8,6 +8,9 @@ from .variables import (
     progress_bar,
     total_remaining_seconds
     )
+from .set_countdown_times import (
+    set_countdown_time 
+    )
 from .support import (
     clean_text,
     clear_terminal
@@ -141,63 +144,6 @@ def run_timer():
             print(progress_bar_text)
             
             sleep_until_next_loop()
-
-def set_countdown_time(runtime_status):
-    
-    """
-    Please note: this function currently supports a user entering only a single countdown number of minutes.
-
-    Returns a sorted list of countdown end times in minutes.
-
-    Given a single countdown time in minutes, this function adds it to 
-    a base set containing the value 60, then returns a sorted list of 
-    the combined values.
-
-    Args:
-        runtime_status (str): A string set to one of two values: 'initial' or 'update'.
-            This arg determines which text is shown to the user.
-
-    Returns:
-        countdown_times (list): A sorted list of integers representing countdown end times.
-    """
-
-    if runtime_status == 'initial':
-        print('Welcome to Visual Countdown Timer!')
-        print('This timer counts down to a set number of minutes past each hour.')
-        print('For example, if you enter \"25\", it will count down to 1:25, 2:25, etc.\n')
-        _new = ''
-
-    elif runtime_status == 'update':
-        print('\nWould you like to update the countdown time?')
-        _new = ' new'
-    
-    while True:
-
-        user_input = clean_text(input(f'Please enter the{_new} number of minutes you\'d like to count down to: '))
-        
-        try:
-            user_minutes = int(user_input)    
-            if 0 <= user_minutes < 60:
-                user_confirmation = ''
-                while user_confirmation != 'y':
-                    user_confirmation = clean_text(confirm_user_input(user_minutes))
-                    if user_confirmation in ('y', 'n'):
-                        print('')
-                        break
-                    else:
-                        print('\nInvalid answer: Please enter \'y\' for yes, or \'n\' for no.')
-                if user_confirmation == 'y':
-                    break
-            else:
-                print("\nError: Please enter a number of minutes between 0 and 59.")
-                print('')
-
-        except ValueError:
-            print("\nError: Please enter a valid number (e.g., 25).")
-            print("This number must be written as an integer. \"3\" works; \"three\" doesn't.")
-            print('')
-
-    return user_minutes
 
 def sleep_until_next_loop():
         """
