@@ -26,7 +26,7 @@ def _display_intro_text(runtime_status):
     elif runtime_status == 'update':
         print('\nWould you like to update the countdown time?')
 
-def get_valid_minute_input():
+def _get_valid_minute_input():
     """
     Prompts the user for input and returns a valid minute as an integer.
 
@@ -43,6 +43,8 @@ def get_valid_minute_input():
         raise ValueError("Error: the number of minutes must be a whole number between 0 and 59 (e.g., 0, 3, 25, 59).")
 
     return minute
+
+
 
 def set_countdown_time(runtime_status):
     
