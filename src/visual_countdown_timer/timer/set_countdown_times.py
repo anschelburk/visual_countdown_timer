@@ -37,7 +37,7 @@ def _get_valid_minute_input():
         if not (0 <= minute < 60):
             raise ValueError
     except ValueError:
-        raise ValueError("Error: the number of minutes must be a whole number between 0 and 59 (e.g., 0, 3, 25, 59).")
+        raise ValueError("The number of minutes must be a whole number between 0 and 59 (e.g., 0, 3, 25, 59).")
 
     return minute
 
