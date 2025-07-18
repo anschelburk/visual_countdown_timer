@@ -23,7 +23,7 @@ def _display_intro_text(runtime_status):
     elif runtime_status == 'update':
         print('\nWould you like to update the countdown time?')
 
-def _get_valid_minute_input():
+def _ask_user_for_countdown_minutes():
     """
     Prompts the user for input and returns a valid minute as an integer.
 
@@ -86,7 +86,7 @@ def set_countdown_time(runtime_status):
 
     while True:
         try:
-            countdown_minutes = _get_valid_minute_input()
+            countdown_minutes = _ask_user_for_countdown_minutes()
             if _user_confirms(countdown_minutes):
                 return countdown_minutes
             else:
