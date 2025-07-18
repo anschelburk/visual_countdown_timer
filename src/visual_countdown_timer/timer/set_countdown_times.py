@@ -61,7 +61,7 @@ def _user_confirms_countdown_time(minutes):
     print(' | '.join(f'{hour:02}:{minutes:02}' for hour in range(FIRST_HOUR_IN_RANGE, LAST_HOUR_IN_RANGE + 1)) + ' | etc.\n')
 
     while True:
-        user_confirmation = clean_text(input("Is this correct? Please enter 'y' or 'n': "))
+        user_confirmation = clean_text(input("Is this correct? Please enter 'y' or 'n': ")).lower()
         if user_confirmation == 'y':
             return True
         elif user_confirmation == 'n':
