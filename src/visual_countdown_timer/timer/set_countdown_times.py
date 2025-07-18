@@ -1,22 +1,22 @@
 from .support import clean_text
 
-def _confirm_user_input(input_to_confirm):
-    """
-    Displays the user's input and prompts for confirmation.
+# def _confirm_user_input(input_to_confirm):
+#     """
+#     Displays the user's input and prompts for confirmation.
 
-    Args:
-        input_to_confirm (int): The number of minutes past the hour entered by the user.
+#     Args:
+#         input_to_confirm (int): The number of minutes past the hour entered by the user.
 
-    Returns:
-        str: The user's confirmation input, converted to lowercase ('y' or 'n').
-    """
-    FIRST_HOUR_IN_RANGE = 1
-    LAST_HOUR_IN_RANGE = 4
+#     Returns:
+#         str: The user's confirmation input, converted to lowercase ('y' or 'n').
+#     """
+#     FIRST_HOUR_IN_RANGE = 1
+#     LAST_HOUR_IN_RANGE = 4
 
-    print(f'\nYou entered {input_to_confirm} minutes. The timer will count down to:')
-    print(' | '.join(f'{hour:02}:{input_to_confirm:02}' for hour in range(FIRST_HOUR_IN_RANGE, LAST_HOUR_IN_RANGE)) + ' | etc.\n')
-    user_confirmation = input('Is this correct? Please enter \'y\' or \'n\': ')
-    return user_confirmation.lower()
+#     print(f'\nYou entered {input_to_confirm} minutes. The timer will count down to:')
+#     print(' | '.join(f'{hour:02}:{input_to_confirm:02}' for hour in range(FIRST_HOUR_IN_RANGE, LAST_HOUR_IN_RANGE)) + ' | etc.\n')
+#     user_confirmation = input('Is this correct? Please enter \'y\' or \'n\': ')
+#     return user_confirmation.lower()
 
 def _display_intro_text(runtime_status):
     """
@@ -62,19 +62,31 @@ def _get_valid_minute_input():
 
 def _user_confirms_countdown_time(minutes):
     """
-    Loops until the user confirms ('y') or cancels ('n') the entered minute.
-    
+    Displays a preview of the countdown times and prompts the user to confirm their input.
+
+    Loops until the user enters 'y' (confirm) or 'n' (cancel), returning a boolean result.
+
+    Args:
+        minutes (int): The number of minutes past the hour the user has selected.
+
     Returns:
-        bool: True if confirmed, False if not.
+        bool: True if the user confirms with 'y', False if the user cancels with 'n'.
     """
+    FIRST_HOUR_IN_RANGE = 1
+    LAST_HOUR_IN_RANGE = 4
+
+    print(f'\nYou entered {minutes} minutes. The timer will count down to:')
+    print(' | '.join(f'{hour:02}:{minutes:02}' for hour in range(FIRST_HOUR_IN_RANGE, LAST_HOUR_IN_RANGE)) + ' | etc.\n')
+
     while True:
-        user_confirmation = clean_text(_confirm_user_input(minutes))
+        user_confirmation = clean_text(input("Is this correct? Please enter 'y' or 'n': "))
         if user_confirmation == 'y':
             return True
         elif user_confirmation == 'n':
             return False
         else:
             print("\nInvalid answer: Please enter 'y' for yes, or 'n' for no.")
+
 
 def set_countdown_time(runtime_status):
     """
