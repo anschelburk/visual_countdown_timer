@@ -42,7 +42,7 @@ def _get_valid_minute_input():
     return minute
 
 
-def _user_confirms_countdown_time(minutes):
+def _user_confirms(minutes):
     """
     Displays a preview of the countdown times and prompts the user to confirm their input.
 
@@ -86,9 +86,9 @@ def set_countdown_time(runtime_status):
 
     while True:
         try:
-            minutes = _get_valid_minute_input()
-            if _user_confirms_countdown_time(minutes):
-                return minutes
+            countdown_minutes = _get_valid_minute_input()
+            if _user_confirms(countdown_minutes):
+                return countdown_minutes
             else:
                 print('')  # restart loop
         except ValueError as error_message:
