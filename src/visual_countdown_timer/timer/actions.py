@@ -18,7 +18,7 @@ from .support import (
     )
 from datetime import datetime
 
-def confirm_hour_format():
+def _confirm_hour_format():
     """
         Prompts the user to choose between 12-hour and 24-hour time display formats.
         Args: None.
@@ -33,7 +33,7 @@ def confirm_hour_format():
     user_hours = int(clean_text(user_input))
     return user_hours
 
-def format_time(unformatted_time, hours_format):
+def _format_time(unformatted_time, hours_format):
     """
     Formats a datetime object into a 12-hour or 24-hour time string with timezone.
 
@@ -57,7 +57,7 @@ def format_time(unformatted_time, hours_format):
             formatted_time = f'{formatted_hours} {timezone}'
         return formatted_time
 
-def print_title_block():
+def _print_title_block():
     """
     Prints the title block for the Visual Countdown Timer interface.
     Args:
@@ -92,7 +92,7 @@ def run_timer():
         """
         
         countdown_times = set_countdown_time('initial')
-        hour_display_format = confirm_hour_format()
+        hour_display_format = _confirm_hour_format()
         
         while True:
 
@@ -101,10 +101,10 @@ def run_timer():
             datetime_now = datetime.now().astimezone()
             
             current_date = datetime_now.strftime('%B %d, %Y')
-            current_time = format_time(datetime_now, hour_display_format)
+            current_time = _format_time(datetime_now, hour_display_format)
             
             end_of_current_loop = next_occurrence(countdown_times, datetime_now)
-            end_of_current_loop_formatted = format_time(end_of_current_loop, hour_display_format)
+            end_of_current_loop_formatted = _format_time(end_of_current_loop, hour_display_format)
 
             progress_bar_text = progress_bar(total_remaining_seconds(end_of_current_loop, datetime_now))
             remaining_minutes, remaining_seconds = divmod(total_remaining_seconds(end_of_current_loop, datetime_now), 60)
@@ -112,7 +112,7 @@ def run_timer():
             minutes_label = "minute" if remaining_minutes == 1 else "minutes"
             seconds_label = "second" if remaining_seconds == 1 else "seconds"
     
-            print_title_block()
+            _print_title_block()
 
             print(current_date)
             print(f'Current Time: {current_time}')
