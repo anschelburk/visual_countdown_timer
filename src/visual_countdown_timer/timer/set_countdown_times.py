@@ -79,7 +79,7 @@ def set_countdown_time(runtime_status):
         runtime_status (str): 'initial' or 'update'
     
     Returns:
-        int: A valid countdown minute (0–59)
+        countdown_minutes (int): A valid countdown minute (0–59)
     """
 
     _display_intro_text(runtime_status)
