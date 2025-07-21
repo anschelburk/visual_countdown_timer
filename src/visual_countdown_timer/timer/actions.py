@@ -20,18 +20,30 @@ from datetime import datetime
 
 def _confirm_hour_format():
     """
-        Prompts the user to choose between 12-hour and 24-hour time display formats.
-        Args: None.
-        Returns: user_hours (int): The user's preferred time format, either 12 or 24.
+    Prompts the user to choose between 12-hour and 24-hour time display formats.
+    Repeats until a valid choice is entered.
+
+    Arts: None.
+    Returns:
+        user_hours (int): The user's preferred time format (12 or 24).
     """
     print("\nWould you like the time to display as 12 hours or 24 hours?")
     print(f'{INDENT}{THIN_HORIZONTAL_LINE}')
     print(f"{INDENT}12 hours looks like this: 3:52pm")
     print(f"{INDENT}24 hours looks like this: 15:52")
     print(f'{INDENT}{THIN_HORIZONTAL_LINE}')
-    user_input = input("Type \"12\" to format as 12 hours, or \"24\" to format as 24 hours: ")
-    user_hours = int(clean_text(user_input))
-    return user_hours
+
+    while True:
+        user_input = clean_text(input('Type \"12\" for 12-hour format, or \"24\" for 24-hour format: '))
+        try:
+            user_hours = int(user_input)
+            possible_hours_formats = (12, 24)
+            if user_hours in possible_hours_formats:
+                return user_hours
+            else:
+                raise ValueError
+        except ValueError:
+            print(f"\nError: please enter either 12 or 24. You typed: '{user_input}'\n")
 
 def _format_time(unformatted_time, hours_format_from_user):
     """
