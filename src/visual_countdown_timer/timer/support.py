@@ -1,4 +1,6 @@
+from datetime import datetime
 import os
+import time
 
 def clean_text(unformatted_text):
     """
@@ -31,3 +33,18 @@ def  clear_terminal():
     # Use 'clear' on macOS, Linux, or another Unix-based environment
     else:
         os.system('clear')
+
+def sleep_until_next_loop():
+        """
+        Pauses execution just long enough to align the next loop iteration with the next full second.
+
+        This function calculates the fractional time remaining in the current second 
+        (based on the current microsecond) and sleeps for that duration. This helps 
+        ensure that subsequent loops run approximately on second boundaries, resulting 
+        in smoother and more consistent timing behavior.
+
+        Args: None.
+        Returns: None.
+        """
+        remaining_time_until_next_loop = 1 - (datetime.now().microsecond / 1_000_000)
+        time.sleep(remaining_time_until_next_loop)

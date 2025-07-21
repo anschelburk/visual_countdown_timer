@@ -13,10 +13,10 @@ from .set_countdown_times import (
     )
 from .support import (
     clean_text,
-    clear_terminal
+    clear_terminal,
+    sleep_until_next_loop
     )
 from datetime import datetime
-import time
 
 def confirm_hour_format():
     """
@@ -126,18 +126,3 @@ def run_timer():
             print(progress_bar_text)
             
             sleep_until_next_loop()
-
-def sleep_until_next_loop():
-        """
-        Pauses execution just long enough to align the next loop iteration with the next full second.
-
-        This function calculates the fractional time remaining in the current second 
-        (based on the current microsecond) and sleeps for that duration. This helps 
-        ensure that subsequent loops run approximately on second boundaries, resulting 
-        in smoother and more consistent timing behavior.
-
-        Args: None.
-        Returns: None.
-        """
-        remaining_time_until_next_loop = 1 - (datetime.now().microsecond / 1_000_000)
-        time.sleep(remaining_time_until_next_loop)
