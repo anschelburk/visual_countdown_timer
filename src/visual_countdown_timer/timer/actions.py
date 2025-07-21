@@ -46,7 +46,7 @@ def _format_time(unformatted_time, hours_format_from_user):
     """
     possible_hours_formats = (12, 24)
     if hours_format_from_user not in possible_hours_formats:
-        return 'Error (format_time()): Invalid time format.'
+        raise ValueError('Invalid hours display format: must be either 12 or 24.')
     else:
         timezone = unformatted_time.astimezone().strftime('%Z')
         if hours_format_from_user == 12:
