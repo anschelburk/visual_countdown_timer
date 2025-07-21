@@ -58,7 +58,7 @@ def _format_time(unformatted_time, hours_format_from_user):
             formatted_time = f'{formatted_hours} {timezone}'
         return formatted_time
 
-def _print_title_block():
+def print_title_block():
     """
     Prints the title block for the Visual Countdown Timer interface.
     Args:
@@ -113,7 +113,7 @@ def run_timer():
             minutes_label = "minute" if remaining_minutes == 1 else "minutes"
             seconds_label = "second" if remaining_seconds == 1 else "seconds"
     
-            _print_title_block()
+            print_title_block()
 
             print(current_date)
             print(f'Current Time: {current_time}')
