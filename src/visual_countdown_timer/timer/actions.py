@@ -33,26 +33,27 @@ def _confirm_hour_format():
     user_hours = int(clean_text(user_input))
     return user_hours
 
-def _format_time(unformatted_time, hours_format):
+def _format_time(unformatted_time, hours_format_from_user):
     """
     Formats a datetime object into a 12-hour or 24-hour time string with timezone.
 
     Args:
         unformatted_time (datetime): The datetime object to be formatted.
-        hours_format (int): The preferred time format, either 12 or 24.
+        hours_format_from_user (int): The preferred time format, either 12 or 24.
 
     Returns:
         formatted_time (str): The formatted time string.
     """
-    if hours_format not in (12, 24):
+    possible_hours_formats = (12, 24)
+    if hours_format_from_user not in possible_hours_formats:
         return 'Error (format_time()): Invalid time format.'
     else:
         timezone = unformatted_time.astimezone().strftime('%Z')
-        if hours_format == 12:
+        if hours_format_from_user == 12:
             formatted_hours = unformatted_time.strftime('%I:%M')
             formatted_ampm = unformatted_time.strftime('%p').lower()
             formatted_time = f'{formatted_hours}{formatted_ampm} {timezone}'
-        elif hours_format == 24:
+        elif hours_format_from_user == 24:
             formatted_hours = unformatted_time.strftime('%H:%M')
             formatted_time = f'{formatted_hours} {timezone}'
         return formatted_time
