@@ -1,5 +1,6 @@
 from .constants import (
     INDENT,
+    POSSIBLE_HOUR_DISPLAY_FORMATS,
     THICK_HORIZONTAL_LINE,
     THIN_HORIZONTAL_LINE
     )
@@ -37,15 +38,14 @@ def _confirm_hour_format():
         user_input = clean_text(input('Type \"12\" for 12-hour format, or \"24\" for 24-hour format: '))
         try:
             user_hours = int(user_input)
-            possible_hours_formats = (12, 24)
-            if user_hours in possible_hours_formats:
+            if user_hours in POSSIBLE_HOUR_DISPLAY_FORMATS:
                 return user_hours
             else:
                 raise ValueError
         except ValueError:
             print(f"\nError: please enter either 12 or 24. You typed: '{user_input}'\n")
 
-def _format_time(unformatted_time, hours_format_from_user):
+def _format_time(unformatted_time, hour_display_format_from_user):
     """
     Formats a datetime object into a 12-hour or 24-hour time string with timezone.
 
@@ -56,16 +56,15 @@ def _format_time(unformatted_time, hours_format_from_user):
     Returns:
         formatted_time (str): The formatted time string.
     """
-    possible_hours_formats = (12, 24)
     try:
-        hour_display_format = int(hours_format_from_user)
-        if hour_display_format in possible_hours_formats:
+        hour_display_format_from_user = int(hour_display_format_from_user)
+        if hour_display_format_from_user in POSSIBLE_HOUR_DISPLAY_FORMATS:
             timezone = unformatted_time.astimezone().strftime('%Z')
-            if hour_display_format == 12:
+            if hour_display_format_from_user == 12:
                 formatted_hours = unformatted_time.strftime('%I:%M')
                 formatted_ampm = unformatted_time.strftime('%p').lower()
                 formatted_time = f'{formatted_hours}{formatted_ampm} {timezone}'
-            elif hour_display_format == 24:
+            elif hour_display_format_from_user == 24:
                 formatted_hours = unformatted_time.strftime('%H:%M')
                 formatted_time = f'{formatted_hours} {timezone}'
             return formatted_time
