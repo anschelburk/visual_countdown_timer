@@ -57,18 +57,22 @@ def _format_time(unformatted_time, hours_format_from_user):
         formatted_time (str): The formatted time string.
     """
     possible_hours_formats = (12, 24)
-    if hours_format_from_user not in possible_hours_formats:
-        raise ValueError('Invalid hours display format: must be either 12 or 24.')
-    else:
-        timezone = unformatted_time.astimezone().strftime('%Z')
-        if hours_format_from_user == 12:
-            formatted_hours = unformatted_time.strftime('%I:%M')
-            formatted_ampm = unformatted_time.strftime('%p').lower()
-            formatted_time = f'{formatted_hours}{formatted_ampm} {timezone}'
-        elif hours_format_from_user == 24:
-            formatted_hours = unformatted_time.strftime('%H:%M')
-            formatted_time = f'{formatted_hours} {timezone}'
-        return formatted_time
+    try:
+        user_hour_format = int(hours_format_from_user)
+        if user_hour_format in possible_hours_formats:
+            timezone = unformatted_time.astimezone().strftime('%Z')
+            if hours_format_from_user == 12:
+                formatted_hours = unformatted_time.strftime('%I:%M')
+                formatted_ampm = unformatted_time.strftime('%p').lower()
+                formatted_time = f'{formatted_hours}{formatted_ampm} {timezone}'
+            elif hours_format_from_user == 24:
+                formatted_hours = unformatted_time.strftime('%H:%M')
+                formatted_time = f'{formatted_hours} {timezone}'
+            return formatted_time
+        else:
+            raise ValueError
+    except ValueError:
+        print('Hours format must be either \"12\" for 12-hour format, or \"24\" for 24-hour format.')
 
 def print_title_block():
     """
