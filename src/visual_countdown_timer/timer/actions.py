@@ -58,14 +58,14 @@ def _format_time(unformatted_time, hours_format_from_user):
     """
     possible_hours_formats = (12, 24)
     try:
-        user_hour_format = int(hours_format_from_user)
-        if user_hour_format in possible_hours_formats:
+        hour_display_format = int(hours_format_from_user)
+        if hour_display_format in possible_hours_formats:
             timezone = unformatted_time.astimezone().strftime('%Z')
-            if user_hour_format == 12:
+            if hour_display_format == 12:
                 formatted_hours = unformatted_time.strftime('%I:%M')
                 formatted_ampm = unformatted_time.strftime('%p').lower()
                 formatted_time = f'{formatted_hours}{formatted_ampm} {timezone}'
-            elif user_hour_format == 24:
+            elif hour_display_format == 24:
                 formatted_hours = unformatted_time.strftime('%H:%M')
                 formatted_time = f'{formatted_hours} {timezone}'
             return formatted_time
