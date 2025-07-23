@@ -77,20 +77,24 @@ class UserInput:
         except ValueError:
             raise ValueError("The number of minutes must be a whole number between 0 and 59.")
     
-    def _confirm_minutes(self, minutes: int) -> bool:
+    def _confirm_minutes(self, minutes_from_user: int) -> bool:
         """
         Get user confirmation for selected minutes.
         
         Args:
-            minutes: Selected minute value
+            minutes_from_user: Selected minute value
             
         Returns:
             True if confirmed, False if rejected
         """
+
+        MINIMUM_EXAMPLE_HOUR = 1
+        MAXIMUM_EXAMPLE_HOUR = 3
+        example_times = [f'{example_hour:02}:{minutes_from_user:02}' for example_hour in range(MINIMUM_EXAMPLE_HOUR, MAXIMUM_EXAMPLE_HOUR + 1)]
+        
         # Show preview of countdown times
-        examples = [f'{h:02}:{minutes:02}' for h in range(1, 4)]
-        print(f'\nYou entered {minutes} minutes. The timer will count down to:')
-        print(' | '.join(examples) + ' | etc.\n')
+        print(f'\nYou entered {minutes_from_user} minutes. The timer will count down to:')
+        print(' | '.join(example_times) + ' | etc.')
         
         while True:
             response = clean_text(input("Is this correct? Please enter 'y' or 'n': ")).lower()
@@ -98,4 +102,5 @@ class UserInput:
                 return True
             elif response == 'n':
                 return False
-            print("\nInvalid answer: Please enter 'y' for yes, or 'n' for no.")
+            else:
+                print("\nInvalid answer: Please enter 'y' for yes, or 'n' for no.")
