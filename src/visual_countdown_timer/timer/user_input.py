@@ -17,20 +17,15 @@ class UserInput:
         print(f"{INDENT}12 hours looks like this: 3:52pm")
         print(f"{INDENT}24 hours looks like this: 15:52")
         print(f'{INDENT}{THIN_HORIZONTAL_LINE}')
-        
+
         while True:
-
-            user_input = clean_text(input('Type "12" for 12-hour format, or "24" for 24-hour format: '))
+            user_input = clean_text(input('Enter "12" for 12-hour format, or "24" for 24-hour format: '))
             
-            try:
-                user_input = int(user_input)
-                if user_input in POSSIBLE_HOUR_DISPLAY_FORMATS:
-                    return user_input
-                else:
-                    raise ValueError
-
-            except ValueError:
-                print(f"\nError: please enter either 12 or 24. You typed: '{user_input}'\n")
+            if user_input in POSSIBLE_HOUR_DISPLAY_FORMATS:
+                return int(user_input)
+            
+            else:
+                print(f"\nError: please enter either \"12\" or \"24\". You typed: '{user_input}'\n")
     
     def get_countdown_time(self, status: str = 'initial') -> int:
         """
