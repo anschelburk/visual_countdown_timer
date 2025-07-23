@@ -10,22 +10,29 @@ class UserInput:
         Get user's preferred hour format (12 or 24).
         
         Returns:
-            12 or 24 based on user preference
+            12 or 24 (int) based on user preference
         """
         print("\nWould you like the time to display as 12 hours or 24 hours?")
         print(f'{INDENT}{THIN_HORIZONTAL_LINE}')
         print(f"{INDENT}12 hours looks like this: 3:52pm")
         print(f"{INDENT}24 hours looks like this: 15:52")
-        print(f'{INDENT}{THIN_HORIZONTAL_LINE}')
+        print(f'{INDENT}{THIN_HORIZONTAL_LINE}\n')
 
         while True:
-            user_input = clean_text(input('Enter "12" for 12-hour format, or "24" for 24-hour format: '))
+
+            user_hours = clean_text(input('Please enter "12" for 12-hour format, or "24" for 24-hour format: '))
             
-            if user_input in POSSIBLE_HOUR_DISPLAY_FORMATS:
-                return int(user_input)
+            try:
+                user_hours = int(user_hours)
+                if user_hours in POSSIBLE_HOUR_DISPLAY_FORMATS:
+                    return user_hours
+                else:
+                    raise ValueError
             
-            else:
-                print(f"\nError: please enter either \"12\" or \"24\". You typed: '{user_input}'\n")
+            except ValueError:
+                print('\nError: Your must enter either \"12\" or \"24\" to continue, written as a whole number.')
+                print('For example: \"12\" works, but \"twelve\" does not.')
+                print(f'You entered: {user_hours}')
     
     def get_countdown_time(self, status: str = 'initial') -> int:
         """
@@ -45,8 +52,8 @@ class UserInput:
                 if self._confirm_minutes(minutes):
                     return minutes
                 print()  # Add spacing before retry
-            except ValueError as e:
-                print(f"\nError: {e}\n")
+            except ValueError as error_message:
+                print(f"\nError: {error_message}\n")
     
     def _show_intro_text(self, status: str):
         """Show appropriate intro text based on status."""
