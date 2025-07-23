@@ -64,13 +64,16 @@ class UserInput:
     
     def _get_minutes_input(self) -> int:
         """Get and validate minutes input from user."""
+        
         user_input = clean_text(input("Please enter the number of minutes you'd like to count down to: "))
         
         try:
             minute = int(user_input)
-            if not (0 <= minute < 60):
-                raise ValueError("The number of minutes must be between 0 and 59.")
-            return minute
+            if 0 <= minute < 60:
+                return minute
+            else:
+                raise ValueError
+        
         except ValueError:
             raise ValueError("The number of minutes must be a whole number between 0 and 59.")
     
