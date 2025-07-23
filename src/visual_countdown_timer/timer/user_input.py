@@ -56,21 +56,19 @@ class UserInput:
     def _show_intro_text(self, status: str):
         """Show appropriate intro text based on status."""
         
-        _POSSIBLE_STATUS_OPTIONS = ('initial', 'update')
-        
         try:
-            if status in _POSSIBLE_STATUS_OPTIONS:
-                if status == 'initial':
-                    print('Welcome to Visual Countdown Timer!')
-                    print('This timer counts down to a set number of minutes past each hour.')
-                    print('For example, if you enter "25", it will count down to 1:25, 2:25, etc.\n')
-                elif status == 'update':
-                    print('\nWould you like to update the countdown time?')
+            if status == 'initial':
+                print('Welcome to Visual Countdown Timer!')
+                print('This timer counts down to a set number of minutes past each hour.')
+                print('For example, if you enter "25", it will count down to 1:25, 2:25, etc.\n')
+            elif status == 'update':
+                print('\nWould you like to update the countdown time?')
             else:
                 raise ValueError
             
         except ValueError:
-            print('\'status\' input must be either \'initial\' or \'update\'.')
+            print('\n\'status\' input variable must be either \'initial\' or \'update\'.')
+            print(f'Right now, \'status\' = {status}')
 
     def _get_minutes_input(self) -> int:
         """Get and validate minutes input from user."""
