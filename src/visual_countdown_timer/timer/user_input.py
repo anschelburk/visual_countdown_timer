@@ -68,7 +68,7 @@ class UserInput:
             
         except ValueError:
             print('\n\'status\' input variable must be either \'initial\' or \'update\'.')
-            print(f'Right now, \'status\' = {status}')
+            print(f'Right now, \'status\' = {status}\n')
 
     def _get_minutes_input(self) -> int:
         """Get and validate minutes input from user."""
@@ -84,7 +84,7 @@ class UserInput:
         
         except ValueError:
             print("The number of minutes must be a whole number between 0 and 59.")
-            print("You entered: {minutes}")
+            print("You entered: {minutes}\n")
     
     def _confirm_minutes(self, minutes_from_user: int) -> bool:
         """
@@ -104,12 +104,13 @@ class UserInput:
         # Show preview of countdown times
         print(f'\nYou entered {minutes_from_user} minutes. The timer will count down to:')
         print(' | '.join(example_times) + ' | etc.')
+        response = input("Is this correct? Please enter \"y\" for yes, or \"n\" for no: ")
         
         while True:
-            response = clean_text(input("Is this correct? Please enter 'y' or 'n': ")).lower()
+            response = clean_text(response).lower()
             if response == 'y':
                 return True
             elif response == 'n':
                 return False
             else:
-                print("\nInvalid answer: Please enter 'y' for yes, or 'n' for no.")
+                response = input("\nInvalid answer: Please enter \"y\" for yes, or \"n\" for no: ")
