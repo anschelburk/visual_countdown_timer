@@ -83,5 +83,5 @@ class TimerSupport:
                     raise ValueError
                 
             except ValueError:
-                print(f"\nError: Hour format must be either \"12\" or \"24\", written as a whole number. You typed: '{user_input}'\n")
+                print(f"\nError: Hour format must be either \"12\" or \"24\", written as a whole number. You typed: {user_input}\n")
                 user_input = input('Please enter either \"12\" for 12-hour format, or \"24\" for 24-hour format: ')
