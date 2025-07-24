@@ -1,4 +1,4 @@
-from .constants import INDENT, THIN_HORIZONTAL_LINE
+from .constants import INDENT, THIN_HORIZONTAL_LINE, POSSIBLE_HOUR_DISPLAY_FORMATS
 from .timer_logic import TimerLogic
 from datetime import datetime
 
@@ -9,29 +9,36 @@ class DisplayFormatter:
     def __init__(self):
         self.timer_logic = TimerLogic()
     
-    def format_time(self, time_obj: datetime, hour_format: int) -> str:
+    def format_time(self, datetime_unformatted: datetime, hour_format: int) -> str:
         """
         Format datetime object into 12/24 hour string with timezone.
         
         Args:
-            time_obj: Datetime to format
+            datetime_unformatted: Datetime to format
             hour_format: 12 or 24 hour format
             
         Returns:
             Formatted time string
         """
-        if hour_format not in (12, 24):
-            raise ValueError('Hour format must be 12 or 24')
-        
-        timezone = time_obj.astimezone().strftime('%Z')
-        
-        if hour_format == 12:
-            time_str = time_obj.strftime('%I:%M').lstrip('0')
-            ampm = time_obj.strftime('%p').lower()
-            return f'{time_str}{ampm} {timezone}'
-        else:
-            time_str = time_obj.strftime('%H:%M')
-            return f'{time_str} {timezone}'
+
+        timezone = datetime_unformatted.astimezone().strftime('%Z')
+
+        try:
+            hour_format = int(hour_format)
+            if hour_format in POSSIBLE_HOUR_DISPLAY_FORMATS:
+                if hour_format == 12:
+                    hour = datetime_unformatted.strftime('%I:%M').lstrip('0')
+                    ampm = datetime_unformatted.strftime('%p').lower()
+                    return f'{hour}{ampm} {timezone}'
+                elif hour_format == 24:
+                    hour = datetime_unformatted.strftime('%H:%M')
+                    return f'{hour} {timezone}'
+            else:
+                raise ValueError
+            
+        except ValueError:
+            print('\nError: Hour format must be either \"12\" or \"24\", written as a whole number.')
+            print(f'Right now, hour_format input = {hour_format}')
     
     def show_current_info(self, current_time: datetime, hour_format: int):
         """Display current date and time information."""
