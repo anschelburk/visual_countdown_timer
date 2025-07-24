@@ -14,11 +14,11 @@ class DisplayFormatter:
         Format datetime object into 12/24 hour string with timezone.
         
         Args:
-            datetime_unformatted: Datetime to format
-            hour_format: 12 or 24 hour format
+            datetime_unformatted (datetime): The raw datetime to format.
+            hour_format (int): Either "12" for 12-hour format, or "24" for 24-hour format.
             
         Returns:
-            Formatted time string
+            datetime_formatted (datetime): The formatted datetime string
         """
 
         timezone = datetime_unformatted.astimezone().strftime('%Z')
@@ -29,10 +29,11 @@ class DisplayFormatter:
                 if hour_format == 12:
                     hour = datetime_unformatted.strftime('%I:%M').lstrip('0')
                     ampm = datetime_unformatted.strftime('%p').lower()
-                    return f'{hour}{ampm} {timezone}'
+                    datetime_formatted = f'{hour}{ampm} {timezone}'
                 elif hour_format == 24:
                     hour = datetime_unformatted.strftime('%H:%M')
-                    return f'{hour} {timezone}'
+                    datetime_formatted = f'{hour} {timezone}'
+                return datetime_formatted
             else:
                 raise ValueError
             
