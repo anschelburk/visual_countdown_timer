@@ -1,3 +1,4 @@
+from .constants import POSSIBLE_HOUR_DISPLAY_FORMATS
 from datetime import datetime
 import os
 import time
@@ -48,3 +49,19 @@ def sleep_until_next_loop():
         """
         remaining_time_until_next_loop = 1 - (datetime.now().microsecond / 1_000_000)
         time.sleep(remaining_time_until_next_loop)
+
+def validate_and_convert_hour_format(user_input):
+    while True:
+        try:
+            user_hours_int = int(user_input)
+            if user_hours_int in POSSIBLE_HOUR_DISPLAY_FORMATS:
+                if user_hours_int == 12:
+                    return 12
+                elif user_hours_int == 24:
+                    return 24
+                else:
+                    raise ValueError
+            
+        except ValueError:
+            print(f"\nError: Hour format must be either \"12\" or \"24\", written as a whole number. You typed: '{user_input}'\n")
+            user_input = ('Please enter either \"12\" for 12-hour format, or \"24\" for 24-hour format: ')
