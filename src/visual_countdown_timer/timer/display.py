@@ -41,14 +41,23 @@ class DisplayFormatter:
             print('\nError: Hour format must be either \"12\" or \"24\", written as a whole number.')
             print(f'Right now, hour_format input = {hour_format}')
     
-    def show_current_info(self, current_time: datetime, hour_format: int):
-        """Display current date and time information."""
-        current_date = current_time.strftime('%B %d, %Y')
-        formatted_time = self.format_time(current_time, hour_format)
+    def show_current_info(self, current_datetime: datetime, hour_format: int):
+        """
+        Display current date and time information.
+        
+        Args:
+            current_datetime (datetime): The current datetime.
+            hour_format (int):  Either "12" for 12-hour format, or "24" for 24-hour format.
+
+        Returns:
+            None
+        """
+
+        current_date = current_datetime.strftime('%B %d, %Y')
+        formatted_time = self.format_time(current_datetime, hour_format)
         
         print(current_date)
-        print(f'Current Time: {formatted_time}')
-        print()
+        print(f'Current Time: {formatted_time}\n')
     
     def show_countdown_info(self, target_time: datetime, remaining_seconds: int, hour_format: int):
         """Display countdown information including progress bar."""
