@@ -3,7 +3,7 @@ from .timer_logic import TimerLogic
 from datetime import datetime
 
 
-class DisplayFormatter:
+class TimerDisplay:
     """Handles all display formatting and output."""
     
     def __init__(self):

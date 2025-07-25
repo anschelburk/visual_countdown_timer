@@ -1,7 +1,8 @@
 from .constants import INDENT, THICK_HORIZONTAL_LINE, THIN_HORIZONTAL_LINE
-from .timer_logic import TimerLogic
-from .display import DisplayFormatter
-from .user_input import UserInput
+from .timer_logic import TimerLogic             # [x] Confirmed
+from .timer_display import TimerDisplay         # [x] Confirmed, but consider making two classes: DisplayLogic (for __init__) and DisplayText (for things like print_title_block())
+from .timer_input import UserInput              # [x] Confirmed
+from .timer_utils import SupportUtils           # [x] Confirmed
 from .support import clear_terminal, sleep_until_next_loop
 from datetime import datetime
 import signal
@@ -12,9 +13,9 @@ class TimerApp:
     """Main timer application class that coordinates all components."""
     
     def __init__(self):
-        self.timer_logic = TimerLogic()
-        self.display = DisplayFormatter()
-        self.user_input = UserInput()
+        self.timer_logic = TimerLogic()     # [x] Confirmed
+        self.display = TimerDisplay()       # [x] Confirmed
+        self.user_input = UserInput()       # [x] Confirmed
         self._setup_signal_handler()
     
     def _setup_signal_handler(self):
