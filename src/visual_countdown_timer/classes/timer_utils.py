@@ -1,6 +1,6 @@
-from .settings import TimerSettingsInternal
+from .settings import TimerConfig
 
-class TimerSupport:
+class TimerUtils:
     # Edit this docstring.
     """
     Utility class providing common helper functions for timer operations.
@@ -41,8 +41,8 @@ class TimerSupport:
     def validate_hour_format(user_input):
         while True:
             try:
-                user_hours_int = int(TimerSupport.clean_text((user_input)))
-                if user_hours_int in TimerSettingsInternal.POSSIBLE_HOUR_DISPLAY_FORMATS:
+                user_hours_int = int(TimerUtils.clean_text((user_input)))
+                if user_hours_int in TimerConfig.POSSIBLE_HOUR_DISPLAY_FORMATS:
                     return user_hours_int
                 else:
                     raise ValueError
