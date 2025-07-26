@@ -1,5 +1,6 @@
 from .constants import INDENT, THIN_HORIZONTAL_LINE, POSSIBLE_HOUR_DISPLAY_FORMATS
 from .timer_logic import TimerLogic
+from .timer_settings import DisplaySettings
 from datetime import datetime
 
 class DisplayLogic:
@@ -34,12 +35,16 @@ class DisplayText:
     """
 
     # Derived display elements based on length settings
-    INDENT = ' ' * INDENT_LENGTH
-    THICK_HORIZONTAL_LINE = "=" * LINE_THICKNESS
-    THIN_HORIZONTAL_LINE = "-" * LINE_THICKNESS
+
+    INDENT = ' ' * DisplaySettings.INDENT_LENGTH                    # [x] Confirmed
+    THICK_HORIZONTAL_LINE = "=" * DisplaySettings.LINE_LENGTH    # [x] Confirmed
+    THIN_HORIZONTAL_LINE = "-" * DisplaySettings.LINE_LENGTH     # [x] Confirmed
+
+    
+    # Multi-line display output
 
     @classmethod
-    def print_title_block(cls):
+    def print_title_block(cls):                                      # [x] Confirmed
         """Prints the title block for the Visual Countdown Timer interface."""
         print(cls.THICK_HORIZONTAL_LINE)
         print('Visual Countdown Timer')

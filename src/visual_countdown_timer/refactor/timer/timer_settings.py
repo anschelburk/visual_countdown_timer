@@ -13,6 +13,12 @@ class DisplaySettings:
     core functionality.
     """
 
+    # Number of spaces for text indentation
+    INDENT_LENGTH = 2
+
+    # Character length for horizontal divider lines
+    LINE_LENGTH = 32
+
 class TimerConfig:
     # Edit this docstring.
     """
