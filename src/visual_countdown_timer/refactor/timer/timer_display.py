@@ -2,6 +2,24 @@ from .timer_logic import TimerLogic
 from .timer_settings import DisplaySettings
 from datetime import datetime
 
+class TextBlocks:                                           # [x] Confirmed
+    """
+    Pre-built text blocks derived from configuration settings.
+    
+    Contains display strings and formatting blocks that are calculated
+    from base configuration values. These are ready-to-use
+    blocks of text for building the timer interface, including indentation
+    strings and horizontal divider lines.
+    
+    All blocks in this class are derived from the base measurements
+    defined in DisplaySettings, providing consistent formatting throughout
+    the timer application.
+    """
+
+    INDENT = ' ' * DisplaySettings.INDENT_LENGTH                 # [x] Confirmed
+    THICK_HORIZONTAL_LINE = "=" * DisplaySettings.LINE_LENGTH    # [x] Confirmed
+    THIN_HORIZONTAL_LINE = "-" * DisplaySettings.LINE_LENGTH     # [x] Confirmed
+
 class DisplayLogic:
     # Edit the `TimerLogic` portion of this docstring.
     # Edit the first line: "formatting and"
@@ -29,22 +47,13 @@ class DisplayText:
     display logic.
     """
 
-    # Derived display elements based on length settings
-
-    INDENT = ' ' * DisplaySettings.INDENT_LENGTH                    # [x] Confirmed
-    THICK_HORIZONTAL_LINE = "=" * DisplaySettings.LINE_LENGTH    # [x] Confirmed
-    THIN_HORIZONTAL_LINE = "-" * DisplaySettings.LINE_LENGTH     # [x] Confirmed
-
-    
-    # Multi-line display output
-
-    @classmethod                                             # Later on: can I make 'CTRL + C' text dynamic to show user's preference?
-    def title_block(cls):                              # [x] Confirmed
+    @staticmethod                                   # Later on: can I make 'CTRL + C' text dynamic to show user's preference?
+    def title_block():                              # [x] Confirmed
         """Prints the title block for the Visual Countdown Timer interface."""
-        print(cls.THICK_HORIZONTAL_LINE)
+        print(DisplayComponents.THICK_HORIZONTAL_LINE)
         print('Visual Countdown Timer')
         print('Press Ctrl + C to exit.')
-        print(f'{cls.THICK_HORIZONTAL_LINE}\n')
+        print(f'{DisplayComponents.THICK_HORIZONTAL_LINE}\n')
 
 class TimerDisplay:
     """Handles all display formatting and output."""
@@ -102,8 +111,8 @@ class TimerDisplay:
         print(current_date)
         print(f'Current Time: {formatted_time}\n')
     
-    @classmethod                                                      # Come back to this function once I find where it's referenced.
-    def show_countdown_info(cls, target_time: datetime, remaining_seconds: int, hour_format: int):
+    @staticmethod                                                      # Come back to this function once I find where it's referenced.
+    def show_countdown_info(target_time: datetime, remaining_seconds: int, hour_format: int):
         """Display countdown information including progress bar."""
         formatted_target = self.format_time(target_time, hour_format)
         progress_bar = self.timer_logic.get_progress_bar(remaining_seconds)
@@ -114,9 +123,9 @@ class TimerDisplay:
         min_label = "minute" if remaining_minutes == 1 else "minutes"
         sec_label = "second" if seconds == 1 else "seconds"
         
-        print(cls.THIN_HORIZONTAL_LINE)
+        print(DisplayComponents.THIN_HORIZONTAL_LINE)
         print(f'Countdown until {formatted_target}:')
-        print(cls.THIN_HORIZONTAL_LINE)
-        print(f'{cls.INDENT}{remaining_minutes:02} {min_label}')
-        print(f'{cls.INDENT}{seconds:02} {sec_label}')
+        print(DisplayComponents.THIN_HORIZONTAL_LINE)
+        print(f'{DisplayComponents.INDENT}{remaining_minutes:02} {min_label}')
+        print(f'{DisplayElements.INDENT}{seconds:02} {sec_label}')
         print(progress_bar)
