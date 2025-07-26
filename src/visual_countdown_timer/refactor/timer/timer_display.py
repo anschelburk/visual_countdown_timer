@@ -1,4 +1,3 @@
-from .constants import INDENT, THIN_HORIZONTAL_LINE, POSSIBLE_HOUR_DISPLAY_FORMATS
 from .timer_logic import TimerLogic
 from .timer_settings import DisplaySettings
 from datetime import datetime
@@ -73,7 +72,7 @@ class TimerDisplay:
 
         try:
             hour_format = int(hour_format)
-            if hour_format in POSSIBLE_HOUR_DISPLAY_FORMATS:
+            if hour_format in DisplaySettings.POSSIBLE_HOUR_DISPLAY_FORMATS:
                 if hour_format == 12:
                     hour = datetime_unformatted.strftime('%I:%M').lstrip('0')
                     ampm = datetime_unformatted.strftime('%p').lower()
@@ -107,7 +106,8 @@ class TimerDisplay:
         print(current_date)
         print(f'Current Time: {formatted_time}\n')
     
-    def show_countdown_info(self, target_time: datetime, remaining_seconds: int, hour_format: int):
+    @classmethod                                                      # Come back to this function once I find where it's referenced.
+    def show_countdown_info(cls, target_time: datetime, remaining_seconds: int, hour_format: int):
         """Display countdown information including progress bar."""
         formatted_target = self.format_time(target_time, hour_format)
         progress_bar = self.timer_logic.get_progress_bar(remaining_seconds)
@@ -118,9 +118,9 @@ class TimerDisplay:
         min_label = "minute" if remaining_minutes == 1 else "minutes"
         sec_label = "second" if seconds == 1 else "seconds"
         
-        print(THIN_HORIZONTAL_LINE)
+        print(cls.THIN_HORIZONTAL_LINE)
         print(f'Countdown until {formatted_target}:')
-        print(THIN_HORIZONTAL_LINE)
-        print(f'{INDENT}{remaining_minutes:02} {min_label}')
-        print(f'{INDENT}{seconds:02} {sec_label}')
+        print(cls.THIN_HORIZONTAL_LINE)
+        print(f'{cls.INDENT}{remaining_minutes:02} {min_label}')
+        print(f'{cls.INDENT}{seconds:02} {sec_label}')
         print(progress_bar)
