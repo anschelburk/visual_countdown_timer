@@ -2,6 +2,36 @@ from .constants import INDENT, THIN_HORIZONTAL_LINE, POSSIBLE_HOUR_DISPLAY_FORMA
 from .timer_logic import TimerLogic
 from datetime import datetime
 
+class DisplayLogic:
+    # Edit the `TimerLogic` portion of this docstring.
+    # Edit the first line: "formatting and"
+    """
+    Handles the logic for formatting and displaying time-related information.
+
+    This class is responsible for taking raw time data and presenting it in a
+    user-friendly format, including current time, countdown information, and
+    progress bars. It relies on `TimerLogic` for calculations.
+    """
+
+class DisplayText:
+    # Edit this docstring
+    """
+    Contains static text content and multi-line print statements for the timer display.
+    
+    This class serves as a centralized repository for all display text,
+    including titles, headers, formatted output blocks, and multi-line
+    content used throughout the timer application. It separates the
+    actual text content from the display logic.
+    
+    Contains methods that output formatted text blocks, title sections,
+    and other pre-defined display elements. This separation allows for
+    easy modification of display content without changing the underlying
+    display logic.
+    
+    Example:
+        >>> DisplayText.print_title_block()
+        >>> DisplayText.print_countdown_section(minutes, seconds, progress_bar)
+    """
 
 class TimerDisplay:
     """Handles all display formatting and output."""
