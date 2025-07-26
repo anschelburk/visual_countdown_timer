@@ -42,8 +42,8 @@ class DisplayText:
     
     # Multi-line display output
 
-    @classmethod
-    def print_title_block(cls):                                      # [x] Confirmed
+    @classmethod                                             # Later on: can I make 'CTRL + C' text dynamic to show user's preference?
+    def print_title_block(cls):                              # [x] Confirmed
         """Prints the title block for the Visual Countdown Timer interface."""
         print(cls.THICK_HORIZONTAL_LINE)
         print('Visual Countdown Timer')
