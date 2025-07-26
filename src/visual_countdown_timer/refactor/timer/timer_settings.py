@@ -19,5 +19,8 @@ class TimerConfig:
         >>> TimerConfig.POSSIBLE_HOUR_DISPLAY_FORMATS
         (12, 24)
     """
+    
+    # Exit code for successful program termination
+    EXIT_SUCCESS = 0
 
     POSSIBLE_HOUR_DISPLAY_FORMATS = (12, 24)

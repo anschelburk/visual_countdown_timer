@@ -3,9 +3,10 @@ from .timer_logic import TimerLogic             # [x] Confirmed
 from .timer_display import TimerDisplay         # [x] Confirmed, but consider making two classes: DisplayLogic (for __init__) and DisplayText (for things like print_title_block())
 from .timer_input import UserInput              # [x] Confirmed
 from .timer_utils import SupportUtils           # [x] Confirmed
+from .timer_settings import TimerConfig         # [x] Confirmed
 from .support import clear_terminal, sleep_until_next_loop
 from datetime import datetime
-import signal
+import signal                                   # [x] Confirmed
 import sys
 
 
@@ -16,13 +17,13 @@ class TimerApp:
         self.timer_logic = TimerLogic()     # [x] Confirmed
         self.display = TimerDisplay()       # [x] Confirmed
         self.user_input = UserInput()       # [x] Confirmed
-        self._setup_signal_handler()
+        self._setup_signal_handler()        # [x] Confirmed
     
     def _setup_signal_handler(self):
         """Setup graceful shutdown on Ctrl+C."""
         def signal_handler(sig, frame):
-            print("\n\nTimer stopped. Goodbye!")
-            sys.exit(0)
+            print("\n\nTimer stopped. Thank you for using Visual Countdown Timer!")
+            sys.exit(TimerConfig.EXIT_SUCCESS)
         signal.signal(signal.SIGINT, signal_handler)
     
     def print_title_block(self):
