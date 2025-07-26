@@ -27,10 +27,6 @@ class DisplayText:
     and other pre-defined display elements. This separation allows for
     easy modification of display content without changing the underlying
     display logic.
-    
-    Example:
-        >>> DisplayText.print_title_block()
-        >>> DisplayText.print_countdown_section(minutes, seconds, progress_bar)
     """
 
     # Derived display elements based on length settings
@@ -43,7 +39,7 @@ class DisplayText:
     # Multi-line display output
 
     @classmethod                                             # Later on: can I make 'CTRL + C' text dynamic to show user's preference?
-    def print_title_block(cls):                              # [x] Confirmed
+    def title_block(cls):                              # [x] Confirmed
         """Prints the title block for the Visual Countdown Timer interface."""
         print(cls.THICK_HORIZONTAL_LINE)
         print('Visual Countdown Timer')
