@@ -33,6 +33,19 @@ class DisplayText:
         >>> DisplayText.print_countdown_section(minutes, seconds, progress_bar)
     """
 
+    # Derived display elements based on length settings
+    INDENT = ' ' * INDENT_LENGTH
+    THICK_HORIZONTAL_LINE = "=" * LINE_THICKNESS
+    THIN_HORIZONTAL_LINE = "-" * LINE_THICKNESS
+
+    @classmethod
+    def print_title_block(cls):
+        """Prints the title block for the Visual Countdown Timer interface."""
+        print(cls.THICK_HORIZONTAL_LINE)
+        print('Visual Countdown Timer')
+        print('Press Ctrl + C to exit.')
+        print(f'{cls.THICK_HORIZONTAL_LINE}\n')
+
 class TimerDisplay:
     """Handles all display formatting and output."""
     
