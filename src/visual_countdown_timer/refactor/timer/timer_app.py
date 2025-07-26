@@ -1,6 +1,5 @@
-from .constants import INDENT, THICK_HORIZONTAL_LINE, THIN_HORIZONTAL_LINE
 from .timer_logic import TimerLogic                          # [x] Confirmed
-from .timer_display import TimerDisplay, DisplayText         # [x] Confirmed, but consider making two classes: DisplayLogic (for __init__) and DisplayText (for things like print_title_block())
+from .timer_display import TimerDisplay, PrintText           # [x] Confirmed, but consider making two classes: DisplayLogic (for __init__) and DisplayText (for things like print_title_block())
 from .timer_input import UserInput                           # [x] Confirmed
 from .timer_utils import SupportUtils                        # [x] Confirmed
 from .support import clear_terminal, sleep_until_next_loop
@@ -18,7 +17,7 @@ class TimerApp:
     def run(self):
         """Main application entry point."""
         clear_terminal()
-        DisplayText.print_title_block()
+        PrintText.title_block()
         
         # Get initial configuration
         countdown_minutes = self.user_input.get_countdown_time('initial')
@@ -43,7 +42,7 @@ class TimerApp:
             remaining_seconds = self.timer_logic.get_remaining_seconds(target_time, current_time)
             
             # Display current information
-            DisplayText.print_title_block()
+            PrintText.title_block()
             self.display.show_current_info(current_time, hour_format)
             self.display.show_countdown_info(target_time, remaining_seconds, hour_format)
             

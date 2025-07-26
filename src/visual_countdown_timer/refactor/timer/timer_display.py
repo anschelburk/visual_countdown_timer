@@ -31,7 +31,7 @@ class DisplayLogic:
     progress bars. It relies on `TimerLogic` for calculations.
     """
 
-class DisplayText:
+class PrintText:
     # Edit this docstring
     """
     Contains static text content and multi-line print statements for the timer display.
@@ -50,10 +50,10 @@ class DisplayText:
     @staticmethod                                   # Later on: can I make 'CTRL + C' text dynamic to show user's preference?
     def title_block():                              # [x] Confirmed
         """Prints the title block for the Visual Countdown Timer interface."""
-        print(DisplayComponents.THICK_HORIZONTAL_LINE)
+        print(TextBlocks.THICK_HORIZONTAL_LINE)
         print('Visual Countdown Timer')
         print('Press Ctrl + C to exit.')
-        print(f'{DisplayComponents.THICK_HORIZONTAL_LINE}\n')
+        print(f'{TextBlocks.THICK_HORIZONTAL_LINE}\n')
 
 class TimerDisplay:
     """Handles all display formatting and output."""
@@ -123,9 +123,9 @@ class TimerDisplay:
         min_label = "minute" if remaining_minutes == 1 else "minutes"
         sec_label = "second" if seconds == 1 else "seconds"
         
-        print(DisplayComponents.THIN_HORIZONTAL_LINE)
+        print(TextBlocks.THIN_HORIZONTAL_LINE)
         print(f'Countdown until {formatted_target}:')
-        print(DisplayComponents.THIN_HORIZONTAL_LINE)
-        print(f'{DisplayComponents.INDENT}{remaining_minutes:02} {min_label}')
-        print(f'{DisplayElements.INDENT}{seconds:02} {sec_label}')
+        print(TextBlocks.THIN_HORIZONTAL_LINE)
+        print(f'{TextBlocks.INDENT}{remaining_minutes:02} {min_label}')
+        print(f'{TextBlocks.INDENT}{seconds:02} {sec_label}')
         print(progress_bar)
