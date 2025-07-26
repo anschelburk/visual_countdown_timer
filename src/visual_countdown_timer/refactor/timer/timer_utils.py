@@ -1,7 +1,9 @@
-from .timer_settings import TimerConfig
+from .timer_settings import TimerConfig         # [x] Confirmed
+import signal                                   # [x] Confirmed
+import sys                                      # [x] Confirmed
 
 class SupportUtils:
-    # Edit this docstring.
+                                                # Edit this docstring.
     """
     Utility class providing common helper functions for timer operations.
     
@@ -36,6 +38,14 @@ class SupportUtils:
         characters_to_remove = " .,\"\'"
         clean_text = unformatted_text.strip(characters_to_remove)
         return clean_text
+    
+    @staticmethod
+    def initialize_exit_handler():                                          # [x] Confirmed
+        """Setup graceful shutdown handler for interrupt signals (typically Ctrl+C)."""
+        def signal_handler(sig, frame):
+            print("\n\nTimer stopped. Thank you for using Visual Countdown Timer!")
+            sys.exit(TimerConfig.EXIT_SUCCESS)
+        signal.signal(signal.SIGINT, signal_handler)
         
     @staticmethod
     def validate_hour_format(user_input):
