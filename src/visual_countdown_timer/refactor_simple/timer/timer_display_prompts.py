@@ -2,7 +2,7 @@
 # Add docstring for module.
 """
 
-class TimerPrompts:
+class DisplayForUser:
     """
     # Add docstring for class.
     """
@@ -11,7 +11,7 @@ class TimerPrompts:
         pass
 
     @staticmethod
-    def display_timer_introduction():
+    def timer_app_welcome():
         """
         Prints the introductory text for the Visual Countdown Timer interface.
         Args: None.

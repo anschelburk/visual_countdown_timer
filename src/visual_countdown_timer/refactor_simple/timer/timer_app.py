@@ -1,4 +1,4 @@
-from .timer_display_prompts import TimerPrompts
+from .timer_display_prompts import DisplayForUser
 from .timer_utils import TerminalUtils
 
 """
@@ -16,6 +16,6 @@ class TimerApp:
 
     def run(self):
         TerminalUtils.clear_terminal_screen()
-        TimerPrompts.display_timer_introduction()    # Finish defining this.
+        DisplayForUser.timer_app_welcome()    # Finish defining this.
         # Ask user for timer info.
         # Run timer loop.
