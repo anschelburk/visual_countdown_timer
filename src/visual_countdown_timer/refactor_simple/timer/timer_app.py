@@ -1,4 +1,4 @@
-from .timer_prompts import TimerPrompts
+from .timer_display_prompts import TimerPrompts
 from .timer_utils import TerminalUtils
 
 """
