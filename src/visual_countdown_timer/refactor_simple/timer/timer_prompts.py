@@ -11,7 +11,13 @@ class TimerPrompts:
         pass
 
     @staticmethod
-    def display_introductory_text()
+    def display_timer_introduction():
         """
-        # Add docstring to this function.
+        Prints the introductory text for the Visual Countdown Timer interface.
+        Args: None.
+        Returns: None.
         """
+        print(THICK_HORIZONTAL_LINE)         # Define this.
+        print('Visual Countdown Timer')
+        print('Press Ctrl + C to exit.')     # Define this.
+        print(f'{THICK_HORIZONTAL_LINE}\n')
