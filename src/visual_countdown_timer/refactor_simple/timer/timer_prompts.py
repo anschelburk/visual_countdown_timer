@@ -9,3 +9,9 @@ class TimerPrompts:
 
     def __init__(self):
         pass
+
+    @staticmethod
+    def display_introductory_text()
+        """
+        # Add docstring to this function.
+        """

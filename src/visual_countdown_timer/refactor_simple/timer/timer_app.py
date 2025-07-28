@@ -1,8 +1,10 @@
+from .timer_utils import TerminalUtils
+
 """
 # Add docstring to this module.
 """
 
-class TimerApp(self):
+class TimerApp:
 
     """
     Main timer application class that coordinates all components.
@@ -12,4 +14,7 @@ class TimerApp(self):
         pass
 
     def run(self):
-        pass
+        TerminalUtils.clear_terminal_screen()
+        # Display introductory text.
+        # Ask user for timer info.
+        # Run timer loop.
