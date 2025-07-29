@@ -37,7 +37,6 @@ class TerminalUtils:
     @staticmethod
     def initialize_exit_handler():
         """Setup graceful shutdown handler for interrupt signals (typically Ctrl+C)."""
-        print("initialize_exit_handler() function is running.")
         def signal_handler(sig, frame):
             print("\n\nTimer stopped. Thank you for using Visual Countdown Timer!")
             sys.exit(TimerConfig.EXIT_SUCCESS)

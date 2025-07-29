@@ -1,4 +1,4 @@
-# from .timer_display_prompts import TerminalUtils
+# from .timer_display_prompts import DisplayWelcomeMessage
 from timer_utils import TerminalUtils
 
 """

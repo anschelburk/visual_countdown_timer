@@ -1,3 +1,5 @@
+from timer_utils import TerminalUtils
+
 """
 # Add docstring for module.
 """
@@ -39,4 +41,5 @@ class DisplayForUser:
         Args: None.
         Returns: None.
         """
+        TerminalUtils.clear_terminal_screen()
         PrintTextBlock.timer_title_text()
