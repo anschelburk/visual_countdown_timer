@@ -3,13 +3,15 @@ import os
 # Add docstring for module.
 """
 
-class TerminalUtils:
+class ClearTerminalScreen:
     """
     # Add docstring for class.
-    ""
+    """
 
-    @staticmethod
-    def  clear_terminal_screen():
+    def __init__(self):
+        self.clear_terminal_screen()
+
+    def  clear_terminal_screen(self):
     """
     Clears the terminal screen.
     Args: None.
