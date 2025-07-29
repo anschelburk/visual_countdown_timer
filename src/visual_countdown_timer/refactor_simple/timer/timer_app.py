@@ -1,5 +1,5 @@
-from .timer_display_prompts import DisplayForUser
-from .timer_utils import ClearTerminalScreen
+# from .timer_display_prompts import TerminalUtils
+from timer_utils import TerminalUtils
 
 """
 # Add docstring to this module.
@@ -12,10 +12,10 @@ class TimerApp:
     """
 
     def __init__(self):
-        pass
+        TerminalUtils.initialize_exit_handler()
 
     def run(self):
-        ClearTerminalScreen()
-        DisplayForUser.timer_app_welcome()    # Finish defining this.
+        # Display welcome message.
         # Ask user for timer info.
         # Run timer loop.
+        pass
