@@ -37,7 +37,30 @@ class TerminalUtils:
     @staticmethod
     def initialize_exit_handler():
         """Setup graceful shutdown handler for interrupt signals (typically Ctrl+C)."""
+
         def signal_handler(sig, frame):
             print("\n\nTimer stopped. Thank you for using Visual Countdown Timer!")
             sys.exit(TimerConfig.EXIT_SUCCESS)
         signal.signal(signal.SIGINT, signal_handler)
+
+
+class TextUtils:
+    """
+    Utility class for text cleanup and formatting.
+    """
+
+    @staticmethod
+    def clean_text(unformatted_text):
+        """
+        Removes leading and trailing spaces and common punctuation from a string.
+    
+        Args:
+            unformatted_text (str): The string to be cleaned.
+    
+        Returns:
+            clean_text (str): The cleaned string with specified characters removed from both ends.
+        """
+        CHARACTERS_TO_REMOVE = " .,\"\'"
+        clean_text = unformatted_text.strip(CHARACTERS_TO_REMOVE)
+        return clean_text
+    

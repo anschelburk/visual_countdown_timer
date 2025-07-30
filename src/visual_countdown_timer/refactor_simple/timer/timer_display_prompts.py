@@ -54,10 +54,12 @@ class DisplayWelcomeMessage:
         PrintTextBlock.timer_title_text()
         PrintTextBlock.timer_app_introduction()
 
-class GetFromUser(self):
+class GetCountTimesFromUser(self):
 
     """
     """
 
     def __init__(self):
         self.countdown_times = None
+
+    
