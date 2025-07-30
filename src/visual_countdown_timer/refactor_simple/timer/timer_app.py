@@ -1,4 +1,4 @@
-# from .timer_display_prompts import DisplayWelcomeMessage
+from timer_display_prompts import DisplayWelcomeMessage
 from timer_utils import TerminalUtils
 
 """
@@ -15,7 +15,7 @@ class TimerApp:
         TerminalUtils.initialize_exit_handler()
 
     def run(self):
-        # Display welcome message.
+        DisplayWelcomeMessage()
         # Ask user for timer info.
         # Run timer loop.
         pass

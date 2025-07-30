@@ -41,7 +41,6 @@ class PrintTextBlock:
         print('This timer counts down to a set number of minutes past each hour.')
         print('For example, if you enter \"25\", it will count down to 1:25, 2:25, etc.\n')
 
-
 class DisplayWelcomeMessage:
     """
     Prints the introductory text for the Visual Countdown Timer interface.
@@ -49,5 +48,16 @@ class DisplayWelcomeMessage:
 
     def __init__(self):
         TerminalUtils.clear_terminal_screen()
+        self._timer_app_welcome()
+
+    def _timer_app_welcome(self):
         PrintTextBlock.timer_title_text()
         PrintTextBlock.timer_app_introduction()
+
+class GetFromUser(self):
+
+    """
+    """
+
+    def __init__(self):
+        self.countdown_times = None
