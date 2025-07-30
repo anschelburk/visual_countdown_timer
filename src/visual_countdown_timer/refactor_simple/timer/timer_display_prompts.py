@@ -42,20 +42,12 @@ class PrintTextBlock:
         print('For example, if you enter \"25\", it will count down to 1:25, 2:25, etc.\n')
 
 
-class DisplayForUser:
+class DisplayWelcomeMessage:
     """
-    # Add docstring for class.
+    Prints the introductory text for the Visual Countdown Timer interface.
     """
 
     def __init__(self):
-        pass
-
-    @staticmethod
-    def timer_app_welcome():
-        """
-        Prints the introductory text for the Visual Countdown Timer interface.
-        Args: None.
-        Returns: None.
-        """
         TerminalUtils.clear_terminal_screen()
-        TextBlock.timer_title_text()
+        PrintTextBlock.timer_title_text()
+        PrintTextBlock.timer_app_introduction()
