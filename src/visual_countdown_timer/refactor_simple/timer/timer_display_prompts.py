@@ -4,7 +4,7 @@ from timer_utils import TerminalUtils
 # Add docstring for module.
 """
 
-class PrintTextBlock:
+class TextBlocks:
     """
     Pre-built text blocks derived from configuration settings.
 
@@ -18,12 +18,22 @@ class PrintTextBlock:
     the timer application.
     """
 
-    @staticmethod
+    INDENT = DisplaySettings.INDENT_LENGTH * ' '
+    THICK_HORIZONTAL_LINE = DisplaySettings.LINE_LENGTH * '='
+    THIN_HORIZONTAL_LINE = DisplaySettings.LINE_LENGTH * '-'
+
+    @classmethod
     def timer_title_text():
-        print(THICK_HORIZONTAL_LINE)         # Define this.
+        print(cls.THICK_HORIZONTAL_LINE)
         print('Visual Countdown Timer')
-        print('Press Ctrl + C to exit.')     # Define this.
-        print(THICK_HORIZONTAL_LINE)         # Define this.
+        print('Press Ctrl + C to exit.')
+        print(cls.THICK_HORIZONTAL_LINE)
+
+    @classmethod
+    def timer_introduction_text():
+        print('Welcome to Visual Countdown Timer!')
+        print('This timer counts down to a set number of minutes past each hour.')
+        print('For example, if you enter \"25\", it will count down to 1:25, 2:25, etc.\n')
 
 
 class DisplayForUser:
@@ -42,4 +52,4 @@ class DisplayForUser:
         Returns: None.
         """
         TerminalUtils.clear_terminal_screen()
-        PrintTextBlock.timer_title_text()
+        TextBlock.timer_title_text()
