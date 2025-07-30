@@ -1,4 +1,5 @@
-from timer_display_prompts import DisplayWelcomeMessage
+# from timer_logic import TimerLogic
+# from timer_display_prompts import DisplayActions
 from timer_utils import TerminalUtils
 
 """
@@ -12,10 +13,17 @@ class TimerApp:
     """
 
     def __init__(self):
-        TerminalUtils.initialize_exit_handler()
+        self.terminal_actions = TerminalUtils()
+        # self.display = DisplayActions()
+        # self.core_logic = TimerLogic()
 
     def run(self):
-        DisplayWelcomeMessage()
+        terminal_actions.initialize_exit_handler()
+        terminal_actions.clear_terminal_screen()
+        # display.show_welcome_message()
+        # display.get_countdown_times_from_user()
+        # display.get_hour_format_from_user()
+        # core_logic.run_timer_loop()
         # Ask user for timer info.
         # Run timer loop.
         pass
