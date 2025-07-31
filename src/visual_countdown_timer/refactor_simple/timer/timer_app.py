@@ -1,7 +1,6 @@
 from datetime import datetime
-from .user_input import UserInput
 from .display import ProgressBar, UserDisplay
-from .time_calculations import TimeCalculations
+from .time_calculations import TimeCalculations, UserInput
 from .system_utils import SystemUtils
 
 """
