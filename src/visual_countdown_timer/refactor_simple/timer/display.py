@@ -1,5 +1,12 @@
 from .settings import DisplaySettings
 
+"""
+Display and output handling for the Visual Countdown Timer.
+
+This module provides classes for formatting and displaying information
+to the user, including the timer interface and status messages.
+"""
+
 class UserDisplay:
     """Handles displaying information to the user."""
     

@@ -1,7 +1,12 @@
 from datetime import datetime, timedelta
 from .settings import TimerConfig
 
-from datetime import datetime, timedelta
+"""
+Time calculation and formatting utilities for the Visual Countdown Timer.
+
+This module provides classes for handling datetime operations, including
+calculating next occurrences, remaining time, and formatting time displays.
+"""
 
 class TimeCalculations:
     """Handles all time-related calculations and formatting."""

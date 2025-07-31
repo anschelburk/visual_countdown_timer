@@ -1,3 +1,10 @@
+"""
+Configuration settings for the Visual Countdown Timer.
+
+This module defines configuration classes containing settings for
+display formatting, timer behavior, and validation parameters.
+"""
+
 class DisplaySettings:
     """Configuration for display formatting and visual elements."""
     

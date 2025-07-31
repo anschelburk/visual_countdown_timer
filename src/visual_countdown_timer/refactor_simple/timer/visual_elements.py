@@ -1,6 +1,13 @@
 import math
 from .settings import DisplaySettings
 
+"""
+Visual component creation for the Visual Countdown Timer.
+
+This module provides classes for creating visual elements like progress bars
+and other graphical components used in the timer display.
+"""
+
 class VisualElements:
     """Handles creation of visual elements like progress bars."""
     

@@ -5,6 +5,13 @@ from .time_calculations import TimeCalculations
 from .visual_elements import VisualElements
 from .system_utils import SystemUtils
 
+"""
+Main application coordinator for the Visual Countdown Timer.
+
+This module provides the main TimerApp class that orchestrates all other
+components to create the complete countdown timer application.
+"""
+
 class TimerApp:
     """Main application coordinator."""
     

@@ -4,6 +4,13 @@ import signal
 import sys
 import time
 
+"""
+System-level utilities for the Visual Countdown Timer.
+
+This module provides classes for handling system operations like terminal
+clearing, timing controls, and text processing utilities.
+"""
+
 class SystemUtils:
     """Handles system-level operations like terminal clearing and timing."""
     

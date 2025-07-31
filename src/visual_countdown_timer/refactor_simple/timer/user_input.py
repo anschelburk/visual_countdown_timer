@@ -4,6 +4,13 @@ from .visual_elements import VisualElements
 from .system_utils import SystemUtils
 from .settings import TimerConfig
 
+"""
+User input handling and validation for the Visual Countdown Timer.
+
+This module provides classes for collecting and validating user input,
+including countdown times and display format preferences.
+"""
+
 class UserInput:
     """Handles all user input collection and validation."""
     
