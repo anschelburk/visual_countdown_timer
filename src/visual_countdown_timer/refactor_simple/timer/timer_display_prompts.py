@@ -7,7 +7,7 @@ from timer_utils import TerminalUtils
 class TextElements:
 
     """
-    Simple text elements derived from configuration settings.
+    Simple text blocks derived from configuration settings.
 
     All blocks in this class are derived from the base measurements
     defined in DisplaySettings, providing consistent formatting throughout

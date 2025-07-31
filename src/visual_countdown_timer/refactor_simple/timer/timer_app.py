@@ -1,9 +1,8 @@
-# from timer_logic import TimerLogic
-# from timer_display_prompts import DisplayActions
+from timer_display_prompts import UserMessages
 from timer_utils import TerminalUtils
 
 """
-# Add docstring to this module.
+Core logic for Visual Countdown Timer app.
 """
 
 class TimerApp:
@@ -13,17 +12,11 @@ class TimerApp:
     """
 
     def __init__(self):
-        self.terminal_actions = TerminalUtils()
-        # self.display = DisplayActions()
-        # self.core_logic = TimerLogic()
+        TerminalUtils.initialize_exit_handler()
 
     def run(self):
-        terminal_actions.initialize_exit_handler()
-        terminal_actions.clear_terminal_screen()
-        # display.show_welcome_message()
-        # display.get_countdown_times_from_user()
-        # display.get_hour_format_from_user()
-        # core_logic.run_timer_loop()
-        # Ask user for timer info.
-        # Run timer loop.
-        pass
+        TerminalUtils.clear_terminal_screen()
+        UserMessages.timer_app_welcome()
+        # TimerActions.get_countdown_times_from_user()
+        # TimerActions.get_hour_format_from_user()
+        # TimerActions.run_timer_loop()
