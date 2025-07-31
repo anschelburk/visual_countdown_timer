@@ -1,6 +1,5 @@
-from .display import UserDisplay
+from .display import ProgressBar, UserDisplay
 from .time_calculations import TimeCalculations
-from .visual_elements import VisualElements
 from .system_utils import SystemUtils
 from .settings import TimerConfig
 

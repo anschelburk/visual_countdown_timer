@@ -1,8 +1,7 @@
 from datetime import datetime
 from .user_input import UserInput
-from .display import UserDisplay
+from .display import ProgressBar, UserDisplay
 from .time_calculations import TimeCalculations
-from .visual_elements import VisualElements
 from .system_utils import SystemUtils
 
 """
@@ -49,7 +48,7 @@ class TimerApp:
             remaining_minutes, remaining_seconds = divmod(total_remaining, 60)
             
             # Create visual elements
-            progress_bar_text = VisualElements.create_progress_bar(total_remaining)
+            progress_bar_text = ProgressBar.create_progress_bar(total_remaining)
             
             # Display everything
             UserDisplay.show_timer_display(
