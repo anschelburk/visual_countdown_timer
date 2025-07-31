@@ -1,7 +1,7 @@
 from datetime import datetime
 from .display import ProgressBar, UserDisplay
-from .time_calculations import TimeCalculations, UserInput
 from .system_utils import SystemUtils
+from .timer_utils import TimeCalculations, UserInput
 
 """
 Main application coordinator for the Visual Countdown Timer.
