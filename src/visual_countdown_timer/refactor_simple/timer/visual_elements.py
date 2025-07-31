@@ -1,4 +1,5 @@
 import math
+from .constants import DisplaySettings
 
 class VisualElements:
     """Handles creation of visual elements like progress bars."""

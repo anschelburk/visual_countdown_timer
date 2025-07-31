@@ -1,4 +1,7 @@
 from datetime import datetime, timedelta
+from .constants import TimerConfig
+
+from datetime import datetime, timedelta
 
 class TimeCalculations:
     """Handles all time-related calculations and formatting."""
