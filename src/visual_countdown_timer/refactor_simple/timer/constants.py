@@ -1,0 +1,24 @@
+class DisplaySettings:
+    """Configuration for display formatting and visual elements."""
+    
+    # Line formatting
+    LINE_THICKNESS = 32
+    INDENT_LENGTH = 2
+    
+    # Progress bar settings
+    PROGRESS_BAR_WIDTH = 30
+
+
+class TimerConfig:
+    """Configuration for timer behavior and validation."""
+    
+    # Time format options
+    POSSIBLE_HOUR_FORMATS = (12, 24)
+    
+    # Display range for confirmation preview
+    FIRST_HOUR_IN_RANGE = 1
+    LAST_HOUR_IN_RANGE = 3
+    
+    # Input validation
+    MIN_MINUTES = 0
+    MAX_MINUTES = 59
