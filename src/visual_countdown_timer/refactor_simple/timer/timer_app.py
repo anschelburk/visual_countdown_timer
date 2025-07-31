@@ -1,5 +1,6 @@
 from timer_display_prompts import UserMessages
 from timer_utils import TerminalUtils
+# from timer_utils import CoreUtils
 
 """
 Core logic for Visual Countdown Timer app.
@@ -17,6 +18,6 @@ class TimerApp:
     def run(self):
         TerminalUtils.clear_terminal_screen()
         UserMessages.timer_app_welcome()
-        # TimerActions.get_countdown_times_from_user()
-        # TimerActions.get_hour_format_from_user()
-        # TimerActions.run_timer_loop()
+        # UserMessages.get_countdown_times()
+        # UserMessages.get_hour_display_format()
+        # CoreUtils.timer_countdown_continuous()
