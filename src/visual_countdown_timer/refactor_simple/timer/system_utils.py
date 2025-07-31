@@ -30,6 +30,19 @@ class SystemUtils:
         return clean_text
     
     @staticmethod
+    def sleep_until_next_second():
+        """
+        Pauses execution to align next loop with the next full second.
+        
+        Calculates fractional time remaining in current second and sleeps
+        for that duration to ensure loops run on second boundaries.
+        """
+        remaining_time_until_next_loop = 1 - (datetime.now().microsecond / 1_000_000)
+        time.sleep(remaining_time_until_next_loop)
+    
+class TerminalUtils:
+
+    @staticmethod
     def clear_terminal():
         """Clears the terminal screen."""
         # Use 'clear' if running in a Unix-like shell on Windows
@@ -41,18 +54,7 @@ class SystemUtils:
         # Use 'clear' on macOS, Linux, or other Unix-based environments
         else:
             os.system('clear')
-    
-    @staticmethod
-    def sleep_until_next_second():
-        """
-        Pauses execution to align next loop with the next full second.
-        
-        Calculates fractional time remaining in current second and sleeps
-        for that duration to ensure loops run on second boundaries.
-        """
-        remaining_time_until_next_loop = 1 - (datetime.now().microsecond / 1_000_000)
-        time.sleep(remaining_time_until_next_loop)
-    
+
     @staticmethod
     def initialize_exit_handler():
         """Setup graceful shutdown handler for interrupt signals (typically Ctrl+C)."""
@@ -61,4 +63,3 @@ class SystemUtils:
             print("\n\nTimer stopped. Thank you for using Visual Countdown Timer!")
             sys.exit(TimerConfig.EXIT_SUCCESS)
         signal.signal(signal.SIGINT, signal_handler)
-

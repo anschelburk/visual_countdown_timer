@@ -1,6 +1,6 @@
 from datetime import datetime
 from .display_utils import ProgressBar, UserDisplay
-from .system_utils import SystemUtils
+from .system_utils import SystemUtils, TerminalUtils
 from .timer_utils import TimeCalculations, UserInput
 
 """
@@ -15,11 +15,11 @@ class TimerApp:
     
     def __init__(self):
         """Initialize the timer application."""
-        SystemUtils.initialize_exit_handler()
+        TerminalUtils.initialize_exit_handler()
     
     def run(self):
         """Run the main timer application."""
-        SystemUtils.clear_terminal()
+        TerminalUtils.clear_terminal()
         
         # Get user preferences
         countdown_minutes = UserInput.get_countdown_time('initial')
@@ -31,7 +31,7 @@ class TimerApp:
     def _timer_loop(self, countdown_minutes, hour_format):
         """Main timer loop that updates the display continuously."""
         while True:
-            SystemUtils.clear_terminal()
+            TerminalUtils.clear_terminal()
             
             # Get current time information
             datetime_now = datetime.now().astimezone()
