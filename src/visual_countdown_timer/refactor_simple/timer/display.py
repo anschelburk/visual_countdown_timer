@@ -1,4 +1,4 @@
-from .constants import DisplaySettings
+from .settings import DisplaySettings
 
 class UserDisplay:
     """Handles displaying information to the user."""

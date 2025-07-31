@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from .constants import TimerConfig
+from .settings import TimerConfig
 
 from datetime import datetime, timedelta
 
