@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from .display import ProgressBar, UserDisplay
+from .display_utils import ProgressBar, UserDisplay
 from .settings import TimerConfig
 from .system_utils import SystemUtils
 
