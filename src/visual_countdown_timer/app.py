@@ -1,11 +1,5 @@
-from .timer.actions import (
-    print_title_block,
-    run_timer
-    )
-
-from .timer.support import clear_terminal
+from .timer.timer_app import TimerApp
 
 def main():
-    clear_terminal()
-    print_title_block()
-    run_timer()
+	timer_app = TimerApp()
+	timer_app.run()
