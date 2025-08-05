@@ -61,6 +61,25 @@ class UserDisplay:
         remaining_seconds_formatted = f'{UserDisplay.INDENT}{remaining_seconds:02} {seconds_label}'
         return remaining_seconds_formatted
     
+    @staticmethod
+    def remaining_time_formatted(unit_of_time:str, remaining_time_unformatted:int) -> str:
+        """
+        Formats the remaining minutes or seconds for display in-app.
+
+        Args:
+            unit_of_time (str): Either "minute" or "second"
+            remaining_time_unformatted (int): The number of remaining minutes or seconds
+
+        Returns:
+            remaining_time_formatted (str): The formatted number of remaining minutes or seconds.
+        """
+        if remaining_time_unformatted == 1:
+            time_label = unit_of_time[:-1]
+        else:
+           time_label = unit_of_time
+        remaining_time_formatted = f'{UserDisplay.INDENT}{remaining_time_unformatted:02} {time_label}'
+        return remaining_time_formatted
+
     @classmethod
     def show_timer_display(cls, current_date, current_time, target_time, remaining_minutes, 
                           remaining_seconds, progress_bar_text):
@@ -72,6 +91,6 @@ class UserDisplay:
         print(UserDisplay.THIN_HORIZONTAL_LINE)
         print(f'Countdown until {target_time}:')
         print(UserDisplay.THIN_HORIZONTAL_LINE)
-        print(cls.remaining_minutes_formatted(remaining_minutes))
-        print(cls.remaining_seconds_formatted(remaining_seconds))
+        print(cls.remaining_time_formatted("minutes", remaining_minutes))
+        print(cls.remaining_time_formatted("seconds", remaining_seconds))
         print(progress_bar_text)
