@@ -41,15 +41,6 @@ class UserDisplay:
         'This timer counts down to a set number of minutes past each hour.\n' +
         'For example, if you enter \"25\", it will count down to 1:25, 2:25, etc.\n'
     )
-#    @staticmethod
-#    def show_intro_text(runtime_status):
-#        """Displays introductory text based on runtime status."""
-#        if runtime_status == 'initial':
-#            print('Welcome to Visual Countdown Timer!')
-#            print('This timer counts down to a set number of minutes past each hour.')
-#            print('For example, if you enter "25", it will count down to 1:25, 2:25, etc.\n')
-#        elif runtime_status == 'update':
-#            print('\nWould you like to update the countdown time?')
 
     TITLE_BLOCK = (
         THICK_HORIZONTAL_LINE + '\n' +

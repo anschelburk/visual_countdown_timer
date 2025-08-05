@@ -92,7 +92,7 @@ class UserInput:
         Returns:
             countdown_minutes (int): A valid countdown minute (0–59)
         """
-        UserDisplay.show_intro_text(runtime_status)
+        print(UserDisplay.TIMER_INTRO_TEXT)
 
         while True:
             try:
