@@ -45,14 +45,20 @@ class UserDisplay:
             print('For example, if you enter "25", it will count down to 1:25, 2:25, etc.\n')
         elif runtime_status == 'update':
             print('\nWould you like to update the countdown time?')
-    
-    @staticmethod
-    def show_title_block():
-        """Prints the title block for the Visual Countdown Timer interface."""
-        print(UserDisplay.THICK_HORIZONTAL_LINE)
-        print('Visual Countdown Timer')
-        print('Press Ctrl + C to exit.')
-        print(f'{UserDisplay.THICK_HORIZONTAL_LINE}\n')
+
+    TITLE_BLOCK = (
+        UserDisplay.THICK_HORIZONTAL_LINE + '\n'
+        'Visual Countdown Timer'
+        'Press Ctrl + C to exit.'
+        UserDisplay.THICK_HORIZONTAL_LINE + '\n\n'
+    )
+#     @staticmethod
+#    def show_title_block():
+#        """Prints the title block for the Visual Countdown Timer interface."""
+#        print(UserDisplay.THICK_HORIZONTAL_LINE)
+#        print('Visual Countdown Timer')
+#        print('Press Ctrl + C to exit.')
+#        print(f'{UserDisplay.THICK_HORIZONTAL_LINE}\n')
     
     @staticmethod
     def show_timer_display(current_date, current_time, target_time, remaining_minutes, 
