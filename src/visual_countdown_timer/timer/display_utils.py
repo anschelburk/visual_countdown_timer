@@ -67,7 +67,7 @@ class UserDisplay:
         minutes_label = "minute" if remaining_minutes == 1 else "minutes"
         seconds_label = "second" if remaining_seconds == 1 else "seconds"
 
-        UserDisplay.show_title_block()
+        print(UserDisplay.TITLE_BLOCK)
         
         print(current_date)
         print(f'Current Time: {current_time}')
