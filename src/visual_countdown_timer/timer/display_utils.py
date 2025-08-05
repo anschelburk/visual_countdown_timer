@@ -48,36 +48,31 @@ class UserDisplay:
         'Press Ctrl + C to exit.\n' +
         THICK_HORIZONTAL_LINE + '\n\n'
     )
-
-    @staticmethod
-    def remaining_minutes_formatted(remaining_minutes):
-        minutes_label = "minute" if remaining_minutes == 1 else "minutes"
-        remaining_minutes_formatted = f'{UserDisplay.INDENT}{remaining_minutes:02} {minutes_label}'
-        return remaining_minutes_formatted
-
-    @staticmethod
-    def remaining_seconds_formatted(remaining_seconds):
-        seconds_label = "second" if remaining_seconds == 1 else "seconds"
-        remaining_seconds_formatted = f'{UserDisplay.INDENT}{remaining_seconds:02} {seconds_label}'
-        return remaining_seconds_formatted
     
     @staticmethod
-    def remaining_time_formatted(unit_of_time:str, remaining_time_unformatted:int) -> str:
+    def format_remaining_time(remaining_minutes:int, remaining_seconds:int) -> str:
         """
-        Formats the remaining minutes or seconds for display in-app.
+        Formats the remaining minutes and seconds for display in-app.
 
         Args:
-            unit_of_time (str): Either "minute" or "second"
-            remaining_time_unformatted (int): The number of remaining minutes or seconds
+            remaining_minutes (int): The unformatted number of remaining minutes.
+            remaining_seconds (int): The unformatted number of remaining seconds.
 
         Returns:
-            remaining_time_formatted (str): The formatted number of remaining minutes or seconds.
+            remaining_time_formatted (str): The formatted number of remaining minutes and seconds.
         """
-        if remaining_time_unformatted == 1:
-            time_label = unit_of_time[:-1]
-        else:
-           time_label = unit_of_time
-        remaining_time_formatted = f'{UserDisplay.INDENT}{remaining_time_unformatted:02} {time_label}'
+
+        minutes_label = "minute" if remaining_minutes == 1 else "minutes"
+        seconds_label = "second" if remaining_seconds == 1 else "seconds"
+
+        remaining_minutes_formatted = f'{UserDisplay.INDENT}{remaining_minutes:02} {minutes_label}'
+        remaining_seconds_formatted = f'{UserDisplay.INDENT}{remaining_seconds:02} {seconds_label}'
+
+        remaining_time_formatted = (
+            remaining_minutes_formatted + '\n' +
+            remaining_seconds_formatted
+        )
+
         return remaining_time_formatted
 
     @classmethod
@@ -91,6 +86,5 @@ class UserDisplay:
         print(UserDisplay.THIN_HORIZONTAL_LINE)
         print(f'Countdown until {target_time}:')
         print(UserDisplay.THIN_HORIZONTAL_LINE)
-        print(cls.remaining_time_formatted("minutes", remaining_minutes))
-        print(cls.remaining_time_formatted("seconds", remaining_seconds))
+        print(cls.format_remaining_time(remaining_minutes, remaining_seconds))
         print(progress_bar_text)
