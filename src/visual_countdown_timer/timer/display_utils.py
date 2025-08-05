@@ -54,12 +54,17 @@ class UserDisplay:
         minutes_label = "minute" if remaining_minutes == 1 else "minutes"
         remaining_minutes_formatted = f'{UserDisplay.INDENT}{remaining_minutes:02} {minutes_label}'
         return remaining_minutes_formatted
+
+    @staticmethod
+    def remaining_seconds_formatted(remaining_seconds):
+        seconds_label = "second" if remaining_seconds == 1 else "seconds"
+        remaining_seconds_formatted = f'{UserDisplay.INDENT}{remaining_seconds:02} {seconds_label}'
+        return remaining_seconds_formatted
     
     @classmethod
     def show_timer_display(cls, current_date, current_time, target_time, remaining_minutes, 
                           remaining_seconds, progress_bar_text):
         """Displays the main timer interface."""
-        seconds_label = "second" if remaining_seconds == 1 else "seconds"
 
         print(UserDisplay.TITLE_BLOCK)   
         print(current_date)
@@ -68,5 +73,5 @@ class UserDisplay:
         print(f'Countdown until {target_time}:')
         print(UserDisplay.THIN_HORIZONTAL_LINE)
         print(cls.remaining_minutes_formatted(remaining_minutes))
-        print(f'{UserDisplay.INDENT}{remaining_seconds:02} {seconds_label}')
+        print(cls.remaining_seconds_formatted(remaining_seconds))
         print(progress_bar_text)
