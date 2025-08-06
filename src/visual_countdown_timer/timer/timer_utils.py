@@ -147,7 +147,10 @@ class UserInput:
     def _confirm_minutes(minutes):
         """Displays preview and gets user confirmation."""
         print(f'\nYou entered {minutes} minutes. The timer will count down to:')
-        print(' | '.join(f'{hour:02}:{minutes:02}' for hour in range(TimerConfig.FIRST_HOUR_IN_RANGE, TimerConfig.LAST_HOUR_IN_RANGE + 1)) + ' | etc.\n')
+
+        EXAMPLE_HOURS_START = 1
+        EXAMPLE_HOURS_END = 3
+        print(' | '.join(f'{hour:02}:{minutes:02}' for hour in range(EXAMPLE_HOURS_START, EXAMPLE_HOURS_END + 1)) + ' | etc.\n')
 
         while True:
             user_confirmation = SystemUtils.clean_text(input("Is this correct? Please enter 'y' or 'n': ")).lower()

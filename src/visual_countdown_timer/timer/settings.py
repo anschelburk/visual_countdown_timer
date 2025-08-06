@@ -22,10 +22,6 @@ class TimerConfig:
     # Time format options
     POSSIBLE_HOUR_FORMATS = (12, 24)
     
-    # Display range for confirmation preview
-    FIRST_HOUR_IN_RANGE = 1
-    LAST_HOUR_IN_RANGE = 3
-    
     # Input validation
     MIN_MINUTES = 0
     MAX_MINUTES = 59
