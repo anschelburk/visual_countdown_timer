@@ -58,7 +58,7 @@ class UserDisplay:
     )
     
     @staticmethod
-    def format_remaining_time(remaining_minutes:int, remaining_seconds:int) -> str:
+    def format_time_display(remaining_minutes:int, remaining_seconds:int) -> str:
         """
         Formats the remaining minutes and seconds for display in-app.
 
@@ -94,5 +94,5 @@ class UserDisplay:
         print(UserDisplay.THIN_HORIZONTAL_LINE)
         print(f'Countdown until {target_time}:')
         print(UserDisplay.THIN_HORIZONTAL_LINE)
-        print(cls.format_remaining_time(remaining_minutes, remaining_seconds))
+        print(cls.format_time_display(remaining_minutes, remaining_seconds))
         print(progress_bar_text)
