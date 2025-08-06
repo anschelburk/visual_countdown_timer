@@ -38,7 +38,7 @@ class SystemUtils:
             elif user_input == 'n':
                 return False
             else:
-                user_input = ('Error: Please type either \"y\" to for yes, or \"n\" for no: ')
+                user_input = input('Error: Please type either \"y\" to for yes, or \"n\" for no: ')
     
     @staticmethod
     def sleep_until_next_second(current_time: datetime):
