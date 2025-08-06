@@ -8,11 +8,11 @@ This module provides classes for formatting and displaying information
 to the user, including the timer interface and status messages.
 """
 
-class ProgressBar: # Previously 'VisualElements'. Add to all other modules.
+class ProgressBar:
     """Handles creation of visual elements like progress bars."""
     
     @staticmethod
-    def create_progress_bar(remaining_time_in_seconds):
+    def create_progress_bar(remaining_time_in_seconds:int) -> str:
         """
         Generates a visual progress bar representing remaining time.
         
@@ -20,12 +20,20 @@ class ProgressBar: # Previously 'VisualElements'. Add to all other modules.
             remaining_time_in_seconds (int): Remaining time in seconds
             
         Returns:
-            str: Visual progress bar with '#' and '.' characters
+            progress_bar_text (str): Visual progress bar with '#' and '.' characters
         """
-        remaining_minutes_rounded = math.ceil(remaining_time_in_seconds / 60)
-        progress_bar_full = '#' * round(remaining_minutes_rounded / 2)
-        progress_bar_empty = '.' * (DisplaySettings.PROGRESS_BAR_WIDTH - round(remaining_minutes_rounded / 2))
-        return f'[{progress_bar_full}{progress_bar_empty}]'
+        
+        remaining_minutes = remaining_time_in_seconds / 60
+        minutes_rounded_up = math.ceil(remaining_minutes)
+        
+        progress_bar_width_full = round(minutes_rounded_up / 2)
+        progress_bar_width_empty = DisplaySettings.PROGRESS_BAR_WIDTH - progress_bar_width_full
+        
+        progress_bar_full = '#' * progress_bar_width_full
+        progress_bar_empty = '.' * progress_bar_width_empty
+        
+        progress_bar_text = f'[{progress_bar_full}{progress_bar_empty}]'
+        return progress_bar_text
 
 class UserDisplay:
     """Handles displaying information to the user."""
