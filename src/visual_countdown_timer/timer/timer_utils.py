@@ -74,6 +74,8 @@ class TimeCalculations:
             elif hour_display_format == 24:
                 formatted_hours = unformatted_time.strftime('%H:%M')
                 return f'{formatted_hours} {timezone}'
+            else:
+                raise ValueError
                 
         except ValueError:
             raise ValueError('Hours format must be either 12 or 24.')
