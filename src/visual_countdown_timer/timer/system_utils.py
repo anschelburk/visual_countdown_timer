@@ -15,7 +15,7 @@ class SystemUtils:
     """Handles system-level operations like terminal clearing and timing."""
     
     @staticmethod
-    def clean_text(unformatted_text):
+    def clean_text(unformatted_text:str) -> str:
         """
         Removes leading and trailing spaces and common punctuation from a string.
 
