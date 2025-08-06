@@ -15,7 +15,7 @@ class SystemUtils:
     """Handles system-level operations like terminal clearing and timing."""
     
     @staticmethod
-    def clean_text(unformatted_text:str) -> str:
+    def clean_text(unformatted_text: str) -> str:
         """
         Removes leading and trailing spaces and common punctuation from a string.
 
@@ -30,15 +30,15 @@ class SystemUtils:
         return clean_text
     
     @staticmethod
-    def sleep_until_next_second():
+    def sleep_until_next_second(current_time: datetime):
         """
         Pauses execution to align next loop with the next full second.
         
         Calculates fractional time remaining in current second and sleeps
         for that duration to ensure loops run on second boundaries.
         """
-        remaining_time_until_next_loop = 1 - (datetime.now().microsecond / 1_000_000)
-        time.sleep(remaining_time_until_next_loop)
+        remaining_time_until_next_loop = 1 - (current_time.microsecond / 1_000_000)
+        return time.sleep(remaining_time_until_next_loop)
     
 class TerminalUtils:
 

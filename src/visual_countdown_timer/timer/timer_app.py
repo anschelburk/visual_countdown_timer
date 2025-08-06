@@ -55,4 +55,4 @@ class TimerApp:
                 remaining_minutes, remaining_seconds, progress_bar_text
             )
             
-            SystemUtils.sleep_until_next_second()
+            SystemUtils.sleep_until_next_second(datetime_now)
