@@ -144,19 +144,15 @@ class UserInput:
         return minute
     
     @staticmethod
-    def _confirm_minutes(minutes):
+    def _confirm_minutes(minutes:int) -> bool:
         """Displays preview and gets user confirmation."""
+
         print(f'\nYou entered {minutes} minutes. The timer will count down to:')
 
         EXAMPLE_HOURS_START = 1
         EXAMPLE_HOURS_END = 3
         print(' | '.join(f'{hour:02}:{minutes:02}' for hour in range(EXAMPLE_HOURS_START, EXAMPLE_HOURS_END + 1)) + ' | etc.\n')
 
-        while True:
-            user_confirmation = SystemUtils.clean_text(input("Is this correct? Please enter 'y' or 'n': ")).lower()
-            if user_confirmation == 'y':
-                return True
-            elif user_confirmation == 'n':
-                return False
-            else:
-                print("\nInvalid answer: Please enter 'y' for yes, or 'n' for no.")
+        user_confirmation = input("Is this correct? Please enter \"y\" for yes, or \"n\" for no: ")
+        user_confirmation_bool = SystemUtils.confirm_y_or_n(user_confirmation)
+        return user_confirmation_bool
