@@ -28,6 +28,17 @@ class SystemUtils:
         CHARACTERS_TO_REMOVE = " .,\"'"
         clean_text = unformatted_text.strip(CHARACTERS_TO_REMOVE)
         return clean_text
+
+    @classmethod
+    def confirm_y_or_n(cls, user_input: str) -> bool:
+        while True:
+            user_input = cls.clean_text(user_input).lower()
+            if user_input == 'y':
+                return True
+            elif user_input == 'n':
+                return False
+            else:
+                user_input = ('Error: Please type either \"y\" to for yes, or \"n\" for no: ")
     
     @staticmethod
     def sleep_until_next_second(current_time: datetime):
