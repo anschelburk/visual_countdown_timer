@@ -41,7 +41,7 @@ class SystemUtils:
                 user_input = input('Error: Please type either \"y\" to for yes, or \"n\" for no: ')
 
     @staticmethod
-    def pluralize(raw_text_singular: str, number_input: int) -> str:
+    def pluralize(singular_text: str, count: int) -> str:
         """
         Pluralizes a singular word (for example, "minute" -> "minutes" or "second" -> "seconds"),
         based on a number input.
@@ -53,15 +53,12 @@ class SystemUtils:
         Returns:
             pluralized_text (str): The pluralized text.
         """
-        try:
-            number_input = int(number_input)
-            if number_input == 1:
-                pluralized_text = raw_text_singular
-            else:
-                pluralized_text = raw_text_singular + "s"
-            return pluralized_text
-        except ValueError:
-            print(f"Error: number_input must be an integer. Right now, number_input = {number_input} of type {type(number_input)}")
+    try:
+        count = int(count)
+    except ValueError:
+        raise ValueError(f"Count must be an integer. Right now, count = {count} of type {type(count)}")
+
+    return singular_text if count == 1 else f"{singular_text}s"
     
     @staticmethod
     def sleep_until_next_second(current_time: datetime):
