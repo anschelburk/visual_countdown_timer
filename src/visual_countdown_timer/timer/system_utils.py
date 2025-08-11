@@ -53,6 +53,10 @@ class SystemUtils:
         Returns:
             pluralized_text (str): The pluralized text.
         """
+        try:
+            number_input = int(number_input)
+        except ValueError:
+            print(f"Error: number_input must be an integer. Right now, number_input = {number_input} of type {type(number_input)}")
         if number_input == 1:
             pluralized_text = raw_text_singular
         else:
