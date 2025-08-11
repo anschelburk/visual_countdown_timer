@@ -41,7 +41,18 @@ class SystemUtils:
                 user_input = input('Error: Please type either \"y\" to for yes, or \"n\" for no: ')
 
     @staticmethod
-    def pluralize(raw_text_singular: str, number_input: int)
+    def pluralize(raw_text_singular: str, number_input: int) -> str:
+        """
+        Pluralizes a singular word (for example, "minute" -> "minutes" or "second" -> "seconds"),
+        based on a number input.
+
+        Args:
+            raw_text_singular (str): The singular word to pluralize, or not, based on the numerical input.
+            number_input (int): The numerical input the text is describing.
+
+        Returns:
+            pluralized_text (str): The pluralized text.
+        """
         if number_input == 1:
             pluralized_text = raw_text_singular
         else:
