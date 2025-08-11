@@ -55,13 +55,13 @@ class SystemUtils:
         """
         try:
             number_input = int(number_input)
+            if number_input == 1:
+                pluralized_text = raw_text_singular
+            else:
+                pluralized_text = raw_text_singular + "s"
+            return pluralized_text
         except ValueError:
             print(f"Error: number_input must be an integer. Right now, number_input = {number_input} of type {type(number_input)}")
-        if number_input == 1:
-            pluralized_text = raw_text_singular
-        else:
-            pluralized_text = raw_text_singular + "s"
-        return pluralized_text
     
     @staticmethod
     def sleep_until_next_second(current_time: datetime):
