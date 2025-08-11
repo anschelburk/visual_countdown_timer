@@ -41,8 +41,12 @@ class SystemUtils:
                 user_input = input('Error: Please type either \"y\" to for yes, or \"n\" for no: ')
 
     @staticmethod
-    def pluralize(raw_text: str, number_input: int)
-        pass
+    def pluralize(raw_text_singular: str, number_input: int)
+        if number_input == 1:
+            pluralized_text = raw_text_singular
+        else:
+            pluralized_text = raw_text_singular + "s"
+        return pluralized_text
     
     @staticmethod
     def sleep_until_next_second(current_time: datetime):
