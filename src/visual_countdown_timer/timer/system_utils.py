@@ -43,22 +43,24 @@ class SystemUtils:
     @staticmethod
     def pluralize(singular_text: str, count: int) -> str:
         """
-        Pluralizes a singular word (for example, "minute" -> "minutes" or "second" -> "seconds"),
-        based on a number input.
-
+        Return singular or plural form of text based on count.
+        
         Args:
-            raw_text_singular (str): The singular word to pluralize, or not, based on the numerical input.
-            number_input (int): The numerical input the text is describing.
-
+            singular_text (str): The singular form of the text to pluralize.
+            count (int): The number to determine pluralization. Will be converted to int.
+        
         Returns:
-            pluralized_text (str): The pluralized text.
+            str: The singular text if count is 1, otherwise singular text with 's' appended.
+            
+        Raises:
+            ValueError: If count cannot be converted to an integer.
         """
-    try:
-        count = int(count)
-    except ValueError:
-        raise ValueError(f"Count must be an integer. Right now, count = {count} of type {type(count)}")
+        try:
+            count = int(count)
+        except ValueError:
+            raise ValueError(f"Count must be an integer. Right now, count = {count} of type {type(count)}")
 
-    return singular_text if count == 1 else f"{singular_text}s"
+        return singular_text if count == 1 else singular_text + "s"
     
     @staticmethod
     def sleep_until_next_second(current_time: datetime):
