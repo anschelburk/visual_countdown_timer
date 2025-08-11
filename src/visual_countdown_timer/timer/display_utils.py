@@ -70,8 +70,11 @@ class UserDisplay:
             remaining_time_formatted (str): The formatted number of remaining minutes and seconds.
         """
 
-        minutes_label = "minute" if remaining_minutes == 1 else "minutes"
-        seconds_label = "second" if remaining_seconds == 1 else "seconds"
+        minutes_label = SystemUtils.pluralize("minute", remaining_minutes)
+        seconds_label = SystemUtils.pluralize("second", remaining_seconds)
+        
+#        minutes_label = "minute" if remaining_minutes == 1 else "minutes"
+#        seconds_label = "second" if remaining_seconds == 1 else "seconds"
 
         remaining_minutes_formatted = f'{UserDisplay.INDENT}{remaining_minutes:02} {minutes_label}'
         remaining_seconds_formatted = f'{UserDisplay.INDENT}{remaining_seconds:02} {seconds_label}'
