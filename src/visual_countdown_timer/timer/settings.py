@@ -9,7 +9,7 @@ class DisplaySettings:
     """Configuration for display formatting and visual elements."""
     
     # Line formatting
-    LINE_THICKNESS = 32
+    LINE_THICKNESS = 34
     INDENT_LENGTH = 2
     
     # Progress bar settings
