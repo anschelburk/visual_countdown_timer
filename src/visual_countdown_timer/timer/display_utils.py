@@ -43,7 +43,7 @@ class UserDisplay:
     INDENT = ' ' * DisplaySettings.INDENT_LENGTH
     THICK_HORIZONTAL_LINE = "=" * DisplaySettings.LINE_THICKNESS
     THIN_HORIZONTAL_LINE = "-" * DisplaySettings.LINE_THICKNESS
-    INDENTED_HORIZONTAL_LINE = {INDENT} + '-' * (DisplaySettings.LINE_THICKNESS - DisplaySettings.INDENT_LENGTH)
+    INDENTED_HORIZONTAL_LINE = INDENT + '-' * (DisplaySettings.LINE_THICKNESS - DisplaySettings.INDENT_LENGTH)
     """Handles displaying information to the user."""
 
     TIMER_INTRO_TEXT = (
