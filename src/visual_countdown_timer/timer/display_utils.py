@@ -91,7 +91,7 @@ class UserDisplay:
 
         print(UserDisplay.TITLE_BLOCK)   
         print(current_date)
-        print(f'Current Time: {current_time}\n')
+        print(f'{current_time}\n')
         print(UserDisplay.THIN_HORIZONTAL_LINE)
         print(f'Countdown until {target_time}:')
         print(UserDisplay.THIN_HORIZONTAL_LINE)
