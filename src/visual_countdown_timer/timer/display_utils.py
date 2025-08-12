@@ -97,4 +97,4 @@ class UserDisplay:
         print(f'{UserDisplay.INDENT}Countdown until {target_time}:')
         print(UserDisplay.INDENTED_HORIZONTAL_LINE)
         print(cls.format_time_display(remaining_minutes, remaining_seconds))
-        print(progress_bar_text)
+        print(f"{UserDispaly.INDENT}{progress_bar_text}")
