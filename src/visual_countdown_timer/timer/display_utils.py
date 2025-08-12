@@ -41,9 +41,9 @@ class UserDisplay:
     
     # Display formatting constants
     INDENT = ' ' * DisplaySettings.INDENT_LENGTH
+    INDENTED_HORIZONTAL_LINE = INDENT + '-' * (DisplaySettings.LINE_THICKNESS - DisplaySettings.INDENT_LENGTH)
     THICK_HORIZONTAL_LINE = "=" * DisplaySettings.LINE_THICKNESS
     THIN_HORIZONTAL_LINE = "-" * DisplaySettings.LINE_THICKNESS
-    INDENTED_HORIZONTAL_LINE = INDENT + '-' * (DisplaySettings.LINE_THICKNESS - DisplaySettings.INDENT_LENGTH)
     """Handles displaying information to the user."""
 
     TIMER_INTRO_TEXT = (
@@ -94,7 +94,7 @@ class UserDisplay:
         print(current_date)
         print(current_time)
         print(UserDisplay.INDENTED_HORIZONTAL_LINE)
-        print(f'Countdown until {target_time}:')
+        print(f'{INDENT}Countdown until {target_time}:')
         print(UserDisplay.INDENTED_HORIZONTAL_LINE)
         print(cls.format_time_display(remaining_minutes, remaining_seconds))
         print(progress_bar_text)
