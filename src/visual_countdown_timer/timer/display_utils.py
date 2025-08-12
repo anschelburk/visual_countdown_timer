@@ -55,7 +55,7 @@ class UserDisplay:
         THICK_HORIZONTAL_LINE + '\n' +
         'Visual Countdown Timer\n' +
         'Press Ctrl + C to exit.\n' +
-        THICK_HORIZONTAL_LINE + '\n\n'
+        THICK_HORIZONTAL_LINE
     )
     
     @staticmethod
