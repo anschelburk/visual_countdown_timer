@@ -107,20 +107,23 @@ class UserInput:
                 print(f"\nError: {error_message}\n")
     
     @staticmethod
-    def get_hour_format():
+    def get_hour_format() -> int:
         """
         Prompts the user to choose between 12-hour and 24-hour time display.
-        
+
+        Args:
+            None
+            
         Returns:
-            user_hours (int): The user's preferred time format (12 or 24).
+            user_hours_validated (int): The user's preferred time format (12 or 24).
         """
         print("\nWould you like the time to display as 12 hours or 24 hours?")
-        print(f'{UserDisplay.INDENT}{UserDisplay.THIN_HORIZONTAL_LINE}')
+        print(UserDisplay.INDENTED_HORIZONTAL_LINE)
         print(f"{UserDisplay.INDENT}12 hours looks like this: 3:52pm")
         print(f"{UserDisplay.INDENT}24 hours looks like this: 15:52")
-        print(f'{UserDisplay.INDENT}{UserDisplay.THIN_HORIZONTAL_LINE}')
+        print(UserDisplay.INDENTED_HORIZONTAL_LINE)
 
-        user_hours = input('Type "12" for 12-hour format, or "24" for 24-hour format: ')
+        user_hours = input('Type \"12\" for 12-hour format, or \"24\" for 24-hour format: ')
         user_hours_validated = ValidateInput.hour_format(user_hours)
         return user_hours_validated
     
