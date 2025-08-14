@@ -158,3 +158,11 @@ class UserInput:
         user_confirmation = input("Is this correct? Please enter \"y\" for yes, or \"n\" for no: ")
         user_confirmation_bool = SystemUtils.confirm_y_or_n(user_confirmation)
         return user_confirmation_bool
+
+class ValidateInput:
+
+    """
+    Input validation utilities for user interactions.
+    """
+
+    
