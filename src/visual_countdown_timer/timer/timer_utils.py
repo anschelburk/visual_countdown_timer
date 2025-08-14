@@ -120,15 +120,9 @@ class UserInput:
         print(f"{UserDisplay.INDENT}24 hours looks like this: 15:52")
         print(f'{UserDisplay.INDENT}{UserDisplay.THIN_HORIZONTAL_LINE}')
 
-        user_input = SystemUtils.clean_text(input('Type "12" for 12-hour format, or "24" for 24-hour format: '))
-            try:
-                user_hours = int(user_input)
-                if user_hours in TimerConfig.POSSIBLE_HOUR_FORMATS:
-                    return user_hours
-                else:
-                    raise ValueError
-            except ValueError:
-                print(f"\nError: please enter either 12 or 24. You typed: '{user_input}'\n")
+        user_hours = input('Type "12" for 12-hour format, or "24" for 24-hour format: ')
+        user_hours_validated = ValidateInput.hour_format(user_hours)
+        return user_hours_validated
     
     @staticmethod
     def _get_minutes_input():
@@ -176,9 +170,10 @@ class ValidateInput:
         """
         while True:
             try:
-                user_hours = int(user_input)
-                if user_hours in TimerConfig.POSSIBLE_HOUR_FORMATS:
-                    return user_hours
+                user_input = SystemUtils.clean_text(user_input)
+                user_input = int(user_input)
+                if user_input in TimerConfig.POSSIBLE_HOUR_FORMATS:
+                    return user_input
                 else:
                     raise ValueError
             except ValueError:
