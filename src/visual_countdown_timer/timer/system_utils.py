@@ -26,7 +26,8 @@ class SystemUtils:
             clean_text (str): The cleaned string with specified characters removed from both ends.
         """
         CHARACTERS_TO_REMOVE = " .,\"'"
-        clean_text = unformatted_text.strip(CHARACTERS_TO_REMOVE)
+        unformatted_text_str = str(unformatted_text)
+        clean_text = unformatted_text_str.strip(CHARACTERS_TO_REMOVE)
         return clean_text
 
     @classmethod
