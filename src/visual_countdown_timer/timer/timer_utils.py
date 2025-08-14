@@ -178,4 +178,4 @@ class ValidateInput:
                     raise ValueError
             except ValueError:
                 print(f"\nError: please enter either 12 or 24. You typed: '{user_input}'\n")
-                user_input = input("Please type \"12\" for 12-hour format, or \"24\" for 24-hour format: )
+                user_input = input("Please type \"12\" for 12-hour format, or \"24\" for 24-hour format: ")
