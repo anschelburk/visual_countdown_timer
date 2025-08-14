@@ -43,8 +43,8 @@ class TimerApp:
             target_time = TimeCalculations.format_time(end_of_current_loop, hour_format)
             
             # Calculate remaining time
-            total_remaining = TimeCalculations.get_remaining_seconds(end_of_current_loop, datetime_now)
-            remaining_minutes, remaining_seconds = divmod(total_remaining, 60)
+            total_seconds = TimeCalculations.get_remaining_seconds(end_of_current_loop, datetime_now)
+            remaining_minutes, remaining_seconds = divmod(total_seconds, 60)
             
             # Create visual elements
             progress_bar_text = ProgressBar.create_progress_bar(total_remaining)
