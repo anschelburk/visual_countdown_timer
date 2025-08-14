@@ -152,7 +152,7 @@ class UserInput:
         print(' | '.join(f'{hour:02}:{minutes:02}' for hour in range(EXAMPLE_HOURS_START, EXAMPLE_HOURS_END + 1)) + ' | etc.\n')
 
         user_confirmation = input("Is this correct? Please enter \"y\" for yes, or \"n\" for no: ")
-        user_confirmation_bool = SystemUtils.confirm_y_or_n(user_confirmation)
+        user_confirmation_bool = ValidateInput.confirm_y_or_n(user_confirmation)
         return user_confirmation_bool
 
 class ValidateInput:
@@ -160,6 +160,17 @@ class ValidateInput:
     """
     Input validation utilities for user interactions.
     """
+
+    @staticmethod
+    def confirm_y_or_n(user_input: str) -> bool:
+        while True:
+            user_input = SystemUtils.clean_text(user_input).lower()
+            if user_input == 'y':
+                return True
+            elif user_input == 'n':
+                return False
+            else:
+                user_input = input('Error: Please type either \"y\" to for yes, or \"n\" for no: ')
 
     @staticmethod
     def hour_format(user_input: int) -> int:
