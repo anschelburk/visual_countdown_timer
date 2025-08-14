@@ -120,8 +120,7 @@ class UserInput:
         print(f"{UserDisplay.INDENT}24 hours looks like this: 15:52")
         print(f'{UserDisplay.INDENT}{UserDisplay.THIN_HORIZONTAL_LINE}')
 
-        while True:
-            user_input = SystemUtils.clean_text(input('Type "12" for 12-hour format, or "24" for 24-hour format: '))
+        user_input = SystemUtils.clean_text(input('Type "12" for 12-hour format, or "24" for 24-hour format: '))
             try:
                 user_hours = int(user_input)
                 if user_hours in TimerConfig.POSSIBLE_HOUR_FORMATS:
@@ -165,9 +164,22 @@ class ValidateInput:
     Input validation utilities for user interactions.
     """
 
-    def hour_format():
+    @staticmethod
+    def hour_format(user_input: int) -> int:
         """
         Checks to make sure the user entered a valid input for the hour display format.
         If they have, this function returns the user input.
         If not, it prompts them to re-enter the input.
+
+        Args:
+            user_input (int): The user's input for the hours display format they would like the app to use.
         """
+        while True:
+            try:
+                user_hours = int(user_input)
+                if user_hours in TimerConfig.POSSIBLE_HOUR_FORMATS:
+                    return user_hours
+                else:
+                    raise ValueError
+            except ValueError:
+                print(f"\nError: please enter either 12 or 24. You typed: '{user_input}'\n")
