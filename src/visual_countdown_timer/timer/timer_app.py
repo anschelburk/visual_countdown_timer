@@ -47,7 +47,7 @@ class TimerApp:
             remaining_minutes, remaining_seconds = divmod(total_seconds, 60)
             
             # Create visual elements
-            progress_bar_text = ProgressBar.create_progress_bar(total_remaining)
+            progress_bar_text = ProgressBar.create_progress_bar(total_seconds)
             
             # Display everything
             UserDisplay.show_timer_display(
