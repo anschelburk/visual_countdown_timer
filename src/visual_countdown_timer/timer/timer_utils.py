@@ -165,4 +165,9 @@ class ValidateInput:
     Input validation utilities for user interactions.
     """
 
-    
+    def hour_format():
+        """
+        Checks to make sure the user entered a valid input for the hour display format.
+        If they have, this function returns the user input.
+        If not, it prompts them to re-enter the input.
+        """
