@@ -106,8 +106,8 @@ class UserInput:
             except ValueError as error_message:
                 print(f"\nError: {error_message}\n")
     
-    @staticmethod
-    def get_hour_format() -> int:
+    @classmethod
+    def get_hour_format(cls) -> int:
         """
         Prompts the user to choose between 12-hour and 24-hour time display.
 
@@ -117,15 +117,18 @@ class UserInput:
         Returns:
             user_hours_validated (int): The user's preferred time format (12 or 24).
         """
-        print("\nWould you like the time to display as 12 hours or 24 hours?")
-        print(UserDisplay.INDENTED_HORIZONTAL_LINE)
-        print(f"{UserDisplay.INDENT}12 hours looks like this: 3:52pm")
-        print(f"{UserDisplay.INDENT}24 hours looks like this: 15:52")
-        print(UserDisplay.INDENTED_HORIZONTAL_LINE)
-
+        print(cls._HOUR_FORMAT_USER_PROMPT)
         user_hours = input('Type \"12\" for 12-hour format, or \"24\" for 24-hour format: ')
         user_hours_validated = ValidateInput.hour_format(user_hours)
         return user_hours_validated
+
+    _HOUR_FORMAT_USER_PROMPT = (
+        "\nWould you like the time to display as 12 or 24 hours?" +
+        "\n" + UserDisplay.INDENTED_HORIZONTAL_LINE +
+        f"\n{UserDisplay.INDENT}12 hours looks like this: 3:52pm" +
+        f"\n{UserDisplay.INDENT}24 hours looks like this: 15:52" +
+        "\n" + UserDisplay.INDENTED_HORIZONTAL_LINE
+    )
     
     @staticmethod
     def _get_minutes_input():
@@ -151,8 +154,13 @@ class UserInput:
         EXAMPLE_HOURS_END = 3
         print(' | '.join(f'{hour:02}:{minutes:02}' for hour in range(EXAMPLE_HOURS_START, EXAMPLE_HOURS_END + 1)) + ' | etc.\n')
 
-        user_confirmation = ValidateInput.confirm_y_or_n()
+        user_confirmation = ValidateInput.confirm_user_choice()
         return user_confirmation
+
+class ConfirmInput:
+    """
+    Confirmation prompts for user interactions.
+    """
 
 class ValidateInput:
 
@@ -161,7 +169,7 @@ class ValidateInput:
     """
 
     @staticmethod
-    def confirm_y_or_n() -> bool:
+    def confirm_user_choice() -> bool:
         user_input = input("Is this correct? Please enter \"y\" for yes, or \"n\" for no: ")
         while True:
             user_input = SystemUtils.clean_text(user_input).lower()
