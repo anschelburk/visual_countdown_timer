@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 from .display_utils import ProgressBar, UserDisplay
 from .settings import TimerConfig
-from .system_utils import SystemUtils
+from .system_utils import SystemUtils, TerminalUtils
 
 """
 Time calculation and formatting utilities for the Visual Countdown Timer.
@@ -79,6 +79,60 @@ class TimeCalculations:
                 
         except ValueError:
             raise ValueError('Hours format must be either 12 or 24.')
+
+class TimerLoop:
+        """
+        Manages the continuous countdown timer execution and display updates.
+        
+        This class encapsulates the main timer loop functionality, coordinating
+        time calculations, visual display updates, and system operations to
+        provide a real-time countdown experience. It continuously updates the
+        terminal display with current time, target time, remaining duration,
+        and a visual progress bar until the user exits.
+        
+        The timer loop operates on one-second intervals, recalculating and
+        refreshing the display each second to show accurate countdown progress
+        toward the next occurrence of the specified target minute.
+        
+        Attributes:
+            countdown_minutes (int): Target minute past each hour (0-59)
+            hour_format (int): Time display format (12 or 24 hour)
+        
+        Example:
+            >>> timer_loop = TimerLoop(25, 12)
+            >>> timer_loop.run()  # Starts continuous countdown to X:25
+        """
+    
+        @staticmethod
+        def run(countdown_minutes, hour_format):
+            """Main timer loop that updates the display continuously."""
+            while True:
+                TerminalUtils.clear_terminal()
+                
+                # Get current time information
+                datetime_now = datetime.now().astimezone()
+                current_date = datetime_now.strftime('%B %d, %Y')
+                current_time = TimeCalculations.format_time(datetime_now, hour_format)
+                
+                # Calculate next target time
+                end_of_current_loop = TimeCalculations.get_next_occurrence(countdown_minutes, datetime_now)
+                target_time = TimeCalculations.format_time(end_of_current_loop, hour_format)
+                
+                # Calculate remaining time
+                total_seconds = TimeCalculations.get_remaining_seconds(end_of_current_loop, datetime_now)
+                remaining_minutes, remaining_seconds = divmod(total_seconds, 60)
+                
+                # Create visual elements
+                progress_bar_text = ProgressBar.create_progress_bar(total_seconds)
+                
+                # Display everything
+                UserDisplay.show_timer_display(
+                    current_date, current_time, target_time,
+                    remaining_minutes, remaining_seconds, progress_bar_text
+                )
+                
+                SystemUtils.sleep_until_next_second(datetime_now)
+
 
 class UserInput:
     """Handles all user input collection and validation."""
