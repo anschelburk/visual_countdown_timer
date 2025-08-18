@@ -13,7 +13,7 @@ class DisplaySettings:
     INDENT_LENGTH = 2
     
     # Progress bar settings
-    PROGRESS_BAR_WIDTH = 30
+    PROGRESS_BAR_WIDTH_TOTAL = 30
 
 
 class TimerConfig:

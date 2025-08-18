@@ -63,7 +63,7 @@ class ProgressBar:
 
     minutes_rounded_up = cls._minutes_rounded_up(remaining_time_in_seconds)
     progress_bar_width_full = round(minutes_rounded_up / 2)
-    progress_bar_width_empty = DisplaySettings.PROGRESS_BAR_WIDTH - progress_bar_width_full
+    progress_bar_width_empty = DisplaySettings.PROGRESS_BAR_WIDTH_TOTAL - progress_bar_width_full
     return progress_bar_width_full, progress_bar_width_empty
     
     
