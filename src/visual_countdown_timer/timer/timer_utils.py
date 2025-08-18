@@ -162,6 +162,21 @@ class ConfirmInput:
     Confirmation prompts for user interactions.
     """
 
+#     @staticmethod
+#     def user_minutes(user_input: int):
+#         """
+#         Confirms countdown minutes from user.
+#         """
+# 
+#         print(f'\nYou entered {user_input} minutes. The timer will count down to:')
+# 
+#         EXAMPLE_HOURS_START = 1
+#         EXAMPLE_HOURS_END = 3
+#         print(' | '.join(f'{hour:02}:{minutes:02}' for hour in range(EXAMPLE_HOURS_START, EXAMPLE_HOURS_END + 1)) + ' | etc.\n')
+# 
+#         user_confirmation = ValidateInput.confirm_user_choice()
+#         return user_confirmation
+
 class ValidateInput:
 
     """

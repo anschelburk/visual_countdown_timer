@@ -10,10 +10,11 @@ to the user, including the timer interface and status messages.
 """
 
 class ProgressBar:
-    """Handles creation of visual elements like progress bars."""
+    """Handles creation of visual progress bar in-app."""
+        
     
-    @staticmethod
-    def create_progress_bar(remaining_time_in_seconds:int) -> str:
+    @classmethod
+    def create_progress_bar(cls, remaining_time_in_seconds:int) -> str:
         """
         Generates a visual progress bar representing remaining time.
         
@@ -23,9 +24,8 @@ class ProgressBar:
         Returns:
             progress_bar_text (str): Visual progress bar with '#' and '.' characters
         """
-        
-        remaining_minutes = remaining_time_in_seconds / 60
-        minutes_rounded_up = math.ceil(remaining_minutes)
+
+        minutes_rounded_up = cls._minutes_rounded_up(remaining_time_in_seconds)
         
         progress_bar_width_full = round(minutes_rounded_up / 2)
         progress_bar_width_empty = DisplaySettings.PROGRESS_BAR_WIDTH - progress_bar_width_full
@@ -35,6 +35,20 @@ class ProgressBar:
         
         progress_bar_text = f'[{progress_bar_full}{progress_bar_empty}]'
         return progress_bar_text
+
+    @staticmethod
+    def _minutes_rounded_up(remaining_time_in_seconds:int) -> int:
+        """
+        Calculates remaining minutes (rounded up) from total remaining seconds.
+
+        Args:
+            remaining_time_in_seconds (int): Total remaining time in seconds.
+        Returns:
+            minutes_rounded_up (int): The total number of minutes, rounded up.
+        """
+        remaining_minutes = remaining_time_in_seconds / 60
+        minutes_rounded_up = math.ceil(remaining_minutes)
+        return minutes_rounded_up
 
 class UserDisplay:
     """Handles displaying information to the user."""
