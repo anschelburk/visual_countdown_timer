@@ -22,12 +22,12 @@ class ProgressBar:
             remaining_time_in_seconds(int): The total remaining time in seconds to count down.
             
         Returns:
-            progress_bar_text (str): Visual progress bar with '#' and '.' characters
+            text_complete (str): Visual progress bar with '#' and '.' characters
         """
 
-        progress_bar_full, progress_bar_empty = cls._generate_text(remaining_time_in_seconds)
-        progress_bar_text = f'[{progress_bar_full}{progress_bar_empty}]'
-        return progress_bar_text
+        text_remaining, text_elapsed = cls._generate_text(remaining_time_in_seconds)
+        text_complete = f'[{text_remaining}{text_elapsed}]'
+        return text_complete
 
     @staticmethod
     def _minutes_rounded_up(remaining_time_in_seconds:int) -> int:
@@ -47,38 +47,38 @@ class ProgressBar:
     def _text_width(cls, remaining_time_in_seconds:int) -> int:
         """
         Calculates the full and empty portions of the progress bar. These represent:
-            Full portion: The amount of time that has yet to count down.
-            Empty portion: The amount of time that has already counted down.
+            Remaining portion: The amount of time that has yet to count down.
+            Elapsed portion: The amount of time that has already counted down.
 
         Args:
             remaining_time_in_seconds(int): The total remaining time in seconds to count down.
         Returns:
-            width_full (int): The width of the full portion of the progress bar.
-            width_empty (int): The width of the empty portion of the progress bar.
+            width_remaining (int): The width of the full portion of the progress bar.
+            width_elapsed (int): The width of the empty portion of the progress bar.
         """
 
         minutes_rounded_up = cls._minutes_rounded_up(remaining_time_in_seconds)
-        progress_bar_width_full = round(minutes_rounded_up / 2)
-        progress_bar_width_empty = DisplaySettings.PROGRESS_BAR_WIDTH_TOTAL - progress_bar_width_full
-        return progress_bar_width_full, progress_bar_width_empty
+        width_remaining = round(minutes_rounded_up / 2)
+        width_elapsed = DisplaySettings.PROGRESS_BAR_WIDTH_TOTAL - width_remaining
+        return width_remaining, width_elapsed
     
     @classmethod
     def _generate_text(cls, remaining_time_in_seconds: int) -> str:
         """
         Generates the full and empty text of the progress bar.
-            Full text: Represents the amount of time that has yet to count down.
-            Empty text: Represents the amount of time that has already counted down.
+            Text (remaining time): Represents the amount of time that has yet to count down.
+            Text (elapsed time): Represents the amount of time that has already counted down.
 
         Args:
             remaining_time_in_seconds(int): The total remaining time in seconds to count down.
         Returns:
-            full_text (str): The full portion of the progress bar.
-            empty_text (str): The empty portion of the progress bar.
+            text_remaining (str): The portion of the progress bar representing the remaining time to count down.
+            text_elapsed (str): The portion of the progress bar representing the elapsed time that has already counted down.
         """
-        full_width, empty_width = cls._text_width(remaining_time_in_seconds)
-        full_text = '#' * full_width
-        empty_text = '.' * empty_width
-        return full_text, empty_text
+        width_remaining, width_elapsed = cls._text_width(remaining_time_in_seconds)
+        text_remaining = '#' * width_remaining
+        text_elapsed = '.' * width_elapsed
+        return text_remaining, text_elapsed
 
 class UserDisplay:
     """Handles displaying information to the user."""
