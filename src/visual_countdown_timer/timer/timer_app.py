@@ -15,7 +15,7 @@ class TimerApp:
     
     def __init__(self):
         """Initialize the timer application."""
-        TerminalUtils.initialize_exit_handler()
+        exit_handler = TerminalUtils.initialize_exit_handler()
     
     def run(self):
         """Run the main timer application."""
