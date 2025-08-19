@@ -21,24 +21,24 @@ class Format:
         Formats a date for the user display.
 
         Args:
-            datetime_raw (datetime): The unformatted datetime.
+            datetime_unformatted (datetime): The datetime object to format
         Returns:
             date_formatted (datetime): The formatted date.
         """
         date_formatted = datetime_unformatted.strftime('%B %d, %Y')
         return date_formatted
 
-    @staticmethod
-    def time(datetime_unformatted: datetime, hour_display_format: int) -> str:
+    @classmethod
+    def time(cls, datetime_unformatted: datetime, hour_display_format: int) -> str:
         """
         Formats a datetime object into a 12-hour or 24-hour time string.
         
         Args:
-            unformatted_time (datetime): The datetime object to format
+            datetime_unformatted (datetime): The datetime object to format
             hour_display_format (int): 12 or 24 hour format
             
         Returns:
-            str: Formatted time string
+            time_formatted (str): Formatted time string
         """
         try:
             hour_display_format = int(hour_display_format)
@@ -48,9 +48,8 @@ class Format:
             timezone = datetime_unformatted.strftime('%Z')
             
             if hour_display_format == 12:
-                formatted_hours = datetime_unformatted.strftime('%I:%M')
-                formatted_ampm = datetime_unformatted.strftime('%p').lower()
-                return f'{formatted_hours}{formatted_ampm} {timezone}'
+                time_formatted = cls._12hourtime(datetime_unformatted)
+                return time_formatted
             elif hour_display_format == 24:
                 formatted_hours = datetime_unformatted.strftime('%H:%M')
                 return f'{formatted_hours} {timezone}'
@@ -59,6 +58,21 @@ class Format:
                 
         except ValueError:
             raise ValueError('Hours format must be either 12 or 24.')
+
+    @staticmethod
+    def _12hourtime(datetime_unformatted: datetime) -> str:
+        """
+        Generates a time using 12-hour display format.
+
+        Args:
+            datetime_unformatted (datetime): The datetime object to format
+        Returns:
+            time_formatted_12hour (str): The time formatted for 12-hour display.
+        """
+        formatted_hours = datetime_unformatted.strftime('%I:%M')
+        formatted_ampm = datetime_unformatted.strftime('%p').lower()
+        time_formatted_12hour = f'{formatted_hours}{formatted_ampm} {timezone}'
+        return time_formatted_12hour
 
 class TimeCalculations:
     """Handles all time-related calculations and formatting."""
