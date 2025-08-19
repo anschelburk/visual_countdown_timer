@@ -16,7 +16,7 @@ class Format:
     """
 
     @staticmethod
-    def date(datetime_raw: datetime) -> datetime:
+    def date(datetime_unformatted: datetime) -> datetime:
         """
         Formats a date for the user display.
 
@@ -25,11 +25,11 @@ class Format:
         Returns:
             date_formatted (datetime): The formatted date.
         """
-        date_formatted = datetime_raw.strftime('%B %d, %Y')
+        date_formatted = datetime_unformatted.strftime('%B %d, %Y')
         return date_formatted
 
     @staticmethod
-    def time(current_datetime: datetime, hour_display_format: int) -> str:
+    def time(datetime_unformatted: datetime, hour_display_format: int) -> str:
         """
         Formats a datetime object into a 12-hour or 24-hour time string.
         
@@ -45,14 +45,14 @@ class Format:
             if hour_display_format not in TimerConfig.POSSIBLE_HOUR_FORMATS:
                 raise ValueError
                 
-            timezone = current_datetime.strftime('%Z')
+            timezone = datetime_unformatted.strftime('%Z')
             
             if hour_display_format == 12:
-                formatted_hours = current_datetime.strftime('%I:%M')
-                formatted_ampm = current_datetime.strftime('%p').lower()
+                formatted_hours = datetime_unformatted.strftime('%I:%M')
+                formatted_ampm = datetime_unformatted.strftime('%p').lower()
                 return f'{formatted_hours}{formatted_ampm} {timezone}'
             elif hour_display_format == 24:
-                formatted_hours = current_datetime.strftime('%H:%M')
+                formatted_hours = datetime_unformatted.strftime('%H:%M')
                 return f'{formatted_hours} {timezone}'
             else:
                 raise ValueError
