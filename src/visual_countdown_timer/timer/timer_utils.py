@@ -15,7 +15,18 @@ class Format:
     Formats time and date entries for user display.
     """
 
-    
+    @staticmethod
+    def date(datetime_raw: datetime) -> datetime:
+        """
+        Formats a date for the user display.
+
+        Args:
+            datetime_raw (datetime): The unformatted datetime.
+        Returns:
+            date_formatted (datetime): The formatted date.
+        """
+        date_formatted = datetime_raw.strftime('%B %d, %Y')
+        return date_formatted
 
 class TimeCalculations:
     """Handles all time-related calculations and formatting."""
@@ -79,11 +90,6 @@ class TimerLoop:
     """
 
     @staticmethod
-    def current_date(current_datetime: datetime) -> datetime:
-        current_date = current_datetime.strftime('%B %d, %Y')
-        return current_date
-
-    @staticmethod
     def format_time(current_datetime: datetime, hour_display_format: int) -> str:
         """
         Formats a datetime object into a 12-hour or 24-hour time string.
@@ -123,7 +129,7 @@ class TimerLoop:
             
             # Get current time information
             datetime_now = datetime.now().astimezone()
-            current_date = cls.current_date(datetime_now)
+            current_date = Format.date(datetime_now)
             current_time = cls.format_time(datetime_now, hour_format)
             
             # Calculate next target time
