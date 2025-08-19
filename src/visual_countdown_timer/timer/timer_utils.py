@@ -104,14 +104,19 @@ class TimerLoop:
     """
 
     @staticmethod
-    def run(countdown_minutes, hour_format):
+    def current_date(current_datetime: datetime) -> datetime:
+        current_date = current_datetime.strftime('%B %d, %Y')
+        return current_date
+
+    @classmethod
+    def run(cls, countdown_minutes, hour_format):
         """Main timer loop that updates the display continuously."""
         while True:
             TerminalUtils.clear_terminal()
             
             # Get current time information
             datetime_now = datetime.now().astimezone()
-            current_date = datetime_now.strftime('%B %d, %Y')
+            current_date = cls.current_date(datetime_now)
             current_time = TimeCalculations.format_time(datetime_now, hour_format)
             
             # Calculate next target time
