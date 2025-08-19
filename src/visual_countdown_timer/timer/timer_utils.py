@@ -28,6 +28,38 @@ class Format:
         date_formatted = datetime_raw.strftime('%B %d, %Y')
         return date_formatted
 
+    @staticmethod
+    def time(current_datetime: datetime, hour_display_format: int) -> str:
+        """
+        Formats a datetime object into a 12-hour or 24-hour time string.
+        
+        Args:
+            unformatted_time (datetime): The datetime object to format
+            hour_display_format (int): 12 or 24 hour format
+            
+        Returns:
+            str: Formatted time string
+        """
+        try:
+            hour_display_format = int(hour_display_format)
+            if hour_display_format not in TimerConfig.POSSIBLE_HOUR_FORMATS:
+                raise ValueError
+                
+            timezone = current_datetime.strftime('%Z')
+            
+            if hour_display_format == 12:
+                formatted_hours = current_datetime.strftime('%I:%M')
+                formatted_ampm = current_datetime.strftime('%p').lower()
+                return f'{formatted_hours}{formatted_ampm} {timezone}'
+            elif hour_display_format == 24:
+                formatted_hours = current_datetime.strftime('%H:%M')
+                return f'{formatted_hours} {timezone}'
+            else:
+                raise ValueError
+                
+        except ValueError:
+            raise ValueError('Hours format must be either 12 or 24.')
+
 class TimeCalculations:
     """Handles all time-related calculations and formatting."""
     
@@ -88,41 +120,9 @@ class TimerLoop:
         >>> timer_loop = TimerLoop(25, 12)
         >>> timer_loop.run()  # Starts continuous countdown to X:25
     """
-
+    
     @staticmethod
-    def format_time(current_datetime: datetime, hour_display_format: int) -> str:
-        """
-        Formats a datetime object into a 12-hour or 24-hour time string.
-        
-        Args:
-            unformatted_time (datetime): The datetime object to format
-            hour_display_format (int): 12 or 24 hour format
-            
-        Returns:
-            str: Formatted time string
-        """
-        try:
-            hour_display_format = int(hour_display_format)
-            if hour_display_format not in TimerConfig.POSSIBLE_HOUR_FORMATS:
-                raise ValueError
-                
-            timezone = current_datetime.strftime('%Z')
-            
-            if hour_display_format == 12:
-                formatted_hours = current_datetime.strftime('%I:%M')
-                formatted_ampm = current_datetime.strftime('%p').lower()
-                return f'{formatted_hours}{formatted_ampm} {timezone}'
-            elif hour_display_format == 24:
-                formatted_hours = current_datetime.strftime('%H:%M')
-                return f'{formatted_hours} {timezone}'
-            else:
-                raise ValueError
-                
-        except ValueError:
-            raise ValueError('Hours format must be either 12 or 24.')
-
-    @classmethod
-    def run(cls, countdown_minutes, hour_format):
+    def run(countdown_minutes, hour_format):
         """Main timer loop that updates the display continuously."""
         while True:
             TerminalUtils.clear_terminal()
@@ -130,11 +130,11 @@ class TimerLoop:
             # Get current time information
             datetime_now = datetime.now().astimezone()
             current_date = Format.date(datetime_now)
-            current_time = cls.format_time(datetime_now, hour_format)
+            current_time = Format.time(datetime_now, hour_format)
             
             # Calculate next target time
             end_of_current_loop = TimeCalculations.get_next_occurrence(countdown_minutes, datetime_now)
-            target_time = cls.format_time(end_of_current_loop, hour_format)
+            target_time = Format.time(end_of_current_loop, hour_format)
             
             # Calculate remaining time
             total_seconds = TimeCalculations.get_remaining_seconds(end_of_current_loop, datetime_now)
