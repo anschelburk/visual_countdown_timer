@@ -10,6 +10,13 @@ This module provides classes for handling datetime operations, including
 calculating next occurrences, remaining time, and formatting time displays.
 """
 
+class Format:
+    """
+    Formats time and date entries for user display.
+    """
+
+    
+
 class TimeCalculations:
     """Handles all time-related calculations and formatting."""
     
