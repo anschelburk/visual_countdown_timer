@@ -38,23 +38,23 @@ class Format:
             hour_display_format (int): 12 or 24 hour format
             
         Returns:
-            time_formatted (str): Formatted time string
+            time_final (str): Formatted time string
         """
         try:
             hour_display_format = int(hour_display_format)
             if hour_display_format not in TimerConfig.POSSIBLE_HOUR_FORMATS:
                 raise ValueError
                 
-            timezone = datetime_unformatted.strftime('%Z')
-            
             if hour_display_format == 12:
                 time_formatted = cls._time_12h(datetime_unformatted)
-                return time_formatted
             elif hour_display_format == 24:
-                formatted_hours = datetime_unformatted.strftime('%H:%M')
-                return f'{formatted_hours} {timezone}'
+                time_formatted = cls._time_24h(datetime_unformatted)
             else:
                 raise ValueError
+
+            timezone = datetime_unformatted.strftime('%Z')
+            time_final = f"{time_formatted} {timezone}"
+            return time_final
                 
         except ValueError:
             raise ValueError('Hours format must be either 12 or 24.')
@@ -69,12 +69,9 @@ class Format:
         Returns:
             time_formatted (str): The time formatted for 12-hour display.
         """
-
-        timezone = datetime_unformatted.strftime('%Z')
         formatted_hours = datetime_unformatted.strftime('%-I:%M')
-        formatted_ampm = datetime_unformatted.strftime('%p').lower()
-        
-        time_formatted_12hour = f'{formatted_hours}{formatted_ampm} {timezone}'
+        formatted_ampm = datetime_unformatted.strftime('%p').lower()       
+        time_formatted = f'{formatted_hours}{formatted_ampm}'
         return time_formatted
 
     @staticmethod
