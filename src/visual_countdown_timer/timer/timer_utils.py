@@ -67,7 +67,7 @@ class Format:
         Args:
             datetime_unformatted (datetime): The datetime object to format
         Returns:
-            time_formatted_12hour (str): The time formatted for 12-hour display.
+            time_formatted (str): The time formatted for 12-hour display.
         """
 
         timezone = datetime_unformatted.strftime('%Z')
@@ -75,7 +75,20 @@ class Format:
         formatted_ampm = datetime_unformatted.strftime('%p').lower()
         
         time_formatted_12hour = f'{formatted_hours}{formatted_ampm} {timezone}'
-        return time_formatted_12hour
+        return time_formatted
+
+    @staticmethod
+    def _time_24h(datetime_unformatted: datetime) -> str:
+        """
+        Formats the time using 12-hour display format for user display.
+
+        Args:
+            datetime_unformatted (datetime): The datetime object to format
+        Returns:
+            time_formatted (str): The time formatted for 24-hour display.
+        """
+        time_formatted = datetime_unformatted.strftime('%H:%M')
+        return time_formatted
 
 class TimeCalculations:
     """Handles all time-related calculations and formatting."""
