@@ -100,12 +100,11 @@ class Format:
         time_formatted = datetime_unformatted.strftime('%H:%M')
         return time_formatted
 
-# class TimeCalculations:
 class Calculate:
-    """Handles all time-related calculations and formatting."""
+    """Handles all time-related calculations."""
     
     @staticmethod
-    def get_next_occurrence(target_minute, current_datetime):
+    def next_countdown_occurrence(target_minute: int, current_datetime: datetime) -> datetime:
         """
         Returns the next datetime where the minute equals target_minute.
         
@@ -174,7 +173,7 @@ class TimerLoop:
             current_time = Format.time(datetime_now, hour_format)
             
             # Calculate next target time
-            end_of_current_loop = Calculate.get_next_occurrence(countdown_minutes, datetime_now)
+            end_of_current_loop = Calculate.next_countdown_occurrence(countdown_minutes, datetime_now)
             target_time = Format.time(end_of_current_loop, hour_format)
             
             # Calculate remaining time
