@@ -182,7 +182,7 @@ class TimerLoop:
             remaining_minutes, remaining_seconds = divmod(total_seconds, 60)
             
             # Create visual elements
-            progress_bar_text = ProgressBar.create_progress_bar(total_seconds)
+            progress_bar_text = ProgressBar.render(total_seconds)
             
             # Display everything
             UserDisplay.show_timer_display(

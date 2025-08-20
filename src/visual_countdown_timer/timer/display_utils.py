@@ -14,7 +14,7 @@ class ProgressBar:
         
     
     @classmethod
-    def create_progress_bar(cls, remaining_time_in_seconds:int) -> str:
+    def render(cls, remaining_time_in_seconds:int) -> str:
         """
         Generates a visual progress bar representing remaining time.
         
