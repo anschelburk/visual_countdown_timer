@@ -38,7 +38,7 @@ class Format:
             hour_display_format (int): 12 or 24 hour format
             
         Returns:
-            time_final (str): Formatted time string
+            time_formatted (str): Formatted time string
         """
         try:
             hour_display_format = int(hour_display_format)
@@ -46,18 +46,31 @@ class Format:
                 raise ValueError
                 
             if hour_display_format == 12:
-                time_formatted = cls._time_12h(datetime_unformatted)
+                time_formatted_notimezone = cls._time_12h(datetime_unformatted)
             elif hour_display_format == 24:
-                time_formatted = cls._time_24h(datetime_unformatted)
+                time_formatted_notimezone = cls._time_24h(datetime_unformatted)
             else:
                 raise ValueError
 
-            timezone = datetime_unformatted.strftime('%Z')
-            time_final = f"{time_formatted} {timezone}"
-            return time_final
+            time_formatted = cls._add_timezone(datetime_unformatted, time_formatted_notimezone)
+            return time_formatted
                 
         except ValueError:
             raise ValueError('Hours format must be either 12 or 24.')
+
+    @staticmethod
+    def _add_timezone(datetime_unformatted: datetime, time_without_timezone: str) -> str:
+        """
+        Appends timezone information to a formatted time string.
+        Args:
+            datetime_unformatted (datetime): The unformatted datetime object (used to determine timezone).
+            time_without_timezone (str): A formatted time string without timezone (e.g., "15:30", "3:30pm").
+        Returns:
+            time_with_timezone (str): The time string with timezone appended            
+        """
+        timezone = datetime_unformatted.strftime('%Z')
+        time_with_timezone = time_without_timezone + ' ' + timezone
+        return time_with_timezone
 
     @staticmethod
     def _time_12h(datetime_unformatted: datetime) -> str:
