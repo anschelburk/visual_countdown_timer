@@ -124,19 +124,20 @@ class Calculate:
         return next_occurrence
     
     @staticmethod
-    def get_remaining_seconds(end_time, current_datetime):
+    def remaining_seconds(end_time: datetime, current_datetime: datetime) -> int:
         """
-        Calculates total remaining seconds until end_time.
+        Calculates total remaining seconds until end_time input.
         
         Args:
             end_time (datetime): Target end time
             current_datetime (datetime): Current time
             
         Returns:
-            int: Total remaining seconds
+            remaining_seconds (int): Total remaining seconds
         """
         remaining_time = end_time - current_datetime
-        return int(remaining_time.total_seconds())
+        remaining_seconds = int(remaining_time.total_seconds())
+        return remaining_seconds
     
 class TimerLoop:
     """
@@ -177,7 +178,7 @@ class TimerLoop:
             target_time = Format.time(end_of_current_loop, hour_format)
             
             # Calculate remaining time
-            total_seconds = Calculate.get_remaining_seconds(end_of_current_loop, datetime_now)
+            total_seconds = Calculate.remaining_seconds(end_of_current_loop, datetime_now)
             remaining_minutes, remaining_seconds = divmod(total_seconds, 60)
             
             # Create visual elements
