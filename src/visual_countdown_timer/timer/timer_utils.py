@@ -225,22 +225,6 @@ class TimerLoop:
 class UserInput:
     """Handles all user input collection and validation."""
 
-    # @staticmethod
-    # def countdown_minutes():
-        # print(UserDisplay.TIMER_INTRO_TEXT)
-        # while True:
-            # user_minutes_raw = input("Please enter the number of minutes you'd like to count down to: ")
-            # user_minutes_clean = SystemUtils.clean_text(user_minutes_raw)
-            # if _can_be_cast_as_int(user_minutes_clean):
-                # 
-    
-    # def _can_be_cast_as_int(countdown_minutes_from_user: str) -> bool:
-        # try:
-            # countdown_minutes_int = int(countdown_minutes_from_user)
-            # return True
-        # except ValueError:
-            # return False
-
     @staticmethod
     def get_countdown_time(runtime_status):
         """
