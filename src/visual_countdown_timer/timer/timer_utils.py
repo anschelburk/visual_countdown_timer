@@ -347,6 +347,13 @@ class ValidateInput:
     """
 
     @staticmethod
+    def user_input(user_input, *validity_checks) -> bool:
+        for valid in validity_checks:
+            if not valid(user_input):
+                return False
+        return True
+
+    @staticmethod
     def integer(user_input) -> bool:
         try:
             int(user_input)
