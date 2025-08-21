@@ -336,10 +336,23 @@ class ConfirmInput:
 #         return user_confirmation
 
 class ValidateInput:
+# Rename Valid
+    # Valid.integer()
+    # Valid.minutes_range()
+    # Valid.hour_display_format()
+    # Valid.user_input (to check multiple)
 
     """
     Input validation utilities for user interactions.
     """
+
+    @staticmethod
+    def integer(user_input) -> bool:
+        try:
+            int(user_input)
+            return True
+        except ValueError:
+            return False
 
     @staticmethod
     def confirm_user_choice() -> bool:
