@@ -363,6 +363,9 @@ class ValidateInput:
         
     def minutes_range(user_input: int) -> bool:
         return (0 <= user_input < 60)
+    
+    def hour_display_format(user_input: int) -> bool:
+        return user_input in TimerConfig.POSSIBLE_HOUR_FORMATS
 
     @staticmethod
     def confirm_user_choice() -> bool:
