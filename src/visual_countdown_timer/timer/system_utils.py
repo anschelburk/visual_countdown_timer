@@ -1,3 +1,4 @@
+from .settings import TimerConfig
 from datetime import datetime
 import os
 import signal
