@@ -212,9 +212,11 @@ class TimerLoop:
             progress_bar_text = ProgressBar.render(total_seconds)
             
             # Display everything
-            UserDisplay.show_timer_display(
-                current_date, current_time, target_time,
-                remaining_time, progress_bar_text
+            print(
+                UserDisplay.show_timer_display(
+                    current_date, current_time, target_time,
+                    remaining_time, progress_bar_text
+                )
             )
             
             SystemUtils.sleep_until_next_second(datetime_now)

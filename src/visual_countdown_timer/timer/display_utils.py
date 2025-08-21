@@ -107,11 +107,15 @@ class UserDisplay:
                           progress_bar_text):
         """Displays the main timer interface."""
 
-        print(UserDisplay.TITLE_BLOCK)   
-        print(current_date)
-        print(current_time)
-        print(UserDisplay.INDENTED_HORIZONTAL_LINE)
-        print(f'{UserDisplay.INDENT}Countdown until {target_time}:')
-        print(UserDisplay.INDENTED_HORIZONTAL_LINE)
-        print(remaining_time)
-        print(f"{UserDisplay.INDENT}{progress_bar_text}")
+        timer_display_text = (
+            f"{UserDisplay.TITLE_BLOCK}\n" +
+            f"{current_date}\n" +
+            f"{current_time}\n" +
+            f"{UserDisplay.INDENTED_HORIZONTAL_LINE}\n" +
+            f"{UserDisplay.INDENT}Countdown until {target_time}:\n" +
+            f"{UserDisplay.INDENTED_HORIZONTAL_LINE}\n" +
+            f"{remaining_time}\n" +
+            f"{UserDisplay.INDENT}{progress_bar_text}"
+        )
+
+        return timer_display_text
