@@ -353,6 +353,9 @@ class ValidateInput:
             return True
         except ValueError:
             return False
+        
+    def minutes_range(user_input: int) -> bool:
+        return (0 <= user_input < 60)
 
     @staticmethod
     def confirm_user_choice() -> bool:
