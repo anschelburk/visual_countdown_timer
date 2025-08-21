@@ -348,6 +348,24 @@ class ValidateInput:
 
     @staticmethod
     def user_input(user_input, *validity_checks) -> bool:
+        """
+        Validates user input against multiple validation functions.
+    
+        Takes a user input value and applies a series of validation functions
+        to determine if the input meets all specified criteria. All validation
+        functions must return True for the input to be considered valid.
+        
+        Args:
+            user_input: The user input value to validate. Can be any type
+                depending on the validation functions being used.
+            *validity_checks: Variable number of callable validation functions.
+                Each function should take user_input as its single argument
+                and return True if valid, False if invalid.
+        
+        Returns:
+            bool: True if user_input passes all validation checks,
+                  False if any validation check fails.
+        """
         for valid in validity_checks:
             if not valid(user_input):
                 return False
@@ -355,6 +373,17 @@ class ValidateInput:
 
     @staticmethod
     def integer(user_input) -> bool:
+        """
+        Validates whether user input can be converted to an integer.
+        
+        Args:
+            user_input: The input value to validate. Can be any type, but
+                typically a string from user input.
+        
+        Returns:
+            bool: True if user_input can be converted to an integer,
+                  False if conversion raises ValueError.
+        """
         try:
             int(user_input)
             return True
@@ -362,9 +391,33 @@ class ValidateInput:
             return False
         
     def minutes_range(user_input: int) -> bool:
+        """
+        Validates that an integer is within the valid range for minutes.
+        
+        Checks if the provided integer falls within the standard minute range
+        of 0 to 59 (inclusive of 0, exclusive of 60). This validation is used
+        to ensure minute values are valid for time-related operations.
+        
+        Args:
+            user_input (int): The integer value to validate as a minute value.
+        
+        Returns:
+            bool: True if user_input is between 0 and 59 (inclusive),
+                  False otherwise.
+        """
         return (0 <= user_input < 60)
     
     def hour_display_format(user_input: int) -> bool:
+        """
+        Validates that an integer is a supported hour display format.
+    
+        Args:
+            user_input (int): The integer value to validate as an hour format.
+        
+        Returns:
+            bool: True if user_input is a valid hour display format (12 or 24),
+                  False otherwise.
+        """
         return user_input in TimerConfig.POSSIBLE_HOUR_FORMATS
 
     @staticmethod
