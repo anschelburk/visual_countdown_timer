@@ -100,6 +100,32 @@ class Format:
         time_formatted = datetime_unformatted.strftime('%H:%M')
         return time_formatted
 
+    @staticmethod
+    def remaining_time(remaining_minutes:int, remaining_seconds:int) -> str:
+        """
+        Formats the remaining minutes and seconds for display in-app.
+
+        Args:
+            remaining_minutes (int): The unformatted number of remaining minutes.
+            remaining_seconds (int): The unformatted number of remaining seconds.
+
+        Returns:
+            remaining_time_formatted (str): The formatted number of remaining minutes and seconds.
+        """
+
+        minutes_label = SystemUtils.pluralize("minute", remaining_minutes)
+        seconds_label = SystemUtils.pluralize("second", remaining_seconds)
+
+        remaining_minutes_formatted = f'{UserDisplay.INDENT}{remaining_minutes:02} {minutes_label}'
+        remaining_seconds_formatted = f'{UserDisplay.INDENT}{remaining_seconds:02} {seconds_label}'
+
+        remaining_time_formatted = (
+            remaining_minutes_formatted + '\n' +
+            remaining_seconds_formatted
+        )
+
+        return remaining_time_formatted
+
 class Calculate:
     """Handles all time-related calculations."""
     
@@ -180,6 +206,7 @@ class TimerLoop:
             # Calculate remaining time
             total_seconds = Calculate.remaining_seconds(end_of_current_loop, datetime_now)
             remaining_minutes, remaining_seconds = divmod(total_seconds, 60)
+            remaining_time = Format.remaining_time(remaining_minutes, remaining_seconds)
             
             # Create visual elements
             progress_bar_text = ProgressBar.render(total_seconds)
@@ -187,7 +214,7 @@ class TimerLoop:
             # Display everything
             UserDisplay.show_timer_display(
                 current_date, current_time, target_time,
-                remaining_minutes, remaining_seconds, progress_bar_text
+                remaining_time, progress_bar_text
             )
             
             SystemUtils.sleep_until_next_second(datetime_now)

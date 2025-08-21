@@ -10,8 +10,7 @@ to the user, including the timer interface and status messages.
 """
 
 class ProgressBar:
-    """Handles creation of visual progress bar in-app."""
-        
+    """Handles creation of visual progress bar in-app."""   
     
     @classmethod
     def render(cls, remaining_time_in_seconds:int) -> str:
@@ -102,36 +101,10 @@ class UserDisplay:
         'Press Ctrl + C to exit.\n' +
         THICK_HORIZONTAL_LINE
     )
-    
+
     @staticmethod
-    def format_time_display(remaining_minutes:int, remaining_seconds:int) -> str:
-        """
-        Formats the remaining minutes and seconds for display in-app.
-
-        Args:
-            remaining_minutes (int): The unformatted number of remaining minutes.
-            remaining_seconds (int): The unformatted number of remaining seconds.
-
-        Returns:
-            remaining_time_formatted (str): The formatted number of remaining minutes and seconds.
-        """
-
-        minutes_label = SystemUtils.pluralize("minute", remaining_minutes)
-        seconds_label = SystemUtils.pluralize("second", remaining_seconds)
-
-        remaining_minutes_formatted = f'{UserDisplay.INDENT}{remaining_minutes:02} {minutes_label}'
-        remaining_seconds_formatted = f'{UserDisplay.INDENT}{remaining_seconds:02} {seconds_label}'
-
-        remaining_time_formatted = (
-            remaining_minutes_formatted + '\n' +
-            remaining_seconds_formatted
-        )
-
-        return remaining_time_formatted
-
-    @classmethod
-    def show_timer_display(cls, current_date, current_time, target_time, remaining_minutes, 
-                          remaining_seconds, progress_bar_text):
+    def show_timer_display(current_date, current_time, target_time, remaining_time, 
+                          progress_bar_text):
         """Displays the main timer interface."""
 
         print(UserDisplay.TITLE_BLOCK)   
@@ -140,5 +113,5 @@ class UserDisplay:
         print(UserDisplay.INDENTED_HORIZONTAL_LINE)
         print(f'{UserDisplay.INDENT}Countdown until {target_time}:')
         print(UserDisplay.INDENTED_HORIZONTAL_LINE)
-        print(cls.format_time_display(remaining_minutes, remaining_seconds))
+        print(remaining_time)
         print(f"{UserDisplay.INDENT}{progress_bar_text}")
