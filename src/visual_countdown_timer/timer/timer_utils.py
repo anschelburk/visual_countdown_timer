@@ -327,15 +327,26 @@ class ValidateInput:
 
     @staticmethod
     def confirm_user_choice() -> bool:
-        user_input = input("Is this correct? Please enter \"y\" for yes, or \"n\" for no: ")
+        """
+        Prompts the user for yes/no confirmation and returns their choice.
+        
+        Continuously prompts until the user enters a valid response ('y' or 'n').
+        Input is automatically cleaned of whitespace and converted to lowercase.
+
+        Args:
+            None
+        Returns:
+            bool: True if user confirms with 'y', False if user declines with 'n'
+        """
+        user_confirmation = input("Is this correct? Please enter \"y\" for yes, or \"n\" for no: ")
         while True:
-            user_input = SystemUtils.clean_text(user_input).lower()
-            if user_input == 'y':
+            user_confirmation = SystemUtils.clean_text(user_confirmation).lower()
+            if user_confirmation == 'y':
                 return True
-            elif user_input == 'n':
+            elif user_confirmation == 'n':
                 return False
             else:
-                user_input = input('Error: Please type either \"y\" to for yes, or \"n\" for no: ')
+                user_confirmation = input('Error: Please type either \"y\" to for yes, or \"n\" for no: ')
 
     @staticmethod
     def hour_format(user_input: int) -> int:
