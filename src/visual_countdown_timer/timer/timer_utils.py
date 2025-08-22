@@ -238,7 +238,7 @@ class UserInput:
         print(UserDisplay.TIMER_INTRO_TEXT)
         while True:
             countdown_minutes = cls._get_minutes_input()
-            if ValidateInput.user_input(countdown_minutes, ValidateInput.integer, ValidateInput.minutes_range):
+            if ValidateInput.minutes_range(countdown_minutes):
                 countdown_minutes_final = int(countdown_minutes)
                 return countdown_minutes_final
             else:
@@ -361,25 +361,6 @@ class ValidateInput:
             if not valid(user_input):
                 return False
         return True
-
-    @staticmethod
-    def integer(user_input) -> bool:
-        """
-        Validates whether user input can be converted to an integer.
-        
-        Args:
-            user_input: The input value to validate. Can be any type, but
-                typically a string from user input.
-        
-        Returns:
-            bool: True if user_input can be converted to an integer,
-                  False if conversion raises ValueError.
-        """
-        try:
-            int(user_input)
-            return True
-        except ValueError:
-            return False
         
     def minutes_range(user_input: int) -> bool:
         """
@@ -393,7 +374,7 @@ class ValidateInput:
             user_input (int): The integer value to validate as a minute value.
         
         Returns:
-            bool: True if user_input is between 0 and 59 (inclusive),
+            bool: True if user_input is an integer between 0 and 59 (inclusive),
                   False otherwise.
         """
         try:
