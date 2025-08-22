@@ -351,7 +351,7 @@ class ValidateInput:
             user_input = int(user_input)
             return True
         except ValueError:
-            print("Error: please enter a whole number.")
+            print("\nError: please enter a whole number.")
             print("(Please note that this program cannot convert words into numbers.)")
             return False
         
@@ -373,7 +373,7 @@ class ValidateInput:
         if (0 <= user_input < 60):
             return True
         else:
-            print("Error: please enter a whole number between 0 and 59.")
+            print("\nError: please enter a whole number between 0 and 59.")
             return False
     
     def hour_display_format(user_input: int) -> bool:
