@@ -225,8 +225,8 @@ class TimerLoop:
 class UserInput:
     """Handles all user input collection and validation."""
 
-    @classmethod
-    def get_countdown_time(cls):
+    @staticmethod
+    def get_countdown_time():
         """
         Prompts the user to enter a countdown time and returns it if valid.
         
@@ -235,9 +235,9 @@ class UserInput:
         Returns:
             countdown_minutes (int): A valid countdown minute (0–59)
         """
-        print(UserDisplay.TIMER_INTRO_TEXT)
         while True:
-            countdown_minutes = cls._get_minutes_input()
+            countdown_minutes = input("\nPlease enter the number of minutes you'd like to count down to: ")
+            countdown_minutes = SystemUtils.clean_text(countdown_minutes)
             if ValidateInput.integer_input(countdown_minutes):
                 countdown_minutes = int(countdown_minutes)
                 if  ValidateInput.minutes_range(countdown_minutes):
@@ -267,13 +267,6 @@ class UserInput:
         f"\n{UserDisplay.INDENT}24 hours looks like this: 15:52" +
         "\n" + UserDisplay.INDENTED_HORIZONTAL_LINE
     )
-    
-    @staticmethod
-    def _get_minutes_input():
-        """Prompts for and validates minute input."""
-        user_input = input("\nPlease enter the number of minutes you'd like to count down to: ")
-        user_input_clean = SystemUtils.clean_text(user_input)
-        return user_input_clean
     
     @staticmethod
     def _confirm_minutes(minutes:int) -> bool:
