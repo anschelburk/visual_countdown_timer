@@ -238,11 +238,15 @@ class UserInput:
         print(UserDisplay.TIMER_INTRO_TEXT)
         while True:
             countdown_minutes = cls._get_minutes_input()
-            if ValidateInput.minutes_range(countdown_minutes):
+            if ValidateInput.user_input(countdown_minutes, ValidateInput.integer_input, ValidateInput.minutes_range):
                 countdown_minutes_final = int(countdown_minutes)
                 return countdown_minutes_final
-            else:
-                print("Error: Countdown minutes must be a whole number between 0 and 59.")
+            
+            # if ValidateInput.minutes_range(countdown_minutes):
+            #     countdown_minutes_final = int(countdown_minutes)
+            #     return countdown_minutes_final
+            # else:
+            #     print("\nError: Countdown minutes must be a whole number between 0 and 59.")
 
         # while True:
         #     try:
@@ -361,6 +365,18 @@ class ValidateInput:
             if not valid(user_input):
                 return False
         return True
+    
+    def integer_input(user_input) -> bool:
+        """
+        Validates that a user input is an integer.
+        """
+        try:
+            user_input = int(user_input)
+            return True
+        except ValueError:
+            print("Error: please enter a whole number.")
+            print("(Please note that this program cannot convert words into numbers.)")
+            return False
         
     def minutes_range(user_input: int) -> bool:
         """
@@ -377,10 +393,10 @@ class ValidateInput:
             bool: True if user_input is an integer between 0 and 59 (inclusive),
                   False otherwise.
         """
-        try:
-            user_input = int(user_input)
-            return (0 <= user_input < 60)
-        except ValueError:
+        if (0 <= user_input < 60):
+            return True
+        else:
+            print("Error: please enter a whole number between 0 and 59.")
             return False
     
     def hour_display_format(user_input: int) -> bool:
