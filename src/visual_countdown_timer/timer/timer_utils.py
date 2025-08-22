@@ -271,7 +271,7 @@ class UserInput:
     @staticmethod
     def _get_minutes_input():
         """Prompts for and validates minute input."""
-        user_input = input("Please enter the number of minutes you'd like to count down to: ")
+        user_input = input("\nPlease enter the number of minutes you'd like to count down to: ")
         user_input_clean = SystemUtils.clean_text(user_input)
         return user_input_clean
     
