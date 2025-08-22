@@ -20,7 +20,7 @@ class TimerApp:
         TerminalUtils.clear_terminal()
         
         # Get user preferences
-        countdown_minutes = UserInput.get_countdown_time('initial')
+        countdown_minutes = UserInput.get_countdown_time()
         hour_format = UserInput.get_hour_format()
         
         # Start timer loop

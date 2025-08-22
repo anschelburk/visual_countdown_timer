@@ -225,28 +225,34 @@ class TimerLoop:
 class UserInput:
     """Handles all user input collection and validation."""
 
-    @staticmethod
-    def get_countdown_time(runtime_status):
+    @classmethod
+    def get_countdown_time(cls):
         """
         Prompts the user to enter a countdown time and returns it if valid.
         
         Args:
-            runtime_status (str): 'initial' or 'update'
-        
+            None        
         Returns:
             countdown_minutes (int): A valid countdown minute (0–59)
         """
         print(UserDisplay.TIMER_INTRO_TEXT)
-
         while True:
-            try:
-                countdown_minutes = UserInput._get_minutes_input()
-                if UserInput._confirm_minutes(countdown_minutes):
-                    return countdown_minutes
-                else:
-                    print('')  # restart loop
-            except ValueError as error_message:
-                print(f"\nError: {error_message}\n")
+            countdown_minutes = cls._get_minutes_input()
+            if ValidateInput.user_input(countdown_minutes, ValidateInput.integer, ValidateInput.minutes_range):
+                countdown_minutes_final = int(countdown_minutes)
+                return countdown_minutes_final
+            else:
+                print("Error: Countdown minutes must be a whole number between 0 and 59.")
+
+        # while True:
+        #     try:
+        #         countdown_minutes = UserInput._get_minutes_input()
+        #         if UserInput._confirm_minutes(countdown_minutes):
+        #             return countdown_minutes
+        #         else:
+        #             print('')  # restart loop
+        #     except ValueError as error_message:
+        #         print(f"\nError: {error_message}\n")
     
     @classmethod
     def get_hour_format(cls) -> int:
@@ -275,16 +281,17 @@ class UserInput:
     @staticmethod
     def _get_minutes_input():
         """Prompts for and validates minute input."""
-        user_input = SystemUtils.clean_text(input("Please enter the number of minutes you'd like to count down to: "))
-        
-        try:
-            minute = int(user_input)
-            if not (0 <= minute < 60):
-                raise ValueError
-        except ValueError:
-            raise ValueError("The number of minutes must be a whole number between 0 and 59 (e.g., 0, 3, 25, 59).")
+        user_input = input("Please enter the number of minutes you'd like to count down to: ")
+        user_input_clean = SystemUtils.clean_text(user_input)
+        return user_input_clean
+        # try:
+        #     minute = int(user_input)
+        #     if not (0 <= minute < 60):
+        #         raise ValueError
+        # except ValueError:
+        #     raise ValueError("The number of minutes must be a whole number between 0 and 59 (e.g., 0, 3, 25, 59).")
 
-        return minute
+        # return minute
     
     @staticmethod
     def _confirm_minutes(minutes:int) -> bool:
