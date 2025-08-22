@@ -385,7 +385,7 @@ class ValidateInput:
     
     def hour_display_format(user_input: int) -> bool:
         """
-        Validates that an integer is a supported hour display format.
+        Validates that a user input is an integer and a supported hour display format.
     
         Args:
             user_input (int): The integer value to validate as an hour format.
@@ -394,7 +394,11 @@ class ValidateInput:
             bool: True if user_input is a valid hour display format (12 or 24),
                   False otherwise.
         """
-        return user_input in TimerConfig.POSSIBLE_HOUR_FORMATS
+        try:
+            user_input = int(user_input)
+            return user_input in TimerConfig.POSSIBLE_HOUR_FORMATS
+        except ValueError:
+            return False
 
     @staticmethod
     def confirm_user_choice() -> bool:
