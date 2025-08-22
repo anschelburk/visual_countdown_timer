@@ -396,7 +396,11 @@ class ValidateInput:
             bool: True if user_input is between 0 and 59 (inclusive),
                   False otherwise.
         """
-        return (0 <= user_input < 60)
+        try:
+            user_input = int(user_input)
+            return (0 <= user_input < 60)
+        except ValueError:
+            return False
     
     def hour_display_format(user_input: int) -> bool:
         """
