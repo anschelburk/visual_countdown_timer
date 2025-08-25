@@ -234,8 +234,8 @@ class UserInput:
             countdown_minutes = SystemUtils.clean_text(countdown_minutes)
             if InputIsValid.integer(countdown_minutes):
                 countdown_minutes = int(countdown_minutes)
-                if  InputIsValid.minutes_range(countdown_minutes):
-                    if ValidateInput.confirm_user_choice(countdown_minutes):
+                if InputIsValid.minutes_range(countdown_minutes):
+                    if UserConfirms.user_input(countdown_minutes):
                         return countdown_minutes
     
     @classmethod
@@ -278,10 +278,34 @@ class UserInput:
         user_confirmation = ValidateInput.confirm_user_choice()
         return user_confirmation
 
-class ConfirmInput:
+class UserConfirms:
     """
     Confirmation prompts for user interactions.
     """
+
+    @staticmethod
+    def user_input(user_input) -> bool:
+        """
+        Prompts the user for yes/no confirmation and returns their choice.
+        
+        Continuously prompts until the user enters a valid response ('y' or 'n').
+        Input is automatically cleaned of whitespace and converted to lowercase.
+
+        Args:
+            None
+        Returns:
+            bool: True if user confirms with 'y', False if user declines with 'n'
+        """
+        print(f"\nYou entered: {user_input}")
+        user_confirmation = input("Is this correct? Please enter \"y\" for yes, or \"n\" for no: ")
+        while True:
+            user_confirmation = SystemUtils.clean_text(user_confirmation).lower()
+            if user_confirmation == 'y':
+                return True
+            elif user_confirmation == 'n':
+                return False
+            else:
+                user_confirmation = input('Error: Please type either \"y\" to for yes, or \"n\" for no: ')
 
 #     @staticmethod
 #     def user_minutes(user_input: int):
@@ -334,29 +358,29 @@ class ValidateInput:
                 return False
         return True
 
-    @staticmethod
-    def confirm_user_choice(user_input) -> bool:
-        """
-        Prompts the user for yes/no confirmation and returns their choice.
+    # @staticmethod
+    # def confirm_user_choice(user_input) -> bool:
+    #     """
+    #     Prompts the user for yes/no confirmation and returns their choice.
         
-        Continuously prompts until the user enters a valid response ('y' or 'n').
-        Input is automatically cleaned of whitespace and converted to lowercase.
+    #     Continuously prompts until the user enters a valid response ('y' or 'n').
+    #     Input is automatically cleaned of whitespace and converted to lowercase.
 
-        Args:
-            None
-        Returns:
-            bool: True if user confirms with 'y', False if user declines with 'n'
-        """
-        print(f"\nYou entered: {user_input}")
-        user_confirmation = input("Is this correct? Please enter \"y\" for yes, or \"n\" for no: ")
-        while True:
-            user_confirmation = SystemUtils.clean_text(user_confirmation).lower()
-            if user_confirmation == 'y':
-                return True
-            elif user_confirmation == 'n':
-                return False
-            else:
-                user_confirmation = input('Error: Please type either \"y\" to for yes, or \"n\" for no: ')
+    #     Args:
+    #         None
+    #     Returns:
+    #         bool: True if user confirms with 'y', False if user declines with 'n'
+    #     """
+    #     print(f"\nYou entered: {user_input}")
+    #     user_confirmation = input("Is this correct? Please enter \"y\" for yes, or \"n\" for no: ")
+    #     while True:
+    #         user_confirmation = SystemUtils.clean_text(user_confirmation).lower()
+    #         if user_confirmation == 'y':
+    #             return True
+    #         elif user_confirmation == 'n':
+    #             return False
+    #         else:
+    #             user_confirmation = input('Error: Please type either \"y\" to for yes, or \"n\" for no: ')
 
     @staticmethod
     def hour_format(user_input: int) -> int:
