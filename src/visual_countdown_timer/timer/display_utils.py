@@ -1,5 +1,4 @@
 from .settings import DisplaySettings
-from .system_utils import SystemUtils
 import math
 
 """

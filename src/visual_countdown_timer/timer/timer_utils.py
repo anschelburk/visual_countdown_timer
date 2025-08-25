@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 from .display_utils import ProgressBar, UserDisplay
 from .settings import TimerConfig
 from .system_utils import SystemUtils, TerminalUtils
+from .validation import InputIsValid
 
 """
 Time calculation and formatting utilities for the Visual Countdown Timer.
@@ -238,7 +239,7 @@ class UserInput:
         while True:
             countdown_minutes = input("\nPlease enter the number of minutes you'd like to count down to: ")
             countdown_minutes = SystemUtils.clean_text(countdown_minutes)
-            if ValidateInput.integer_input(countdown_minutes):
+            if InputIsValid.integer(countdown_minutes):
                 countdown_minutes = int(countdown_minutes)
                 if  ValidateInput.minutes_range(countdown_minutes):
                     if ValidateInput.confirm_user_choice(countdown_minutes):
@@ -336,18 +337,6 @@ class ValidateInput:
             if not valid(user_input):
                 return False
         return True
-    
-    def integer_input(user_input) -> bool:
-        """
-        Validates that a user input is an integer.
-        """
-        try:
-            user_input = int(user_input)
-            return True
-        except ValueError:
-            print("\nError: please enter a whole number.")
-            print("(Please note that this program cannot convert words into numbers.)")
-            return False
         
     def minutes_range(user_input: int) -> bool:
         """
