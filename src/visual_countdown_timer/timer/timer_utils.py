@@ -44,28 +44,13 @@ class Format:
         Returns:
             time_formatted (str): Formatted time string
         """
-        # try:
-        #     hour_display_format = int(hour_display_format)
-        #     if hour_display_format not in TimerConfig.POSSIBLE_HOUR_FORMATS:
-        #         raise ValueError
-        # if ValidateInput.confirm_user_choice(hour_display_format):
+
         if hour_display_format == 12:
             time_formatted_notimezone = cls._time_12h(datetime_unformatted)
         elif hour_display_format == 24:
             time_formatted_notimezone = cls._time_24h(datetime_unformatted)
         time_formatted = cls._add_timezone(datetime_unformatted, time_formatted_notimezone)
         return time_formatted
-
-
-        # if InputIsValid.integer(hour_display_format):
-        #     hour_display_format = int(hour_display_format)
-        #     if InputIsValid.hour_display_format(hour_display_format):
-            # else:
-            #     raise ValueError
-
-                
-        # except ValueError:
-        #     raise ValueError('Hours format must be either 12 or 24.')
 
     @staticmethod
     def _add_timezone(datetime_unformatted: datetime, time_without_timezone: str) -> str:
