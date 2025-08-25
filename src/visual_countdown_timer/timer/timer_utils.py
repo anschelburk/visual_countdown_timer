@@ -41,23 +41,27 @@ class Format:
         Returns:
             time_formatted (str): Formatted time string
         """
-        try:
-            hour_display_format = int(hour_display_format)
-            if hour_display_format not in TimerConfig.POSSIBLE_HOUR_FORMATS:
-                raise ValueError
-                
-            if hour_display_format == 12:
-                time_formatted_notimezone = cls._time_12h(datetime_unformatted)
-            elif hour_display_format == 24:
-                time_formatted_notimezone = cls._time_24h(datetime_unformatted)
-            else:
-                raise ValueError
+        # try:
+        #     hour_display_format = int(hour_display_format)
+        #     if hour_display_format not in TimerConfig.POSSIBLE_HOUR_FORMATS:
+        #         raise ValueError
 
-            time_formatted = cls._add_timezone(datetime_unformatted, time_formatted_notimezone)
-            return time_formatted
+        if InputIsValid.integer(hour_display_format):
+            hour_display_format = int(hour_display_format)
+            if InputIsValid.hour_display_format(hour_display_format):
+                if ValidateInput.confirm_user_choice(hour_display_format):
+                    if hour_display_format == 12:
+                        time_formatted_notimezone = cls._time_12h(datetime_unformatted)
+                    elif hour_display_format == 24:
+                        time_formatted_notimezone = cls._time_24h(datetime_unformatted)
+            # else:
+            #     raise ValueError
+
+                    time_formatted = cls._add_timezone(datetime_unformatted, time_formatted_notimezone)
+                    return time_formatted
                 
-        except ValueError:
-            raise ValueError('Hours format must be either 12 or 24.')
+        # except ValueError:
+        #     raise ValueError('Hours format must be either 12 or 24.')
 
     @staticmethod
     def _add_timezone(datetime_unformatted: datetime, time_without_timezone: str) -> str:
@@ -337,23 +341,6 @@ class ValidateInput:
             if not valid(user_input):
                 return False
         return True
-    
-    def hour_display_format(user_input: int) -> bool:
-        """
-        Validates that a user input is an integer and a supported hour display format.
-    
-        Args:
-            user_input (int): The integer value to validate as an hour format.
-        
-        Returns:
-            bool: True if user_input is a valid hour display format (12 or 24),
-                  False otherwise.
-        """
-        try:
-            user_input = int(user_input)
-            return user_input in TimerConfig.POSSIBLE_HOUR_FORMATS
-        except ValueError:
-            return False
 
     @staticmethod
     def confirm_user_choice(user_input) -> bool:
