@@ -33,6 +33,9 @@ class Format:
     def time(cls, datetime_unformatted: datetime, hour_display_format: int) -> str:
         """
         Formats a datetime object into a 12-hour or 24-hour time string.
+        This function assumes that the `hour_display_format` input has been checked, and is:
+            1) An integer.
+            2) A valid hour display format, as defined in settings.TimerConfig.POSSIBLE_HOUR_FORMATS.
         
         Args:
             datetime_unformatted (datetime): The datetime object to format
@@ -45,20 +48,21 @@ class Format:
         #     hour_display_format = int(hour_display_format)
         #     if hour_display_format not in TimerConfig.POSSIBLE_HOUR_FORMATS:
         #         raise ValueError
+        # if ValidateInput.confirm_user_choice(hour_display_format):
+        if hour_display_format == 12:
+            time_formatted_notimezone = cls._time_12h(datetime_unformatted)
+        elif hour_display_format == 24:
+            time_formatted_notimezone = cls._time_24h(datetime_unformatted)
+        time_formatted = cls._add_timezone(datetime_unformatted, time_formatted_notimezone)
+        return time_formatted
 
-        if InputIsValid.integer(hour_display_format):
-            hour_display_format = int(hour_display_format)
-            if InputIsValid.hour_display_format(hour_display_format):
-                if ValidateInput.confirm_user_choice(hour_display_format):
-                    if hour_display_format == 12:
-                        time_formatted_notimezone = cls._time_12h(datetime_unformatted)
-                    elif hour_display_format == 24:
-                        time_formatted_notimezone = cls._time_24h(datetime_unformatted)
+
+        # if InputIsValid.integer(hour_display_format):
+        #     hour_display_format = int(hour_display_format)
+        #     if InputIsValid.hour_display_format(hour_display_format):
             # else:
             #     raise ValueError
 
-                    time_formatted = cls._add_timezone(datetime_unformatted, time_formatted_notimezone)
-                    return time_formatted
                 
         # except ValueError:
         #     raise ValueError('Hours format must be either 12 or 24.')
