@@ -235,7 +235,7 @@ class UserInput:
             if InputIsValid.integer(countdown_minutes):
                 countdown_minutes = int(countdown_minutes)
                 if InputIsValid.minutes_range(countdown_minutes):
-                    if UserConfirms.user_input(countdown_minutes):
+                    if UserConfirms.countdown_time(countdown_minutes):
                         return countdown_minutes
     
     @classmethod
@@ -264,9 +264,14 @@ class UserInput:
         f"\n{UserDisplay.INDENT}24 hours looks like this: 15:52" +
         "\n" + UserDisplay.INDENTED_HORIZONTAL_LINE
     )
-    
+
+class UserConfirms:
+    """
+    Confirmation prompts for user interactions.
+    """
+
     @staticmethod
-    def _confirm_minutes(minutes:int) -> bool:
+    def countdown_time(minutes:int) -> bool:
         """Displays preview and gets user confirmation."""
 
         print(f'\nYou entered {minutes} minutes. The timer will count down to:')
@@ -275,16 +280,13 @@ class UserInput:
         EXAMPLE_HOURS_END = 3
         print(' | '.join(f'{hour:02}:{minutes:02}' for hour in range(EXAMPLE_HOURS_START, EXAMPLE_HOURS_END + 1)) + ' | etc.\n')
 
-        user_confirmation = ValidateInput.confirm_user_choice()
-        return user_confirmation
-
-class UserConfirms:
-    """
-    Confirmation prompts for user interactions.
-    """
+        if UserConfirms.user_input():
+            return True
 
     @staticmethod
-    def user_input(user_input) -> bool:
+    def user_input() -> bool:
+        # Break this up by adding a new method:
+        # InputIsValid.user_confirmation()
         """
         Prompts the user for yes/no confirmation and returns their choice.
         
@@ -296,7 +298,6 @@ class UserConfirms:
         Returns:
             bool: True if user confirms with 'y', False if user declines with 'n'
         """
-        print(f"\nYou entered: {user_input}")
         user_confirmation = input("Is this correct? Please enter \"y\" for yes, or \"n\" for no: ")
         while True:
             user_confirmation = SystemUtils.clean_text(user_confirmation).lower()
@@ -357,30 +358,6 @@ class ValidateInput:
             if not valid(user_input):
                 return False
         return True
-
-    # @staticmethod
-    # def confirm_user_choice(user_input) -> bool:
-    #     """
-    #     Prompts the user for yes/no confirmation and returns their choice.
-        
-    #     Continuously prompts until the user enters a valid response ('y' or 'n').
-    #     Input is automatically cleaned of whitespace and converted to lowercase.
-
-    #     Args:
-    #         None
-    #     Returns:
-    #         bool: True if user confirms with 'y', False if user declines with 'n'
-    #     """
-    #     print(f"\nYou entered: {user_input}")
-    #     user_confirmation = input("Is this correct? Please enter \"y\" for yes, or \"n\" for no: ")
-    #     while True:
-    #         user_confirmation = SystemUtils.clean_text(user_confirmation).lower()
-    #         if user_confirmation == 'y':
-    #             return True
-    #         elif user_confirmation == 'n':
-    #             return False
-    #         else:
-    #             user_confirmation = input('Error: Please type either \"y\" to for yes, or \"n\" for no: ')
 
     @staticmethod
     def hour_format(user_input: int) -> int:
