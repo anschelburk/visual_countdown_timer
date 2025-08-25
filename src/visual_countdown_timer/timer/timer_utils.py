@@ -241,7 +241,7 @@ class UserInput:
             countdown_minutes = SystemUtils.clean_text(countdown_minutes)
             if InputIsValid.integer(countdown_minutes):
                 countdown_minutes = int(countdown_minutes)
-                if  ValidateInput.minutes_range(countdown_minutes):
+                if  InputIsValid.minutes_range(countdown_minutes):
                     if ValidateInput.confirm_user_choice(countdown_minutes):
                         return countdown_minutes
     
@@ -337,27 +337,6 @@ class ValidateInput:
             if not valid(user_input):
                 return False
         return True
-        
-    def minutes_range(user_input: int) -> bool:
-        """
-        Validates that an integer is within the valid range for minutes.
-        
-        Checks if the provided integer falls within the standard minute range
-        of 0 to 59 (inclusive of 0, exclusive of 60). This validation is used
-        to ensure minute values are valid for time-related operations.
-        
-        Args:
-            user_input (int): The integer value to validate as a minute value.
-        
-        Returns:
-            bool: True if user_input is an integer between 0 and 59 (inclusive),
-                  False otherwise.
-        """
-        if (0 <= user_input < 60):
-            return True
-        else:
-            print("\nError: please enter a whole number between 0 and 59.")
-            return False
     
     def hour_display_format(user_input: int) -> bool:
         """
