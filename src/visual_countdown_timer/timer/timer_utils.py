@@ -281,7 +281,11 @@ class UserConfirms:
         EXAMPLE_HOURS_END = 3
         print(' | '.join(f'{hour:02}:{minutes:02}' for hour in range(EXAMPLE_HOURS_START, EXAMPLE_HOURS_END + 1)) + ' | etc.\n')
 
-        return cls._confirm_user_input()
+        if cls._confirm_user_input():
+            return True
+        else:
+            print("\nNo problem! Let's try again:")
+            return False
 
     @classmethod
     def hour_display_format(cls, user_hours: int) -> bool:
