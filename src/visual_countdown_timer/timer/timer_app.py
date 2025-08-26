@@ -15,13 +15,15 @@ class TimerApp:
     def __init__(self):
         """Initialize the timer application."""
         exit_handler = TerminalUtils.initialize_exit_handler()
-    
+        # Change to exit_handler_initialized = TerminalUtils...() where the function returns either True or False
+
     def run(self):
         """Run the main timer application."""
         TerminalUtils.clear_terminal()
         
         # Get user preferences
-        print(UserDisplay.TIMER_INTRO_TEXT)
+        print(UserDisplay.TITLE_BLOCK)
+        print(f"\n{UserDisplay.TIMER_INTRO_TEXT}")
         countdown_minutes = UserInput.get_countdown_time()
         hour_format = UserInput.get_hour_format()
         
