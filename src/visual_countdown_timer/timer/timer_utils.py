@@ -255,7 +255,8 @@ class UserInput:
             if InputIsValid.integer(user_hours):
                 user_hours = int(user_hours)
                 if InputIsValid.hour_display_format(user_hours):
-                    return user_hours
+                    if UserConfirms.hour_display_format(user_hours):
+                        return user_hours
 
     _HOUR_FORMAT_USER_PROMPT = (
         "\nWould you like the time to display as 12 or 24 hours?" +
