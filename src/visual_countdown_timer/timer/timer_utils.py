@@ -301,7 +301,7 @@ class UserConfirms:
             bool: True if the user confirms yes, False for all other responses.
         """
     
-        print(f"\nYou entered: {user_hours}-hour display format.")
+        print(f"\n{user_hours}-hour display format selected.")
         if cls._confirm_user_input():
             return True
         else:
