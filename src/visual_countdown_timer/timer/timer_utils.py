@@ -298,7 +298,11 @@ class UserConfirms:
         """
     
         print(f"\nYou entered: {user_hours}-hour display format.")
-        return cls._confirm_user_input()
+        if cls._confirm_user_input():
+            return True
+        else:
+            print("\nNo problem! Let's try again:")
+            return False
 
     @staticmethod
     def _confirm_user_input() -> bool:
