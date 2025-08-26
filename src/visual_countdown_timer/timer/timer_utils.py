@@ -284,6 +284,24 @@ class UserConfirms:
             return True
 
     @staticmethod
+    def hour_display_format(user_hours: int) -> bool:
+        """
+        Prompts the user to confirm their choice for hour display format (either 12 or 24).
+        *Please note:* This function assumes that the input has been confirmed valid under the following criteria:
+            1. The input is an integer, as defined in: validation.InputIsValid.integer()
+            2. The input is a valid hour display format, as defined in: validation.InputIsValid.hour_display_format()
+        
+        Args:
+            user_hours (int): The hour display format the user has entered, to confirm.
+        Returns:
+            bool: True if the user confirms yes, False for all other responses.
+        """
+    
+        print(f"\nYou entered: {user_hours}-hour display format.")
+        if UserConfirms.user_input():
+            return True
+
+    @staticmethod
     def user_input() -> bool:
         # Break this up by adding a new method:
         # InputIsValid.user_confirmation()
