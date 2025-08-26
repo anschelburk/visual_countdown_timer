@@ -250,21 +250,19 @@ class UserInput:
             user_hours_validated (int): The user's preferred time format (12 or 24).
         """
         while True:
-            print(cls._HOUR_FORMAT_USER_PROMPT)
+
+            print("\nWould you like the time to display as 12 or 24 hours?")
+            print(UserDisplay.INDENTED_HORIZONTAL_LINE)
+            print(f"{UserDisplay.INDENT}12 hours looks like this: 3:52pm")
+            print(f"{UserDisplay.INDENT}24 hours looks like this: 15:52")
+            print(UserDisplay.INDENTED_HORIZONTAL_LINE)
+
             user_hours = input('Type \"12\" for 12-hour format, or \"24\" for 24-hour format: ')
             if InputIsValid.integer(user_hours):
                 user_hours = int(user_hours)
                 if InputIsValid.hour_display_format(user_hours):
                     if UserConfirms.hour_display_format(user_hours):
                         return user_hours
-
-    _HOUR_FORMAT_USER_PROMPT = (
-        "\nWould you like the time to display as 12 or 24 hours?" +
-        "\n" + UserDisplay.INDENTED_HORIZONTAL_LINE +
-        f"\n{UserDisplay.INDENT}12 hours looks like this: 3:52pm" +
-        f"\n{UserDisplay.INDENT}24 hours looks like this: 15:52" +
-        "\n" + UserDisplay.INDENTED_HORIZONTAL_LINE
-    )
 
 class UserConfirms:
     """
