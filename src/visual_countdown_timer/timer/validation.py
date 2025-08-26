@@ -20,12 +20,11 @@ class InputIsValid:
             bool: True if user_input is a valid hour display format (12 or 24),
                   False otherwise.
         """
-        try:
-            user_input = int(user_input)
-            return user_input in TimerConfig.POSSIBLE_HOUR_FORMATS
-        except ValueError:
+        if user_input in TimerConfig.POSSIBLE_HOUR_FORMATS:
+            return True
+        else:
+            print("\nError: please enter either 12 or 24 for the hour display format.")
             return False
-
 
     def integer(user_input) -> bool:
         """
