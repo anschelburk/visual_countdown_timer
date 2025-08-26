@@ -271,8 +271,8 @@ class UserConfirms:
     Confirmation prompts for user interactions.
     """
 
-    @staticmethod
-    def countdown_time(minutes:int) -> bool:
+    @classmethod
+    def countdown_time(cls, minutes:int) -> bool:
         """Displays preview and gets user confirmation."""
 
         print(f'\nYou entered {minutes} minutes. The timer will count down to:')
@@ -281,11 +281,10 @@ class UserConfirms:
         EXAMPLE_HOURS_END = 3
         print(' | '.join(f'{hour:02}:{minutes:02}' for hour in range(EXAMPLE_HOURS_START, EXAMPLE_HOURS_END + 1)) + ' | etc.\n')
 
-        if UserConfirms.user_input():
-            return True
+        return cls._confirm_user_input()
 
-    @staticmethod
-    def hour_display_format(user_hours: int) -> bool:
+    @classmethod
+    def hour_display_format(cls, user_hours: int) -> bool:
         """
         Prompts the user to confirm their choice for hour display format (either 12 or 24).
         *Please note:* This function assumes that the input has been confirmed valid under the following criteria:
@@ -299,11 +298,10 @@ class UserConfirms:
         """
     
         print(f"\nYou entered: {user_hours}-hour display format.")
-        if UserConfirms.user_input():
-            return True
+        return cls._confirm_user_input()
 
     @staticmethod
-    def user_input() -> bool:
+    def _confirm_user_input() -> bool:
         # Break this up by adding a new method:
         # InputIsValid.user_confirmation()
         """
