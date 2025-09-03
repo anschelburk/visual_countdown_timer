@@ -66,7 +66,7 @@ class SystemUtils:
             text_wrapped (str): The wrapped text.
 
         """
-        text_wrapped = textwrap.fill(text_unformatted, width=DisplaySettings.TERMINAL_WINDOW_WIDTH)
+        text_wrapped = '\n'.join([textwrap.fill(line, width=DisplaySettings.TERMINAL_WINDOW_WIDTH) for line in text_unformatted.splitlines()])
         return text_wrapped
     
     @staticmethod
