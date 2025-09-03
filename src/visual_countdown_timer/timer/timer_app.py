@@ -22,8 +22,8 @@ class TimerApp:
         TerminalUtils.clear_terminal()
         
         # Get user preferences
-        print(SystemUtils.wrap_text(UserDisplay.TITLE_BLOCK))
-        print(f"\n{UserDisplay.TIMER_INTRO_TEXT}")
+        print(UserDisplay.TITLE_BLOCK)
+        print(SystemUtils.wrap_text(f"\n{UserDisplay.TIMER_INTRO_TEXT}"))
         countdown_minutes = UserInput.get_countdown_time()
         hour_format = UserInput.get_hour_format()
         
