@@ -5,9 +5,14 @@ This module defines configuration classes containing settings for
 display formatting, timer behavior, and validation parameters.
 """
 
+from .system_utils import TerminalUtils
+
 class DisplaySettings:
     """Configuration for display formatting and visual elements."""
     
+    # App Width
+    APP_WIDTH = TerminalUtils.get_terminal_width()
+
     # Line formatting
     LINE_THICKNESS = 34
     INDENT_LENGTH = 2
