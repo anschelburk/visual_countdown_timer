@@ -206,7 +206,7 @@ class TimerLoop:
             progress_bar_text = ProgressBar.render(total_seconds)
             
             # Display everything
-            print(
+            SystemUtils.print_wrapped(
                 UserDisplay.show_timer_display(
                     current_date, current_time, target_time,
                     remaining_time, progress_bar_text
@@ -251,13 +251,17 @@ class UserInput:
         """
         while True:
 
-            print("\nWould you like the time to display as 12 or 24 hours?")
-            print(UserDisplay.INDENTED_HORIZONTAL_LINE)
-            print(f"{UserDisplay.INDENT}12 hours looks like this: 3:52pm")
-            print(f"{UserDisplay.INDENT}24 hours looks like this: 15:52")
-            print(UserDisplay.INDENTED_HORIZONTAL_LINE)
+            SystemUtils.print_wrapped(
+                "\nWould you like the time to display as 12 or 24 hours?" +
+                f"\n{UserDisplay.INDENTED_HORIZONTAL_LINE}" +
+                f"\n{UserDisplay.INDENT}12 hours looks like this: 3:52pm" +
+                f"\n{UserDisplay.INDENT}24 hours looks like this: 15:52" +
+                f"\n{UserDisplay.INDENTED_HORIZONTAL_LINE}"
+            )
 
             user_hours = input('Type \"12\" for 12-hour format, or \"24\" for 24-hour format: ')
+            # Add this to print_wrapped - maybe change to text_wrapped(func_name, input_text)
+            # Where func_name (str) = 'input' or 'print' and the output is `return func_name(...)`` instead of `return print(...)`
             if InputIsValid.integer(user_hours):
                 user_hours = int(user_hours)
                 if InputIsValid.hour_display_format(user_hours):
@@ -273,16 +277,16 @@ class UserConfirms:
     def countdown_time(cls, minutes:int) -> bool:
         """Displays preview and gets user confirmation."""
 
-        print(f'\nYou entered {minutes} minutes. The timer will count down to:')
+        SystemUtils.print_wrapped(f'\nYou entered {minutes} minutes. The timer will count down to:')
 
         EXAMPLE_HOURS_START = 1
         EXAMPLE_HOURS_END = 3
-        print(' | '.join(f'{hour:02}:{minutes:02}' for hour in range(EXAMPLE_HOURS_START, EXAMPLE_HOURS_END + 1)) + ' | etc.\n')
+        SystemUtils.print_wrapped(' | '.join(f'{hour:02}:{minutes:02}' for hour in range(EXAMPLE_HOURS_START, EXAMPLE_HOURS_END + 1)) + ' | etc.\n')
 
         if cls._confirm_user_input():
             return True
         else:
-            print("\nNo problem! Let's try again:")
+            SystemUtils.print_wrapped("\nNo problem! Let's try again:")
             return False
 
     @classmethod
@@ -299,11 +303,11 @@ class UserConfirms:
             bool: True if the user confirms yes, False for all other responses.
         """
     
-        print(f"\n{user_hours}-hour display format selected.")
+        SystemUtils.print_wrapped(f"\n{user_hours}-hour display format selected.")
         if cls._confirm_user_input():
             return True
         else:
-            print("\nNo problem! Let's try again:")
+            SystemUtils.print_wrapped("\nNo problem! Let's try again:")
             return False
 
     @staticmethod
@@ -401,5 +405,5 @@ class ValidateInput:
                 else:
                     raise ValueError
             except ValueError:
-                print(f"\nError: please enter either 12 or 24. You typed: '{user_input}'\n")
+                SystemUtils.print_wrapped(f"\nError: please enter either 12 or 24. You typed: '{user_input}'\n")
                 user_input = input("Please type \"12\" for 12-hour format, or \"24\" for 24-hour format: ")

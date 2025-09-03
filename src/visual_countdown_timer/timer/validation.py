@@ -1,4 +1,5 @@
 from .settings import TimerConfig
+from .system_utils import SystemUtils
 
 """
 Contains all logic related to validating input.
@@ -23,7 +24,7 @@ class InputIsValid:
         if user_input in TimerConfig.POSSIBLE_HOUR_FORMATS:
             return True
         else:
-            print("\nError: please enter either 12 or 24 for the hour display format.")
+            SystemUtils.print_wrapped("\nError: please enter either 12 or 24 for the hour display format.")
             return False
 
     def integer(user_input) -> bool:
@@ -33,9 +34,12 @@ class InputIsValid:
         try:
             user_input = int(user_input)
             return True
+        
         except ValueError:
-            print("\nError: please enter a whole number.")
-            print("(Please note that this program cannot convert words into numbers.)")
+            SystemUtils.print_wrapped(
+                "\nError: please enter a whole number." +
+                "\n(Please note that this program cannot convert words into numbers.)"
+            )
             return False
         
     def minutes_range(user_input: int) -> bool:
@@ -56,5 +60,5 @@ class InputIsValid:
         if (0 <= user_input < 60):
             return True
         else:
-            print("\nError: please enter a whole number between 0 and 59.")
+            SystemUtils.print_wrapped("\nError: please enter a whole number between 0 and 59.")
             return False
