@@ -69,6 +69,17 @@ class SystemUtils:
         text_wrapped = '\n'.join([textwrap.fill(line, width=DisplaySettings.TERMINAL_WINDOW_WIDTH) for line in text_unformatted.splitlines()])
         return text_wrapped
     
+    @classmethod
+    def print_wrapped(cls, text_unformatted: str):
+        """
+        Prints the input text wrapped to fit within the current terminal window width.
+
+        Args:
+            text_unformatted (str): The text to be wrapped and printed.
+
+        """
+        return print(cls.wrap_text(text_unformatted))
+    
     @staticmethod
     def sleep_until_next_second(current_time: datetime):
         """
