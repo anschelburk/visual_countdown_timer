@@ -1,8 +1,9 @@
-from .settings import TimerConfig
+from .settings import DisplaySettings, TimerConfig
 from datetime import datetime
 import os
 import signal
 import sys
+import textwrap
 import time
 
 """
@@ -52,6 +53,21 @@ class SystemUtils:
             raise ValueError(f"Count must be an integer. Right now, count = {count} of type {type(count)}")
 
         return singular_text if count == 1 else singular_text + "s"
+    
+    @staticmethod
+    def wrap_text(text_unformatted: str) -> str:
+        """
+        Wraps the input text to fit within the current terminal window width.
+
+        Args:
+            text_unformatted (str): The text to be wrapped.
+
+        Returns:
+            text_wrapped (str): The wrapped text.
+
+        """
+        text_wrapped = textwrap.fill(text_unformatted, width=DisplaySettings.TERMINAL_WINDOW_WIDTH)
+        return text_wrapped
     
     @staticmethod
     def sleep_until_next_second(current_time: datetime):
