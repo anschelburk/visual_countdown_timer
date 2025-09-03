@@ -2,7 +2,6 @@ from .settings import TimerConfig
 from datetime import datetime
 import os
 import signal
-import shutil
 import sys
 import time
 
@@ -79,19 +78,6 @@ class TerminalUtils:
         # Use 'clear' on macOS, Linux, or other Unix-based environments
         else:
             os.system('clear')
-
-    @staticmethod
-    def get_terminal_width() -> int:
-        """
-        Retrieves the width of the user's terminal window.
-
-        Args:
-            None.
-        Returns:
-            terminal_width (int): The width of the user's terminal window in characters.
-        """
-        terminal_width = shutil.get_terminal_size().columns
-        return terminal_width
 
     @staticmethod
     def initialize_exit_handler():
