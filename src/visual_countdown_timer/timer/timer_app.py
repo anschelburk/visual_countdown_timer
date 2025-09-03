@@ -1,5 +1,5 @@
 from .display_utils import UserDisplay
-from .system_utils import TerminalUtils
+from .system_utils import SystemUtils, TerminalUtils
 from .timer_utils import TimerLoop, UserInput
 
 """
@@ -22,7 +22,7 @@ class TimerApp:
         TerminalUtils.clear_terminal()
         
         # Get user preferences
-        print(UserDisplay.TITLE_BLOCK)
+        print(SystemUtils.wrap_text(UserDisplay.TITLE_BLOCK))
         print(f"\n{UserDisplay.TIMER_INTRO_TEXT}")
         countdown_minutes = UserInput.get_countdown_time()
         hour_format = UserInput.get_hour_format()
