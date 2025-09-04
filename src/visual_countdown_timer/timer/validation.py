@@ -24,7 +24,10 @@ class InputIsValid:
         if user_input in TimerConfig.POSSIBLE_HOUR_FORMATS:
             return True
         else:
-            SystemUtils.print_wrapped("\nError: please enter either 12 or 24 for the hour display format.")
+            SystemUtils.wrap_text(
+                func_name='print',
+                text_unformatted="\nError: please enter either 12 or 24 for the hour display format."
+            )
             return False
 
     def integer(user_input) -> bool:
@@ -36,9 +39,12 @@ class InputIsValid:
             return True
         
         except ValueError:
-            SystemUtils.print_wrapped(
-                "\nError: please enter a whole number." +
-                "\n(Please note that this program cannot convert words into numbers.)"
+            SystemUtils.wrap_text(
+                func_name = 'print',
+                text_unformatted = (
+                    "\nError: please enter a whole number." +
+                    "\n(Please note that this program cannot convert words into numbers.)"
+                )
             )
             return False
         
@@ -60,5 +66,8 @@ class InputIsValid:
         if (0 <= user_input < 60):
             return True
         else:
-            SystemUtils.print_wrapped("\nError: please enter a whole number between 0 and 59.")
+            SystemUtils.wrap_text(
+                func_name = 'print',
+                text_unformatted = "\nError: please enter a whole number between 0 and 59."
+            )
             return False
