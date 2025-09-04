@@ -55,7 +55,7 @@ class SystemUtils:
         return singular_text if count == 1 else singular_text + "s"
     
     @staticmethod
-    def wrap_text(text_unformatted: str) -> str:
+    def _format_wrapped_text(text_unformatted: str) -> str:
         """
         Wraps the input text to fit within the current terminal window width.
 
@@ -70,7 +70,7 @@ class SystemUtils:
         return text_wrapped
     
     @classmethod
-    def print_wrapped(cls, text_unformatted: str):
+    def wrap_text(cls, func_name, text_unformatted: str):
         """
         Prints the input text wrapped to fit within the current terminal window width.
 
@@ -78,7 +78,7 @@ class SystemUtils:
             text_unformatted (str): The text to be wrapped and printed.
 
         """
-        return print(cls.wrap_text(text_unformatted))
+        return func_name(cls._format_wrapped_text(text_unformatted))
     
     @staticmethod
     def sleep_until_next_second(current_time: datetime):
