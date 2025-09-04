@@ -25,7 +25,7 @@ class InputIsValid:
             return True
         else:
             SystemUtils.wrap_text(
-                func_name='print',
+                func_name= print,
                 text_unformatted="\nError: please enter either 12 or 24 for the hour display format."
             )
             return False
@@ -40,7 +40,7 @@ class InputIsValid:
         
         except ValueError:
             SystemUtils.wrap_text(
-                func_name = 'print',
+                func_name = print,
                 text_unformatted = (
                     "\nError: please enter a whole number." +
                     "\n(Please note that this program cannot convert words into numbers.)"
@@ -67,7 +67,7 @@ class InputIsValid:
             return True
         else:
             SystemUtils.wrap_text(
-                func_name = 'print',
+                func_name = print,
                 text_unformatted = "\nError: please enter a whole number between 0 and 59."
             )
             return False
