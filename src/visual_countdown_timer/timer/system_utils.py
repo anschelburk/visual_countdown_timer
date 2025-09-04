@@ -1,5 +1,6 @@
 from .settings import DisplaySettings, TimerConfig
 from datetime import datetime
+from typing import Any, Callable
 import os
 import signal
 import sys
@@ -70,7 +71,7 @@ class SystemUtils:
         return text_wrapped
     
     @classmethod
-    def wrap_text(cls, func_name, text_unformatted: str):
+    def wrap_text(cls, func_name: Callable[[str], Any], text_unformatted: str):
         """
         Prints the input text wrapped to fit within the current terminal window width.
 
