@@ -231,7 +231,10 @@ class UserInput:
             countdown_minutes (int): A valid countdown minute (0–59)
         """
         while True:
-            countdown_minutes = input("\nPlease enter the number of minutes you'd like to count down to: ")
+            countdown_minutes = SystemUtils.wrap_text(
+                func_name = input,
+                text_unformatted = "\nPlease enter the number of minutes you'd like to count down to: "
+            )
             countdown_minutes = SystemUtils.clean_text(countdown_minutes)
             if InputIsValid.integer(countdown_minutes):
                 countdown_minutes = int(countdown_minutes)
@@ -348,7 +351,10 @@ class UserConfirms:
         Returns:
             bool: True if user confirms with 'y', False if user declines with 'n'
         """
-        user_confirmation = input("Is this correct? Please enter \"y\" for yes, or \"n\" for no: ")
+        user_confirmation = SystemUtils.wrap_text(
+            func_name = input,
+            text_unformatted = "Is this correct? Please enter \"y\" for yes, or \"n\" for no: "
+        )
         while True:
             user_confirmation = SystemUtils.clean_text(user_confirmation).lower()
             if user_confirmation == 'y':
@@ -356,7 +362,10 @@ class UserConfirms:
             elif user_confirmation == 'n':
                 return False
             else:
-                user_confirmation = input('Error: Please type either \"y\" to for yes, or \"n\" for no: ')
+                user_confirmation = SystemUtils.wrap_text(
+                    func_name = input,
+                    text_unformatted = 'Error: Please type either \"y\" to for yes, or \"n\" for no: '
+                )
 
 #     @staticmethod
 #     def user_minutes(user_input: int):

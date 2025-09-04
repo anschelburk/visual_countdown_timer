@@ -71,13 +71,20 @@ class SystemUtils:
         return text_wrapped
     
     @classmethod
-    def wrap_text(cls, func_name: Callable[[str], Any], text_unformatted: str):
+    def wrap_text(cls, func_name: Callable[[str], Any], text_unformatted: str) -> Any:
+        # Seems to be removing the final space from `func_name = input` calls
+        # (between the printed text and the input the user types).
         """
-        Prints the input text wrapped to fit within the current terminal window width.
+        Wraps and outputs the provided text to fit within the terminal window width,
+        using the supplied function (such as `print` or `input`) for display or interaction.
 
         Args:
-            text_unformatted (str): The text to be wrapped and printed.
+            func_name (Callable[[str], Any]): A callable that consumes the wrapped string.
+                Typically the built-in `print` or `input` function.
+            text_unformatted (str): The text that will be wrapped and then passed to `func_name`.
 
+        Returns:
+            Any: The return value from the provided `func_name`.
         """
         return func_name(cls._format_wrapped_text(text_unformatted))
     
