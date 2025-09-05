@@ -56,41 +56,52 @@ class SystemUtils:
         return singular_text if count == 1 else singular_text + "s"
     
     @staticmethod
-    def _format_wrapped_text(text_unformatted: str) -> str:
+    def _format_wrapped_text(add_linebreaks: bool, text_unformatted: str) -> str:
         """
         Wraps the input text to fit within the current terminal window width.
 
+        If add_linebreaks is True and the output contains multiple lines, an extra
+            blank line is inserted after each line for improved readability.
+
         Args:
+            add_linebreaks (bool): If True, add an extra blank line after each wrapped output line, but
+                only if the output is multiline.
             text_unformatted (str): The text to be wrapped.
 
         Returns:
-            text_wrapped (str): The wrapped text.
+            wrapped_text (str): The wrapped text.
 
         """
         lines = [
             textwrap.fill(line, width=DisplaySettings.TERMINAL_WINDOW_WIDTH)
             for line in text_unformatted.splitlines()
         ]
-        if len(lines) > 1:
-            return '\n\n'.join(lines)
-        else:
-            return '\n'.join(lines)
+        separator = '\n\n' if add_linebreaks and len(lines) > 1 else '\n'
+        wrapped_text = separator.join(lines)
+        return wrapped_text
     
     @classmethod
-    def wrap_text(cls, func_name: Callable[[str], Any], text_unformatted: str) -> Any:
+    def wrap_text(cls, func_name: Callable[[str], Any], add_extra_lines: bool, text_unformatted: str) -> Any:
         """
         Wraps and outputs the provided text to fit within the terminal window width,
-        using the supplied function (such as `print` or `input`) for display or interaction.
+            using the supplied function (such as `print` or `input`) for display or interaction.
+
+        If add_linebreaks is True and the output contains multiple lines, an extra
+            blank line is inserted after each line for improved readability.
 
         Args:
             func_name (Callable[[str], Any]): A callable that consumes the wrapped string.
                 Typically the built-in `print` or `input` function.
+
+            add_linebreaks (bool): If True, add an extra blank line after each wrapped output line, but
+                only if the output is multiline.
+                
             text_unformatted (str): The text that will be wrapped and then passed to `func_name`.
 
         Returns:
             Any: The return value from the provided `func_name`.
         """
-        text_wrapped = cls._format_wrapped_text(text_unformatted)
+        text_wrapped = cls._format_wrapped_text(add_extra_lines, text_unformatted)
         if func_name is input and text_unformatted.rstrip('\n').endswith(' '):
             text_wrapped += ' '
         return func_name(text_wrapped)
