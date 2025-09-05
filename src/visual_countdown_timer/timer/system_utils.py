@@ -67,18 +67,14 @@ class SystemUtils:
             text_wrapped (str): The wrapped text.
 
         """
-        text_wrapped = '\n'.join([
+        lines = [
             textwrap.fill(line, width=DisplaySettings.TERMINAL_WINDOW_WIDTH)
             for line in text_unformatted.splitlines()
-        ])
-        return text_wrapped
-    
-    @staticmethod
-    def _text_is_multiline(text: str) -> bool:
-        """
-        Returns True if the text contains more than one line (i.e., at least one newline).
-        """
-        return text.count('\n') > 0
+        ]
+        if len(lines) > 1:
+            return '\n\n'.join(lines)
+        else:
+            return '\n'.join(lines)
     
     @classmethod
     def wrap_text(cls, func_name: Callable[[str], Any], text_unformatted: str) -> Any:
@@ -97,8 +93,6 @@ class SystemUtils:
         text_wrapped = cls._format_wrapped_text(text_unformatted)
         if func_name is input and text_unformatted.rstrip('\n').endswith(' '):
             text_wrapped += ' '
-        if cls._text_is_multiline(text_wrapped):
-            text_wrapped += '\n'
         return func_name(text_wrapped)
     
     @staticmethod
