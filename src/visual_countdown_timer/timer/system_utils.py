@@ -73,10 +73,15 @@ class SystemUtils:
         ])
         return text_wrapped
     
+    @staticmethod
+    def _text_is_multiline(text: str) -> bool:
+        """
+        Returns True if the text contains more than one line (i.e., at least one newline).
+        """
+        return text.count('\n') > 0
+    
     @classmethod
     def wrap_text(cls, func_name: Callable[[str], Any], text_unformatted: str) -> Any:
-        # Seems to be removing the final space from `func_name = input` calls
-        # (between the printed text and the input the user types).
         """
         Wraps and outputs the provided text to fit within the terminal window width,
         using the supplied function (such as `print` or `input`) for display or interaction.
