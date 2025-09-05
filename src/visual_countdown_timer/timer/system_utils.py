@@ -67,7 +67,10 @@ class SystemUtils:
             text_wrapped (str): The wrapped text.
 
         """
-        text_wrapped = '\n'.join([textwrap.fill(line, width=DisplaySettings.TERMINAL_WINDOW_WIDTH) for line in text_unformatted.splitlines()])
+        text_wrapped = '\n'.join([
+            textwrap.fill(line, width=DisplaySettings.TERMINAL_WINDOW_WIDTH)
+            for line in text_unformatted.splitlines()
+        ])
         return text_wrapped
     
     @classmethod
@@ -86,7 +89,10 @@ class SystemUtils:
         Returns:
             Any: The return value from the provided `func_name`.
         """
-        return func_name(cls._format_wrapped_text(text_unformatted))
+        text_wrapped = cls._format_wrapped_text(text_unformatted)
+        if func_name is input and text_unformatted.rstrip('\n').endswith(' '):
+            text_wrapped += ' '
+        return func_name(text_wrapped)
     
     @staticmethod
     def sleep_until_next_second(current_time: datetime):
