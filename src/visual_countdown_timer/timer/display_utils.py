@@ -90,7 +90,7 @@ class UserDisplay:
 
     TIMER_INTRO_TEXT = (
         'Welcome to Visual Countdown Timer!\n' +
-        'This timer counts down to a set number of minutes past each hour.\n' +
+        'This timer counts down to a set number of minutes past each hour. ' +
         'For example, if you enter \"25\", it will count down to 1:25, 2:25, etc.\n'
     )
 

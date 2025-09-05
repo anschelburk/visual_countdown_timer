@@ -233,7 +233,8 @@ class UserInput:
         while True:
             countdown_minutes = SystemUtils.wrap_text(
                 func_name = input,
-                text_unformatted = "\nPlease enter the number of minutes you'd like to count down to: "
+                text_unformatted = "\nPlease enter the number of minutes you'd like to count down to: ",
+                add_linebreaks=False
             )
             countdown_minutes = SystemUtils.clean_text(countdown_minutes)
             if InputIsValid.integer(countdown_minutes):
