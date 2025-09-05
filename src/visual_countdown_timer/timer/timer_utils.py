@@ -287,18 +287,16 @@ class UserConfirms:
     def countdown_time(cls, minutes:int) -> bool:
         """Displays preview and gets user confirmation."""
 
-        SystemUtils.wrap_text(
-            func_name = print,
-            text_unformatted=f'\nYou entered {minutes} minutes. The timer will count down to:'
-        )
-
         EXAMPLE_HOURS_START = 1
         EXAMPLE_HOURS_END = 3
         EXAMPLE_HOURS_DISPLAY = ' | '.join(f'{hour:02}:{minutes:02}' for hour in range(EXAMPLE_HOURS_START, EXAMPLE_HOURS_END + 1)) + ' | etc.\n'
         
         SystemUtils.wrap_text(
             func_name= print,
-            text_unformatted=EXAMPLE_HOURS_DISPLAY
+            text_unformatted = (
+                f'\nYou entered {minutes} minutes. The timer will count down to:' +
+                f'\n{EXAMPLE_HOURS_DISPLAY}'
+            )
         )
 
         if cls._confirm_user_input():
