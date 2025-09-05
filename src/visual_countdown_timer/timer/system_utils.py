@@ -62,25 +62,28 @@ class SystemUtils:
 
         This function should not be called directly; all parameters are passed from the public `wrap_text()` method.
 
-        This method wraps the input text to fit within the current terminal window width.
-        Optionally inserts an extra blank line after each wrapped line for improved readability.
+        Wraps each line of input text to fit the terminal window width.
+        Optionally, adds an extra blank line after wrapped lines that exceed the terminal window width.
 
         Args:
             add_linebreaks (bool): If True, add an extra blank line after each wrapped output line, but
-                only if the output is multiline.
+                only if any line's length exceeds TERMINAL_WINDOW_WIDTH.
             text_unformatted (str): The text to be wrapped.
 
         Returns:
             wrapped_text (str): The wrapped text.
 
         """
-        lines = [
+        lines = text_unformatted.splitlines()
+        should_add_extra = add_linebreaks and any(
+            len(line) > DisplaySettings.TERMINAL_WINDOW_WIDTH for line in lines
+        )
+        wrapped_lines = [
             textwrap.fill(line, width=DisplaySettings.TERMINAL_WINDOW_WIDTH)
-            for line in text_unformatted.splitlines()
+            for line in lines
         ]
-        separator = '\n\n' if add_linebreaks and len(lines) > 1 else '\n'
-        wrapped_text = separator.join(lines)
-        return wrapped_text
+        separator = '\n\n' if should_add_extra else '\n'
+        return separator.join(wrapped_lines)
     
     @classmethod
     def wrap_text(cls, func_name: Callable[[str], Any], text_unformatted: str, add_linebreaks: bool = True) -> Any:
@@ -88,20 +91,23 @@ class SystemUtils:
         Wraps and outputs the provided text to fit within the terminal window width,
             using the supplied function (such as `print` or `input`) for display or interaction.
 
-        By default, adds an extra blank line after each wrapped output line for improved readability. This
-            behavior can be overridden.
+        By default, if any line in the unformatted input exceeds the terminal window width, an extra blank line
+            is inserted after each wrapped output line for improved readability. This behavior can be overridden.
+        
+        Parameters
+        ----------
+        func_name : Callable[[str], Any]
+            A callable that consumes the wrapped string, typically the built-in `print` or `input` function.
+        text_unformatted : str
+            The text that will be wrapped and then passed to `func_name`.
+        add_extra_lines : bool
+            If True (default), adds an extra blank line after each wrapped output line, but only if at least one line
+            in the input exceeds the terminal window width and requires wrapping.
 
-        Args:
-            func_name (Callable[[str], Any]): A callable that consumes the wrapped string.
-                Typically the built-in `print` or `input` function.
-
-            text_unformatted (str): The text that will be wrapped and then passed to `func_name`.
-
-            add_linebreaks (bool): If True, add an extra blank line after each wrapped output line, but
-                only if the output is multiline.
-
-        Returns:
-            Any: The return value from the provided `func_name`.
+        Returns
+        -------
+        Any
+            The return value from the provided `func_name`.
         """
         text_wrapped = cls._format_wrapped_text(text_unformatted, add_linebreaks)
         if func_name is input and text_unformatted.rstrip('\n').endswith(' '):

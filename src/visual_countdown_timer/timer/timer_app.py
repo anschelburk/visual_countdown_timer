@@ -24,7 +24,12 @@ class TimerApp:
         # Get user preferences
         SystemUtils.wrap_text(
             func_name = print,
-            text_unformatted=f"{UserDisplay.TITLE_BLOCK}\n{UserDisplay.TIMER_INTRO_TEXT}"
+            text_unformatted=UserDisplay.TITLE_BLOCK,
+            add_linebreaks=False
+        )
+        SystemUtils.wrap_text(
+            func_name = print,
+            text_unformatted=UserDisplay.TIMER_INTRO_TEXT,
         )
         countdown_minutes = UserInput.get_countdown_time()
         hour_format = UserInput.get_hour_format()
