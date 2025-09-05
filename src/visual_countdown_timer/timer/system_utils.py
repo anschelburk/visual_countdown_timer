@@ -60,19 +60,25 @@ class SystemUtils:
         """
         Supporting function for `wrap_text()`.
 
-        This function should not be called directly; all parameters are passed from the public `wrap_text()` method.
+        Wraps each non-empty line of input text to fit the terminal window width. 
+        
+        If `add_extra_lines` is True and any original line exceeds the terminal width, 
+        an extra blank line is inserted after each wrapped line.
 
-        Wraps each line of input text to fit the terminal window width.
-        Optionally, adds an extra blank line after wrapped lines that exceed the terminal window width.
+        Any leading newlines in `text_unformatted` produce empty strings, which are filtered out before joining,
+        preventing extra blank lines at the beginning of the output.
 
-        Args:
-            add_linebreaks (bool): If True, add an extra blank line after each wrapped output line, but
-                only if any line's length exceeds TERMINAL_WINDOW_WIDTH.
-            text_unformatted (str): The text to be wrapped.
+        Parameters
+        ----------
+        add_extra_lines : bool
+            If True, adds an extra blank line after each output line, but only if any input line's length exceeds the terminal window width.
+        text_unformatted : str
+            The input text to be wrapped.
 
-        Returns:
-            wrapped_text (str): The wrapped text.
-
+        Returns
+        -------
+        str
+            The formatted, wrapped text. Output will not start with an extra blank line due to filtering of empty strings.
         """
         lines = text_unformatted.splitlines()
         should_add_extra = add_linebreaks and any(
@@ -80,7 +86,7 @@ class SystemUtils:
         )
         wrapped_lines = [
             textwrap.fill(line, width=DisplaySettings.TERMINAL_WINDOW_WIDTH)
-            for line in lines
+            for line in lines if line.strip() != ''
         ]
         separator = '\n\n' if should_add_extra else '\n'
         return separator.join(wrapped_lines)
@@ -88,27 +94,29 @@ class SystemUtils:
     @classmethod
     def wrap_text(cls, func_name: Callable[[str], Any], text_unformatted: str, add_linebreaks: bool = True) -> Any:
         """
-        Wraps and outputs the provided text to fit within the terminal window width,
-            using the supplied function (such as `print` or `input`) for display or interaction.
+        Wraps and outputs the provided text to fit within the terminal window width, 
+        using the supplied function (such as `print` or `input`) for display or interaction.
 
-        By default, if any line in the unformatted input exceeds the terminal window width, an extra blank line
-            is inserted after each wrapped output line for improved readability. This behavior can be overridden.
-        
+        By default, if any line in the unformatted input exceeds the terminal window width, 
+        an extra blank line is inserted after each wrapped output line.  This only applies to non-empty lines;
+        leading blank lines do not generate additional empty output lines.
+
         Parameters
         ----------
         func_name : Callable[[str], Any]
             A callable that consumes the wrapped string, typically the built-in `print` or `input` function.
         text_unformatted : str
             The text that will be wrapped and then passed to `func_name`.
-        add_extra_lines : bool
-            If True (default), adds an extra blank line after each wrapped output line, but only if at least one line
-            in the input exceeds the terminal window width and requires wrapping.
+        add_extra_lines : bool, optional
+            If True (default), adds an extra blank line after each wrapped output line, but only if at least one 
+            line in the input exceeds the terminal window width and requires wrapping. Leading empty lines are filtered.
 
         Returns
         -------
         Any
             The return value from the provided `func_name`.
         """
+
         text_wrapped = cls._format_wrapped_text(text_unformatted, add_linebreaks)
         if func_name is input and text_unformatted.rstrip('\n').endswith(' '):
             text_wrapped += ' '
