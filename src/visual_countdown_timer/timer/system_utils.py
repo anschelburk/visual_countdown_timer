@@ -97,6 +97,8 @@ class SystemUtils:
         text_wrapped = cls._format_wrapped_text(text_unformatted)
         if func_name is input and text_unformatted.rstrip('\n').endswith(' '):
             text_wrapped += ' '
+        if cls._text_is_multiline(text_wrapped):
+            text_wrapped += '\n'
         return func_name(text_wrapped)
     
     @staticmethod
