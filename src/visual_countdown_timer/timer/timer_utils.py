@@ -104,12 +104,10 @@ class Format:
             remaining_seconds (int): The unformatted number of remaining seconds.
 
         Returns:
-            remaining_time_formatted (str): The formatted number of remaining minutes and seconds.
+            remaining_time (str): The formatted number of remaining minutes and seconds.
         """
-
-        remaining_minutes = Format._remaining_time_for_display(remaining_minutes, 'minute')
-        remaining_seconds = Format._remaining_time_for_display(remaining_seconds, 'second')
-
+        remaining_minutes = Format._remaining_time_individual(remaining_minutes, 'minute')
+        remaining_seconds = Format._remaining_time_individual(remaining_seconds, 'second')
         remaining_time_formatted = Format._remaining_times_combined(remaining_minutes, remaining_seconds)
         return remaining_time_formatted
     
@@ -128,7 +126,7 @@ class Format:
         return remaining_times_combined
     
     @staticmethod
-    def _remaining_time_for_display(remaining_time: int, time_unit: str) -> str:
+    def _remaining_time_individual(remaining_time: int, time_unit: str) -> str:
         """
         Formats the remaining time for display in-app.
         
