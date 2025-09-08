@@ -107,15 +107,25 @@ class Format:
             remaining_time_formatted (str): The formatted number of remaining minutes and seconds.
         """
 
-        remaining_minutes_formatted = Format._remaining_time_for_display(remaining_minutes, 'minute')
-        remaining_seconds_formatted = Format._remaining_time_for_display(remaining_seconds, 'second')
+        remaining_minutes = Format._remaining_time_for_display(remaining_minutes, 'minute')
+        remaining_seconds = Format._remaining_time_for_display(remaining_seconds, 'second')
 
-        remaining_time_formatted = (
-            remaining_minutes_formatted + '\n' +
-            remaining_seconds_formatted
-        )
-
+        remaining_time_formatted = Format._remaining_times_combined(remaining_minutes, remaining_seconds)
         return remaining_time_formatted
+    
+    @staticmethod
+    def _remaining_times_combined(*individual_formatted_times: str) -> str:
+        """
+        Combined formatted remaining minutes and seconds together.
+
+        Args:
+            *individual_formatted_times (str): Formatted time strings (e.g., minutes, seconds) to be combined.
+
+        Returns:
+            formatted_times_combined (str): The combined formatted time string, separated by newlines.
+        """
+        remaining_times_combined = '\n'.join(formatted_time for formatted_time in individual_formatted_times)
+        return remaining_times_combined
     
     @staticmethod
     def _remaining_time_for_display(remaining_time: int, time_unit: str) -> str:
