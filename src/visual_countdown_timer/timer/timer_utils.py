@@ -107,17 +107,30 @@ class Format:
             remaining_time_formatted (str): The formatted number of remaining minutes and seconds.
         """
 
-        minutes_label = SystemUtils.pluralize("minute", remaining_minutes)
-        seconds_label = SystemUtils.pluralize("second", remaining_seconds)
-
-        remaining_minutes_formatted = f'{UserDisplay.INDENT}{remaining_minutes:02} {minutes_label}'
-        remaining_seconds_formatted = f'{UserDisplay.INDENT}{remaining_seconds:02} {seconds_label}'
+        remaining_minutes_formatted = Format._remaining_time_for_display(remaining_minutes, 'minute')
+        remaining_seconds_formatted = Format._remaining_time_for_display(remaining_seconds, 'second')
 
         remaining_time_formatted = (
             remaining_minutes_formatted + '\n' +
             remaining_seconds_formatted
         )
 
+        return remaining_time_formatted
+    
+    @staticmethod
+    def _remaining_time_for_display(remaining_time: int, time_unit: str) -> str:
+        """
+        Formats the remaining time for display in-app.
+        
+        Args:
+            remaining_time (int): The unformatted number of remaining minutes or seconds.
+            time_unit (str): 'minutes' or 'seconds'
+
+        Returns:
+            remaining_time_formatted (str): The formatted number of remaining minutes or seconds.
+        """
+        time_label = SystemUtils.pluralize(time_unit, remaining_time)
+        remaining_time_formatted = f'{UserDisplay.INDENT}{remaining_time:02} {time_label}'
         return remaining_time_formatted
 
 class Calculate:
