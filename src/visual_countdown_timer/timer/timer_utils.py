@@ -2,7 +2,7 @@ from datetime import datetime, timedelta
 from .display_utils import ProgressBar, UserDisplay
 from .settings import TimerConfig
 from .system_utils import SystemUtils, TerminalUtils
-from .validation import InputIsValid
+from .validation_checks import InputIsValid
 
 """
 Time calculation and formatting utilities for the Visual Countdown Timer.
