@@ -106,9 +106,9 @@ class Format:
         Returns:
             remaining_time (str): The formatted number of remaining minutes and seconds.
         """
-        remaining_minutes = Format._remaining_time_individual(remaining_minutes, 'minute')
-        remaining_seconds = Format._remaining_time_individual(remaining_seconds, 'second')
-        remaining_time_formatted = Format._remaining_times_combined(remaining_minutes, remaining_seconds)
+        minutes_formatted = Format._remaining_time_individual(remaining_minutes, 'minute')
+        seconds_formatted = Format._remaining_time_individual(remaining_seconds, 'second')
+        remaining_time_formatted = Format._remaining_times_combined(minutes_formatted, seconds_formatted)
         return remaining_time_formatted
     
     @staticmethod
