@@ -5,30 +5,51 @@ from .system_utils import SystemUtils
 Contains all logic related to validating input.
 """
 
+def valid_hour_format(user_input: int) -> bool:
+    """
+    Validates that a user input is an integer and a supported hour display format.
+
+    Args:
+        user_input (int): The integer value to validate as an hour format.
+    
+    Returns:
+        bool: True if user_input is a valid hour display format (12 or 24),
+                False otherwise.
+    """
+    if user_input in TimerConfig.POSSIBLE_HOUR_FORMATS:
+        return True
+    else:
+        SystemUtils.wrap_text(
+            func_name= print,
+            text_unformatted="\nError: please enter either 12 or 24 for the hour display format."
+        )
+        return False
+
+
 class InputIsValid:
     """
     Contains all validation checks.
     """
 
-    def hour_display_format(user_input: int) -> bool:
-        """
-        Validates that a user input is an integer and a supported hour display format.
+    # def hour_display_format(user_input: int) -> bool:
+    #     """
+    #     Validates that a user input is an integer and a supported hour display format.
     
-        Args:
-            user_input (int): The integer value to validate as an hour format.
+    #     Args:
+    #         user_input (int): The integer value to validate as an hour format.
         
-        Returns:
-            bool: True if user_input is a valid hour display format (12 or 24),
-                  False otherwise.
-        """
-        if user_input in TimerConfig.POSSIBLE_HOUR_FORMATS:
-            return True
-        else:
-            SystemUtils.wrap_text(
-                func_name= print,
-                text_unformatted="\nError: please enter either 12 or 24 for the hour display format."
-            )
-            return False
+    #     Returns:
+    #         bool: True if user_input is a valid hour display format (12 or 24),
+    #               False otherwise.
+    #     """
+    #     if user_input in TimerConfig.POSSIBLE_HOUR_FORMATS:
+    #         return True
+    #     else:
+    #         SystemUtils.wrap_text(
+    #             func_name= print,
+    #             text_unformatted="\nError: please enter either 12 or 24 for the hour display format."
+    #         )
+    #         return False
 
     def integer(user_input) -> bool:
         """
