@@ -126,18 +126,18 @@ class SystemUtils:
     #     return wrapped_text
     
     @staticmethod
-    def wrap_text(unformatted_text: str, add_linebreaks: bool = True) -> str:
+    def wrap_text(unformatted_text: str, extra_linebreaks_desired: bool = True) -> str:
         """
         Wraps each non-empty line of input text to fit the terminal window width.
 
-        If `add_linebreaks` is True and any original line exceeds terminal width, an extra blank line
+        If `extra_linebreaks_desired` is True and any original line exceeds terminal width, an extra blank line
         is inserted after each wrapped line. Leading blank lines do not generate additional output lines.
 
         Parameters
         ----------
         unformatted_text : str
             The text that will be wrapped and formatted.
-        add_linebreaks : bool, optional
+        extra_linebreaks_desired : bool, optional
             If True (default), adds an extra blank line after each wrapped output line, but only if at least one 
             input line exceeds the terminal window width.
 
@@ -148,17 +148,17 @@ class SystemUtils:
         """
 
         wrapped_lines = []
-        needs_extra_linebreak = False
+        extra_linebreaks_needed = False
 
         for line in unformatted_text.splitlines():
             if line.strip() != '':
-                if add_linebreaks:
-                    if not needs_extra_linebreak:
+                if extra_linebreaks_desired:
+                    if not extra_linebreaks_needed:
                         if len(line) > DisplaySettings.TERMINAL_WINDOW_WIDTH:
-                            needs_extra_linebreak = True
+                            extra_linebreaks_needed = True
                 wrapped_lines.append(textwrap.fill(line, width=DisplaySettings.TERMINAL_WINDOW_WIDTH))
 
-        separator = '\n\n' if (add_linebreaks and needs_extra_linebreak) else '\n'
+        separator = '\n\n' if (extra_linebreaks_desired and extra_linebreaks_needed) else '\n'
         wrapped_text = separator.join(wrapped_lines)
         if unformatted_text.rstrip('\n').endswith(' '):
             wrapped_text += ' '
