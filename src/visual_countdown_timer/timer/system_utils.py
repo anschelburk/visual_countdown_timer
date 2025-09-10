@@ -195,9 +195,10 @@ class TerminalUtils:
         """Setup graceful shutdown handler for interrupt signals (typically Ctrl+C)."""
 
         def signal_handler(sig, frame):
-            SystemUtils.wrap_text(
-                func_name = print,
-                text_unformatted = "\n\nTimer stopped. Thank you for using Visual Countdown Timer!\n\n"
+            print(
+                SystemUtils.wrap_text(
+                    "\n\nTimer stopped. Thank you for using Visual Countdown Timer!\n\n"
+                )
             )
             sys.exit(TimerConfig.EXIT_SUCCESS)
         signal.signal(signal.SIGINT, signal_handler)
