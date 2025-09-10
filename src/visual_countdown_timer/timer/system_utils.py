@@ -126,7 +126,7 @@ class SystemUtils:
     #     return wrapped_text
     
     @staticmethod
-    def wrap_and_format_text(unformatted_text: str, add_linebreaks: bool = True) -> str:
+    def wrap_text(unformatted_text: str, add_linebreaks: bool = True) -> str:
         """
         Wraps each non-empty line of input text to fit the terminal window width.
 
@@ -148,14 +148,16 @@ class SystemUtils:
         """
 
         text_splitlines = unformatted_text.splitlines()
-        extra_linebreak_needed = add_linebreaks and any(
-            len(line) > DisplaySettings.TERMINAL_WINDOW_WIDTH for line in text_splitlines
-        )
-        wrapped_lines = [
-            textwrap.fill(line, width=DisplaySettings.TERMINAL_WINDOW_WIDTH)
-            for line in text_splitlines if line.strip() != ''
-        ]
-        separator = '\n\n' if extra_linebreak_needed else '\n'
+        wrapped_lines = []
+        needs_extra_linebreak = False
+
+        for line in text_splitlines:
+            if line.strip() != '':
+                if len(line) > DisplaySettings.TERMINAL_WINDOW_WIDTH:
+                    needs_extra_linebreak = True
+                wrapped_lines.append(textwrap.fill(line, width=DisplaySettings.TERMINAL_WINDOW_WIDTH))
+
+        separator = '\n\n' if (add_linebreaks and needs_extra_linebreak) else '\n'
         wrapped_text = separator.join(wrapped_lines)
         if unformatted_text.rstrip('\n').endswith(' '):
             wrapped_text += ' '
