@@ -284,11 +284,14 @@ class UserInput:
 
             print(
                 SystemUtils.wrap_text(
-                    "\nWould you like the time to display as 12 or 24 hours?" +
-                    f"\n{UserDisplay.INDENTED_HORIZONTAL_LINE}" +
-                    f"\n{UserDisplay.INDENT}12 hours looks like this: 3:52pm" +
-                    f"\n{UserDisplay.INDENT}24 hours looks like this: 15:52" +
-                    f"\n{UserDisplay.INDENTED_HORIZONTAL_LINE}"
+                    unformatted_text = (
+                        "\nWould you like the time to display as 12 or 24 hours?" +
+                        f"\n{UserDisplay.INDENTED_HORIZONTAL_LINE}" +
+                        f"\n{UserDisplay.INDENT}12 hours looks like this: 3:52pm" +
+                        f"\n{UserDisplay.INDENT}24 hours looks like this: 15:52" +
+                        f"\n{UserDisplay.INDENTED_HORIZONTAL_LINE}"
+                    ),
+                    extra_linebreaks_desired = False
                 )
             )
             user_hours = input(
