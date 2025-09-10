@@ -256,7 +256,7 @@ class UserInput:
             countdown_minutes (int): A valid countdown minute (0–59)
         """
         while True:
-            input(
+            countdown_minutes = input(
                 SystemUtils.wrap_text(
                     unformatted_text = "\nPlease enter the number of minutes you'd like to count down to: ",
                     extra_linebreaks_desired = False
