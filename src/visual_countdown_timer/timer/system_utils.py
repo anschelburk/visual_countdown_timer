@@ -147,11 +147,10 @@ class SystemUtils:
             The wrapped and formatted text. Output will not start with an extra blank line due to filtering empty input rows.
         """
 
-        text_splitlines = unformatted_text.splitlines()
         wrapped_lines = []
         needs_extra_linebreak = False
 
-        for line in text_splitlines:
+        for line in unformatted_text.splitlines():
             if line.strip() != '':
                 if not needs_extra_linebreak:
                     if len(line) > DisplaySettings.TERMINAL_WINDOW_WIDTH:
