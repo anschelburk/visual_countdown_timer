@@ -152,9 +152,10 @@ class SystemUtils:
 
         for line in unformatted_text.splitlines():
             if line.strip() != '':
-                if not needs_extra_linebreak:
-                    if len(line) > DisplaySettings.TERMINAL_WINDOW_WIDTH:
-                        needs_extra_linebreak = True
+                if add_linebreaks:
+                    if not needs_extra_linebreak:
+                        if len(line) > DisplaySettings.TERMINAL_WINDOW_WIDTH:
+                            needs_extra_linebreak = True
                 wrapped_lines.append(textwrap.fill(line, width=DisplaySettings.TERMINAL_WINDOW_WIDTH))
 
         separator = '\n\n' if (add_linebreaks and needs_extra_linebreak) else '\n'
