@@ -24,13 +24,13 @@ class TimerApp:
         # Get user preferences
         print(
             SystemUtils.wrap_text(
-                text_unformatted = UserDisplay.TITLE_BLOCK,
+                unformatted_text = UserDisplay.TITLE_BLOCK,
                 extra_linebreaks_desired = False
             )
         )
         print(
             SystemUtils.wrap_text(
-                text_unformatted=UserDisplay.TIMER_INTRO_TEXT
+                UserDisplay.TIMER_INTRO_TEXT
             )
         )
         countdown_minutes = UserInput.get_countdown_time()

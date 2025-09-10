@@ -227,14 +227,18 @@ class TimerLoop:
             progress_bar_text = ProgressBar.render(total_seconds)
             
             # Display everything
-            SystemUtils.wrap_text(
-                func_name = print,
-                text_unformatted = UserDisplay.show_timer_display(
-                    current_date, current_time, target_time,
-                    remaining_time, progress_bar_text
+            print(
+                SystemUtils.wrap_text(
+                    UserDisplay.show_timer_display(
+                        current_date,
+                        current_time,
+                        target_time,
+                        remaining_time,
+                        progress_bar_text
+                    )
                 )
             )
-            
+
             SystemUtils.sleep_until_next_second(datetime_now)
 
 
@@ -252,10 +256,11 @@ class UserInput:
             countdown_minutes (int): A valid countdown minute (0–59)
         """
         while True:
-            countdown_minutes = SystemUtils.wrap_text(
-                func_name = input,
-                text_unformatted = "\nPlease enter the number of minutes you'd like to count down to: ",
-                add_linebreaks=False
+            input(
+                SystemUtils.wrap_text(
+                    unformatted_text = "\nPlease enter the number of minutes you'd like to count down to: ",
+                    extra_linebreaks_desired = False
+                )
             )
             countdown_minutes = SystemUtils.clean_text(countdown_minutes)
             if InputIsValid.integer(countdown_minutes):
@@ -277,9 +282,8 @@ class UserInput:
         """
         while True:
 
-            SystemUtils.wrap_text(
-                func_name = print,
-                text_unformatted=(
+            print(
+                SystemUtils.wrap_text(
                     "\nWould you like the time to display as 12 or 24 hours?" +
                     f"\n{UserDisplay.INDENTED_HORIZONTAL_LINE}" +
                     f"\n{UserDisplay.INDENT}12 hours looks like this: 3:52pm" +
@@ -287,12 +291,11 @@ class UserInput:
                     f"\n{UserDisplay.INDENTED_HORIZONTAL_LINE}"
                 )
             )
-            user_hours = SystemUtils.wrap_text(
-                func_name= input,
-                text_unformatted='Type \"12\" for 12-hour format, or \"24\" for 24-hour format: '
+            user_hours = input(
+                SystemUtils.wrap_text(
+                    'Type \"12\" for 12-hour format, or \"24\" for 24-hour format: '
+                )    
             )
-            # Add this to print_wrapped - maybe change to text_wrapped(func_name, input_text)
-            # Where func_name (str) = 'input' or 'print' and the output is `return func_name(...)`` instead of `return print(...)`
             if InputIsValid.integer(user_hours):
                 user_hours = int(user_hours)
                 if InputIsValid.hour_display_format(user_hours):
@@ -312,9 +315,8 @@ class UserConfirms:
         EXAMPLE_HOURS_END = 3
         EXAMPLE_HOURS_DISPLAY = ' | '.join(f'{hour:02}:{minutes:02}' for hour in range(EXAMPLE_HOURS_START, EXAMPLE_HOURS_END + 1)) + ' | etc.\n'
         
-        SystemUtils.wrap_text(
-            func_name= print,
-            text_unformatted = (
+        print(
+            SystemUtils.wrap_text(
                 f'\nYou entered {minutes} minutes. The timer will count down to:' +
                 f'\n{EXAMPLE_HOURS_DISPLAY}'
             )
@@ -322,10 +324,12 @@ class UserConfirms:
 
         if cls._confirm_user_input():
             return True
+
         else:
-            SystemUtils.wrap_text(
-                func_name= print,
-                text_unformatted="\nNo problem! Let's try again:"
+            print(
+                SystemUtils.wrap_text(
+                    "\nNo problem! Let's try again:"
+                )
             )
             return False
 
@@ -343,16 +347,20 @@ class UserConfirms:
             bool: True if the user confirms yes, False for all other responses.
         """
     
-        SystemUtils.wrap_text(
-            func_name= print,
-            text_unformatted=f"\n{user_hours}-hour display format selected."
+        print(
+            SystemUtils.wrap_text(
+                f"\n{user_hours}-hour display format selected."
+            )
         )
+
         if cls._confirm_user_input():
             return True
+
         else:
-            SystemUtils.wrap_text(
-                func_name= print,
-                text_unformatted="\nNo problem! Let's try again:"
+            print(
+                SystemUtils.wrap_text(
+                    "\nNo problem! Let's try again:"
+                )
             )
             return False
 
@@ -371,10 +379,13 @@ class UserConfirms:
         Returns:
             bool: True if user confirms with 'y', False if user declines with 'n'
         """
-        user_confirmation = SystemUtils.wrap_text(
-            func_name = input,
-            text_unformatted = "Is this correct? Please enter \"y\" for yes, or \"n\" for no: "
+
+        user_confirmation = input(
+            SystemUtils.wrap_text(
+                "Is this correct? Please enter \"y\" for yes, or \"n\" for no: "
+            )
         )
+
         while True:
             user_confirmation = SystemUtils.clean_text(user_confirmation).lower()
             if user_confirmation == 'y':
@@ -382,9 +393,10 @@ class UserConfirms:
             elif user_confirmation == 'n':
                 return False
             else:
-                user_confirmation = SystemUtils.wrap_text(
-                    func_name = input,
-                    text_unformatted = 'Error: Please type either \"y\" to for yes, or \"n\" for no: '
+                user_confirmation = input(
+                    SystemUtils.wrap_text(
+                        'Error: Please type either \"y\" to for yes, or \"n\" for no: '
+                    )
                 )
 
 #     @staticmethod
@@ -457,11 +469,13 @@ class ValidateInput:
                 else:
                     raise ValueError
             except ValueError:
-                SystemUtils.wrap_text(
-                    func_name = print,
-                    text_unformatted=f"\nError: please enter either 12 or 24. You typed: \"{user_input}\"\n"
+                print(
+                    SystemUtils.wrap_text(
+                        f"\nError: please enter either 12 or 24. You typed: \"{user_input}\"\n"
+                    )
                 )
-                SystemUtils.wrap_text(
-                    func_name= input,
-                    text_unformatted="Please type \"12\" for 12-hour format, or \"24\" for 24-hour format: "
+                input(
+                    SystemUtils.wrap_text(
+                        "Please type \"12\" for 12-hour format, or \"24\" for 24-hour format: "
+                    )
                 )
