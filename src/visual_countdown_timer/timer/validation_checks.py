@@ -64,8 +64,13 @@ class InputIsValid:
             bool: True if user_input is an integer between 0 and 59 (inclusive),
                   False otherwise.
         """
-        if (0 <= user_input < 60):
+        
+        MIN_MINUTES = 0
+        MAX_MINUTES = 60
+        
+        if (MIN_MINUTES <= user_input < MAX_MINUTES):
             return True
+        
         else:
             print(
                 SystemUtils.wrap_text(
