@@ -201,3 +201,17 @@ timer/
             hour_format()
                 -> SystemUtils.clean_text()
                 -> SystemUtils.wrap_text()
+
+    validation_checks.py
+
+        class InputIsValid
+
+            hour_display_format()
+                -> SystemUtils.wrap_text()
+                -> TimerConfig.POSSIBLE_HOUR_FORMATS
+
+            integer()
+                -> SystemUtils.wrap_text()
+
+            minutes_range()
+                -> SystemUtils.wrap_text()
