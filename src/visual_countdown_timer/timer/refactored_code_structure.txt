@@ -48,21 +48,6 @@ timer/
                 cls.INDENT
                 cls.INDENTED_HORIZONTAL_LINE
                 cls.TITLE_BLOCK
-
-    timer_app.py
-
-        class TimerApp
-
-            __init__()
-                -> TerminalUtils.initialize_exit_handler()
-            
-            run()
-                -> TerminalUtils.clear_terminal()
-                -> SystemUtils.wrap_text()
-                -> TimerLoop.run
-                -> UserDisplay.TITLE_BLOCK
-                -> UserInput.get_countdown_time()
-                -> UserInput.get_hour_format()
     
     settings.py
 
@@ -90,3 +75,44 @@ timer/
 
             POSSIBLE_HOUR_FORMATS
                 -> None
+
+    system_utils.py
+
+        class SystemUtils
+
+            clean_text()
+                -> None
+
+            pluralize()
+                -> None
+
+            wrap_text()
+                -> DisplaySettings.TERMINAL_WINDOW_WIDTH
+
+            sleep_until_next_second()
+                -> None
+
+        class TerminalUtils
+
+            clear_terminal()
+                -> None
+
+            initialize_exit_handler()
+                -> None
+
+    timer_app.py
+
+        class TimerApp
+
+            __init__()
+                -> TerminalUtils.initialize_exit_handler()
+            
+            run()
+                -> TerminalUtils.clear_terminal()
+                -> SystemUtils.wrap_text()
+                -> TimerLoop.run
+                -> UserDisplay.TITLE_BLOCK
+                -> UserInput.get_countdown_time()
+                -> UserInput.get_hour_format()
+    
+    
