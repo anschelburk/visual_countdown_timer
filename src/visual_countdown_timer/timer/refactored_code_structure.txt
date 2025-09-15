@@ -6,6 +6,49 @@ app.py
 
 timer/
 
+    display_utils.py
+
+        class ProgressBar
+
+            render()
+                -> cls._generate_text()
+
+            _generate_text()
+                -> cls._text_width()
+
+            _minutes_rounded_up()
+                -> None
+
+            _text_width()
+                -> cls._minutes_rounded_up()
+                -> DisplaySettings.PROGRESS_BAR_WIDTH_TOTAL
+
+        class UserDisplay
+
+            INDENT
+                -> DisplaySettings.INDENT_LENGTH
+            
+            INDENTED_HORIZONTAL_LINE
+            # Change to INDENTED_THIN_LINE
+                -> cls.INDENT
+            
+            THICK_HORIZONTAL_LINE
+                -> DisplaySettings.LINE_THICKNESS
+
+            THIN_HORIZONTAL_LINE
+                -> DisplaySettings.LINE_THICKNESS
+
+            TIMER_INTRO_TEXT
+                -> None
+
+            TITLE_BLOCK
+                -> cls.THICK_HORIZONTAL_LINE
+
+            show_timer_display()
+                cls.INDENT
+                cls.INDENTED_HORIZONTAL_LINE
+                cls.TITLE_BLOCK
+
     timer_app.py
 
         class TimerApp
