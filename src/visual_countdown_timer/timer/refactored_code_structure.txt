@@ -63,4 +63,30 @@ timer/
                 -> UserDisplay.TITLE_BLOCK
                 -> UserInput.get_countdown_time()
                 -> UserInput.get_hour_format()
+    
+    settings.py
 
+        class DisplaySettings
+            
+            INDENT_LENGTH
+                -> None
+
+            LINE_THICKNESS
+                -> None
+
+            PROGRESS_BAR_WIDTH_TOTAL
+                -> None
+            
+            TERMINAL_WINDOW_WIDTH
+                -> None
+
+        class TimerConfig
+
+            MAX_MINUTES
+                -> None
+            
+            MIN_MINUTES
+                -> None
+
+            POSSIBLE_HOUR_FORMATS
+                -> None
