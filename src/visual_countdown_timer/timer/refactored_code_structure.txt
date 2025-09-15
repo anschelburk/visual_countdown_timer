@@ -115,4 +115,89 @@ timer/
                 -> UserInput.get_countdown_time()
                 -> UserInput.get_hour_format()
     
-    
+    timer_utils.py
+
+        class Calculate
+
+            next_countdown_occurrence()
+                -> None
+
+            remaining_seconds()
+                -> None
+
+        class Format
+
+            date()
+                -> None
+            
+            time()
+                -> None
+
+            _add_timezone()
+                -> None
+
+            _time_12h()
+                -> None
+
+            _time_24h()
+                -> None
+
+            remaining_time()
+                -> cls._remaining_time_individual()
+                -> cls._remaining_times_combined()
+
+            _remaining_times_combined()
+                -> None
+
+            _remaining_time_individual()
+                -> SystemUtils.pluralize()
+                -> UserDisplay.INDENT
+
+        class TimerLoop
+
+            run()
+                -> Calculate.next_countdown_occurrence()
+                -> Format.remaining_time()
+                -> ProgressBar.render()
+                -> SystemUtils.sleep_until_next_second()
+                -> SystemUtils.wrap_text()
+                -> UserDisplay.show_timer_display()
+
+        class UserInput
+
+            get_countdown_time()
+                -> InputIsValid.integer()
+                -> InputIsValid.minutes_range()
+                -> SystemUtils.clean_text()
+                -> SystemUtils.wrap_text()
+                -> UserConfirms.countdown_time()
+
+            get_hour_format()
+                -> InputIsValid.integer()
+                -> InputIsValid.hour_display_format()
+                -> SystemUtils.wrap_text()
+                -> UserConfirms.hour_display_format()
+
+        class UserConfirms
+
+            countdown_time()
+                -> cls._confirm_user_input()
+                -> SystemUtils.wrap_text()
+
+            hour_display_format()
+                -> cls._confirm_user_input()
+                -> SystemUtils.wrap_text()
+
+            _confirm_user_input()
+                -> SystemUtils.clean_text()
+                -> SystemUtils.wrap_text()
+
+        class ValidateInput
+        # Unsure if this class is ever referenced.
+
+            user_input()
+                -> None
+
+            hour_format()
+                -> SystemUtils.clean_text()
+                -> SystemUtils.wrap_text()
