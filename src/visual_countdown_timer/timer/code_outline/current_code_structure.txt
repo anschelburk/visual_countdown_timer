@@ -8,20 +8,20 @@ timer/
 
     display_utils.py
 
-        class ProgressBar
+        # class ProgressBar
 
-            render()
-                -> cls._generate_text()
+            # render()
+                # -> cls._generate_text()
 
-            _generate_text()
-                -> cls._text_width()
+            # _generate_text()
+                # -> cls._text_width()
 
-            _minutes_rounded_up()
-                -> None
+            # _minutes_rounded_up()
+                # -> None
 
-            _text_width()
-                -> cls._minutes_rounded_up()
-                -> DisplaySettings.PROGRESS_BAR_WIDTH_TOTAL
+            # _text_width()
+                # -> cls._minutes_rounded_up()
+                # -> DisplaySettings.PROGRESS_BAR_WIDTH_TOTAL
 
         class UserDisplay
 
