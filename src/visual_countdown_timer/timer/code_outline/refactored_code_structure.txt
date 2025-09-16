@@ -73,7 +73,8 @@
                 INDENT_LENGTH
                 -> None
                 
-                LINE_THICKNESS
+                HORIZONTAL_LINE_WIDTH
+                # Previously LINE_THICKNESS
                 -> None
                 
                 MAX_MINUTES
