@@ -67,7 +67,15 @@
         system.py
 
             class Config
+            # Previously class DisplaySettings
+            # and class TimerConfig
 
+                INDENT_LENGTH
+                -> None
+                
+                LINE_THICKNESS
+                -> None
+                
                 MAX_MINUTES
                 # Remove - never used.
                     -> None
@@ -78,5 +86,11 @@
 
                 POSSIBLE_HOUR_FORMATS
                     -> None
+
+                PROGRESS_BAR_WIDTH_TOTAL
+                    -> None
+
+                TERMINAL_WINDOW_WIDTH
+                -> None
         
         base/

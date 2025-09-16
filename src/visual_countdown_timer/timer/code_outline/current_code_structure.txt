@@ -49,21 +49,21 @@ timer/
                 cls.INDENTED_HORIZONTAL_LINE
                 cls.TITLE_BLOCK
     
-    settings.py
+    # settings.py
 
-        class DisplaySettings
+        # class DisplaySettings
             
             # INDENT_LENGTH
-                -> None
+                # -> None
 
-            LINE_THICKNESS
-                -> None
+            # LINE_THICKNESS
+                # -> None
 
-            PROGRESS_BAR_WIDTH_TOTAL
-                -> None
+            # PROGRESS_BAR_WIDTH_TOTAL
+                # -> None
             
-            TERMINAL_WINDOW_WIDTH
-                -> None
+            # TERMINAL_WINDOW_WIDTH
+                # -> None
 
         # class TimerConfig
 
