@@ -25,24 +25,24 @@ timer/
 
         class UserDisplay
 
-            INDENT
-                -> DisplaySettings.INDENT_LENGTH
+            # INDENT
+                # -> DisplaySettings.INDENT_LENGTH
             
-            INDENTED_HORIZONTAL_LINE
-            # Change to INDENTED_THIN_LINE
-                -> cls.INDENT
+            # INDENTED_HORIZONTAL_LINE
+            # # Change to INDENTED_THIN_LINE
+                # -> cls.INDENT
             
-            THICK_HORIZONTAL_LINE
-                -> DisplaySettings.LINE_THICKNESS
+            # THICK_HORIZONTAL_LINE
+                # -> DisplaySettings.LINE_THICKNESS
 
-            THIN_HORIZONTAL_LINE
-                -> DisplaySettings.LINE_THICKNESS
+            # THIN_HORIZONTAL_LINE
+                # -> DisplaySettings.LINE_THICKNESS
 
-            TIMER_INTRO_TEXT
-                -> None
+            # TIMER_INTRO_TEXT
+                # -> None
 
-            TITLE_BLOCK
-                -> cls.THICK_HORIZONTAL_LINE
+            # TITLE_BLOCK
+                # -> cls.THICK_HORIZONTAL_LINE
 
             show_timer_display()
                 cls.INDENT
