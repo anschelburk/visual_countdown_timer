@@ -1,7 +1,6 @@
 ./
 
-    main.py
-    # Previously app.py
+    app.py
 
         main()
             -> TimerApp()
@@ -9,7 +8,7 @@
 
     timer/
 
-        app.py
+        app_core.py
         # Previously timer_app.py
 
             class TimerApp
