@@ -100,20 +100,20 @@ timer/
             initialize_exit_handler()
                 -> None
 
-    timer_app.py
+    # timer_app.py
 
-        class TimerApp
+        # class TimerApp
 
-            __init__()
-                -> TerminalUtils.initialize_exit_handler()
+            # __init__()
+                # -> TerminalUtils.initialize_exit_handler()
             
-            run()
-                -> TerminalUtils.clear_terminal()
-                -> SystemUtils.wrap_text()
-                -> TimerLoop.run
-                -> UserDisplay.TITLE_BLOCK
-                -> UserInput.get_countdown_time()
-                -> UserInput.get_hour_format()
+            # run()
+                # -> TerminalUtils.clear_terminal()
+                # -> SystemUtils.wrap_text()
+                # -> TimerLoop.run
+                # -> UserDisplay.TITLE_BLOCK
+                # -> UserInput.get_countdown_time()
+                # -> UserInput.get_hour_format()
     
     timer_utils.py
 

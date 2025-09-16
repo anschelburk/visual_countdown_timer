@@ -9,6 +9,20 @@
 
     timer/
 
+        app.py
+        # Previously timer_app.py
 
+            class TimerApp
+
+                __init__()
+                    -> TerminalUtils.initialize_exit_handler()
+                
+                run()
+                    -> TerminalUtils.clear_terminal()
+                    -> SystemUtils.wrap_text()
+                    -> TimerLoop.run
+                    -> UserDisplay.TITLE_BLOCK
+                    -> UserInput.get_countdown_time()
+                    -> UserInput.get_hour_format()
 
         base/
