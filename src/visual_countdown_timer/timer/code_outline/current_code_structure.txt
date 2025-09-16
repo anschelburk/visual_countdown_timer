@@ -1,8 +1,8 @@
-app.py
+# app.py
 
-    main()
-        -> TimerApp()
-        -> TimerApp.run()
+    # main()
+        # -> TimerApp()
+        # -> TimerApp.run()
 
 timer/
 
