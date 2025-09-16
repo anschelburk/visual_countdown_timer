@@ -18,9 +18,9 @@
                 
                 run()
                     -> TerminalUtils.clear_terminal()
-                    -> SystemUtils.wrap_text()
+                    -> TerminalUtils.wrap_terminal_text()
+                    -> TextBlocks.TITLE_BLOCK
                     -> TimerLoop.run
-                    -> UserDisplay.TITLE_BLOCK
                     -> UserInput.get_countdown_time()
                     -> UserInput.get_hour_format()
         
@@ -40,7 +40,7 @@
 
                 _text_width()
                     -> cls._minutes_rounded_up()
-                    -> Config.PROGRESS_BAR_WIDTH_TOTAL
+                    -> TimerConfig.PROGRESS_BAR_WIDTH_TOTAL
 
             class TextBlocks
             # Previously class UserDisplay
@@ -64,9 +64,9 @@
                 TITLE_BLOCK
                     -> cls.THICK_HORIZONTAL_LINE
 
-        system.py
+        coreutils.py
 
-            class Config
+            class TimerConfig
             # Previously class DisplaySettings
             # and class TimerConfig
 
@@ -93,3 +93,31 @@
 
                 TERMINAL_WINDOW_WIDTH
                 -> None
+
+            class TextUtils
+            # Previously part of class SystemUtils
+
+                clean_text()
+                    -> None
+                
+                pluralize_text()
+                # Previously pluralize()
+                    -> None
+
+            class TerminalUtils
+            # Includes methods previously in SystemUtils
+
+                clear_terminal_screen()
+                # Previously clear_screen
+                    -> None
+
+                initialize_exit_handler()
+                    -> None
+
+                sleep_until_next_second()
+                    -> None
+
+                wrap_terminal_text()
+                # Make sure the docstring givesa good description
+                # of what this is - specifically for terminal window.
+                    -> Config.TERMINAL_WINDOW_WIDTH

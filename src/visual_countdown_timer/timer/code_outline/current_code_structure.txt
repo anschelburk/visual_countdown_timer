@@ -80,27 +80,27 @@ timer/
 
     system_utils.py
 
-        class SystemUtils
+        # class SystemUtils
 
-            clean_text()
-                -> None
+            # clean_text()
+                # -> None
 
-            pluralize()
-                -> None
+            # pluralize()
+                # -> None
 
-            wrap_text()
-                -> DisplaySettings.TERMINAL_WINDOW_WIDTH
+            # wrap_text()
+                # -> DisplaySettings.TERMINAL_WINDOW_WIDTH
 
-            sleep_until_next_second()
-                -> None
+            # sleep_until_next_second()
+                # -> None
 
-        class TerminalUtils
+        # class TerminalUtils
 
-            clear_terminal()
-                -> None
+            # clear_terminal()
+                # -> None
 
-            initialize_exit_handler()
-                -> None
+            # initialize_exit_handler()
+                # -> None
 
     # timer_app.py
 
