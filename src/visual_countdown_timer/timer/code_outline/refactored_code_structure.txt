@@ -45,23 +45,38 @@
             class TextBlocks
             # Previously class UserDisplay
 
-            INDENT
-                -> DisplaySettings.INDENT_LENGTH
-            
-            THIN_LINE_INDENTED
-            # Previously INDENTED_HORIZONTAL_LINE
-                -> cls.INDENT
-            
-            THICK_HORIZONTAL_LINE
-                -> DisplaySettings.LINE_THICKNESS
+                INDENT
+                    -> DisplaySettings.INDENT_LENGTH
+                
+                THIN_LINE_INDENTED
+                # Previously INDENTED_HORIZONTAL_LINE
+                    -> cls.INDENT
+                
+                THICK_HORIZONTAL_LINE
+                    -> DisplaySettings.LINE_THICKNESS
 
-            THIN_HORIZONTAL_LINE
-                -> DisplaySettings.LINE_THICKNESS
+                THIN_HORIZONTAL_LINE
+                    -> DisplaySettings.LINE_THICKNESS
 
-            TIMER_INTRO_TEXT
-                -> None
+                TIMER_INTRO_TEXT
+                    -> None
 
-            TITLE_BLOCK
-                -> cls.THICK_HORIZONTAL_LINE
+                TITLE_BLOCK
+                    -> cls.THICK_HORIZONTAL_LINE
 
+        system.py
+
+            class Config
+
+                MAX_MINUTES
+                # Remove - never used.
+                    -> None
+                
+                MIN_MINUTES
+                # Remove - never used.
+                    -> None
+
+                POSSIBLE_HOUR_FORMATS
+                    -> None
+        
         base/

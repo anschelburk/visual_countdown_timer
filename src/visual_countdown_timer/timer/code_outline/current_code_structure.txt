@@ -53,7 +53,7 @@ timer/
 
         class DisplaySettings
             
-            INDENT_LENGTH
+            # INDENT_LENGTH
                 -> None
 
             LINE_THICKNESS
@@ -65,16 +65,18 @@ timer/
             TERMINAL_WINDOW_WIDTH
                 -> None
 
-        class TimerConfig
+        # class TimerConfig
 
-            MAX_MINUTES
-                -> None
+            # MAX_MINUTES
+            # # Removing - never used.
+                # -> None
             
-            MIN_MINUTES
-                -> None
+            # MIN_MINUTES
+            # # Removing - never used.
+                # -> None
 
-            POSSIBLE_HOUR_FORMATS
-                -> None
+            # POSSIBLE_HOUR_FORMATS
+                # -> None
 
     system_utils.py
 
