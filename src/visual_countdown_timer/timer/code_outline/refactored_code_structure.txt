@@ -177,5 +177,18 @@
         user_actions.py
         # Previously part of timer_utils.py
 
-        
+            class UserInput
+
+                get_countdown_time()
+                    -> InputIsValid.integer()
+                    -> InputIsValid.minutes_range()
+                    -> SystemUtils.clean_text()
+                    -> SystemUtils.wrap_text()
+                    -> UserConfirms.countdown_time()
+
+                get_hour_format()
+                    -> InputIsValid.integer()
+                    -> InputIsValid.hour_display_format()
+                    -> SystemUtils.wrap_text()
+                    -> UserConfirms.hour_display_format()
 
