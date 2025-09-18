@@ -185,11 +185,11 @@
 
                 hour_display_format()
                     -> cls._confirm_user_input()
-                    -> SystemUtils.wrap_text()
+                    -> TerminalUtils.wrap_text()
 
                 _confirm_user_input()
                     -> SystemUtils.clean_text()
-                    -> SystemUtils.wrap_text()
+                    -> TerminalUtils.wrap_text()
             
             class UserInput
 
