@@ -119,13 +119,13 @@ timer/
     
     timer_utils.py
 
-        class Calculate
+        # class Calculate
 
-            next_countdown_occurrence()
-                -> None
+            # next_countdown_occurrence()
+                # -> None
 
-            remaining_seconds()
-                -> None
+            # remaining_seconds()
+                # -> None
 
         class Format
 

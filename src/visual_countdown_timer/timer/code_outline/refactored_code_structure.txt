@@ -125,4 +125,15 @@
         time_logic.py
         # Previously timer_utils.py
 
-            
+            class Calculations
+            # Previously class Calculate
+
+                next_countdown_occurrence()
+                    -> None
+
+                remaining_seconds()
+                    -> None
+
+
+
+
