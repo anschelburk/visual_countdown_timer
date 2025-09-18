@@ -29,10 +29,10 @@
 
                 run()
                     -> Calculate.next_countdown_occurrence()
-                    -> Format.remaining_time()
                     -> ProgressBar.render()
                     -> SystemUtils.sleep_until_next_second()
                     -> SystemUtils.wrap_text()
+                    -> TimerDisplay.remaining_time()
                     -> UserDisplay.show_timer_display()                
         
         display.py
