@@ -28,10 +28,10 @@
             # Previously in timer_utils.py
 
                 run()
-                    -> Calculate.next_countdown_occurrence()
                     -> ProgressBar.render()
                     -> SystemUtils.sleep_until_next_second()
                     -> SystemUtils.wrap_text()
+                    -> TimeCalculations.next_countdown_occurrence()
                     -> TimerDisplay.remaining_time()
                     -> UserDisplay.show_timer_display()                
         
@@ -165,7 +165,7 @@
         time_logic.py
         # Previously timer_utils.py
 
-            class Calculations
+            class TimeCalculations
             # Previously class Calculate
 
                 next_countdown_occurrence()
