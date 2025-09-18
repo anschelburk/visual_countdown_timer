@@ -117,7 +117,7 @@ timer/
                 # -> UserInput.get_countdown_time()
                 # -> UserInput.get_hour_format()
     
-    timer_utils.py
+    # timer_utils.py
 
         # class Calculate
 
@@ -165,7 +165,7 @@ timer/
                 # -> SystemUtils.wrap_text()
                 # -> UserDisplay.show_timer_display()
 
-        class UserInput
+        # class UserInput
 
             # get_countdown_time()
                 # -> InputIsValid.integer()
@@ -180,22 +180,22 @@ timer/
                 # -> SystemUtils.wrap_text()
                 # -> UserConfirms.hour_display_format()
 
-        class UserConfirms
+        # class UserConfirms
 
-            countdown_time()
-                -> cls._confirm_user_input()
-                -> SystemUtils.wrap_text()
+            # countdown_time()
+                # -> cls._confirm_user_input()
+                # -> SystemUtils.wrap_text()
 
-            hour_display_format()
-                -> cls._confirm_user_input()
-                -> SystemUtils.wrap_text()
+            # hour_display_format()
+                # -> cls._confirm_user_input()
+                # -> SystemUtils.wrap_text()
 
-            _confirm_user_input()
-                -> SystemUtils.clean_text()
-                -> SystemUtils.wrap_text()
+            # _confirm_user_input()
+                # -> SystemUtils.clean_text()
+                # -> SystemUtils.wrap_text()
 
         class ValidateInput
-        # Unsure if this class is ever referenced.
+        # Remove - Unsure if this class is ever referenced.
 
             user_input()
                 -> None

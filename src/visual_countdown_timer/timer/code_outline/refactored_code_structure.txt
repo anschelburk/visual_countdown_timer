@@ -177,6 +177,20 @@
         user_actions.py
         # Previously part of timer_utils.py
 
+            class UserConfirms
+
+                countdown_time()
+                    -> cls._confirm_user_input()
+                    -> SystemUtils.wrap_text()
+
+                hour_display_format()
+                    -> cls._confirm_user_input()
+                    -> SystemUtils.wrap_text()
+
+                _confirm_user_input()
+                    -> SystemUtils.clean_text()
+                    -> SystemUtils.wrap_text()
+            
             class UserInput
 
                 get_countdown_time()
