@@ -63,6 +63,35 @@
 
                 TITLE_BLOCK
                     -> cls.THICK_HORIZONTAL_LINE
+                
+            class TimerDisplay
+            # Previously class Format in timer_utils.py
+
+                date()
+                    -> None
+                
+                time()
+                    -> None
+
+                _add_timezone()
+                    -> None
+
+                _time_12h()
+                    -> None
+
+                _time_24h()
+                    -> None
+
+                remaining_time()
+                    -> cls._remaining_time_individual()
+                    -> cls._remaining_times_combined()
+
+                _remaining_times_combined()
+                    -> None
+
+                _remaining_time_individual()
+                    -> SystemUtils.pluralize()
+                    -> UserDisplay.INDENT   
 
         coreutils.py
 
@@ -133,7 +162,5 @@
 
                 remaining_seconds()
                     -> None
-
-
 
 

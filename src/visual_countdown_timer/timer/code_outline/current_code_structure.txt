@@ -127,33 +127,33 @@ timer/
             # remaining_seconds()
                 # -> None
 
-        class Format
+        # class Format
 
-            date()
-                -> None
+            # date()
+                # -> None
             
-            time()
-                -> None
+            # time()
+                # -> None
 
-            _add_timezone()
-                -> None
+            # _add_timezone()
+                # -> None
 
-            _time_12h()
-                -> None
+            # _time_12h()
+                # -> None
 
-            _time_24h()
-                -> None
+            # _time_24h()
+                # -> None
 
-            remaining_time()
-                -> cls._remaining_time_individual()
-                -> cls._remaining_times_combined()
+            # remaining_time()
+                # -> cls._remaining_time_individual()
+                # -> cls._remaining_times_combined()
 
-            _remaining_times_combined()
-                -> None
+            # _remaining_times_combined()
+                # -> None
 
-            _remaining_time_individual()
-                -> SystemUtils.pluralize()
-                -> UserDisplay.INDENT
+            # _remaining_time_individual()
+                # -> SystemUtils.pluralize()
+                # -> UserDisplay.INDENT
 
         class TimerLoop
 
