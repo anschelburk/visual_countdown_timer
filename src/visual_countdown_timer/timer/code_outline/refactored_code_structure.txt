@@ -23,6 +23,17 @@
                     -> TimerLoop.run
                     -> UserInput.get_countdown_time()
                     -> UserInput.get_hour_format()
+
+            class TimerLoop
+            # Previously in timer_utils.py
+
+                run()
+                    -> Calculate.next_countdown_occurrence()
+                    -> Format.remaining_time()
+                    -> ProgressBar.render()
+                    -> SystemUtils.sleep_until_next_second()
+                    -> SystemUtils.wrap_text()
+                    -> UserDisplay.show_timer_display()                
         
         display.py
         # Previously display_utils.py

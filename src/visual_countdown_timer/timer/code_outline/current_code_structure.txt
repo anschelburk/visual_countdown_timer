@@ -155,15 +155,15 @@ timer/
                 # -> SystemUtils.pluralize()
                 # -> UserDisplay.INDENT
 
-        class TimerLoop
+        # class TimerLoop
 
-            run()
-                -> Calculate.next_countdown_occurrence()
-                -> Format.remaining_time()
-                -> ProgressBar.render()
-                -> SystemUtils.sleep_until_next_second()
-                -> SystemUtils.wrap_text()
-                -> UserDisplay.show_timer_display()
+            # run()
+                # -> Calculate.next_countdown_occurrence()
+                # -> Format.remaining_time()
+                # -> ProgressBar.render()
+                # -> SystemUtils.sleep_until_next_second()
+                # -> SystemUtils.wrap_text()
+                # -> UserDisplay.show_timer_display()
 
         class UserInput
 
